@@ -18515,6 +18515,245 @@ namespace AnourValar\EloquentSerialize\Facades {
             }
     }
 
+namespace Jackiedo\DotenvEditor\Facades {
+            /**
+     * The DotenvEditor facade.
+     *
+     * @package Jackiedo\DotenvEditor\Facades
+     * @author Jackie Do <anhvudo@gmail.com>
+     */        class DotenvEditor {
+                    /**
+         * Load file for working
+         *
+         * @param string|null $filePath The file path
+         * @param boolean $restoreIfNotFound Restore this file from other file if it's not found
+         * @param string|null $restorePath The file path you want to restore from
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function load($filePath = null, $restoreIfNotFound = false, $restorePath = null)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->load($filePath, $restoreIfNotFound, $restorePath);
+        }
+                    /**
+         * Get raw content of file
+         *
+         * @return string 
+         * @static 
+         */        public static function getContent()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getContent();
+        }
+                    /**
+         * Get all lines from file
+         *
+         * @return array 
+         * @static 
+         */        public static function getLines()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getLines();
+        }
+                    /**
+         * Get all or exists given keys in file content
+         *
+         * @param array $keys
+         * @return array 
+         * @static 
+         */        public static function getKeys($keys = [])
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getKeys($keys);
+        }
+                    /**
+         * Check, if a given key is exists in the file content
+         *
+         * @param string $keys
+         * @return bool 
+         * @static 
+         */        public static function keyExists($key)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->keyExists($key);
+        }
+                    /**
+         * Return the value matching to a given key in the file content
+         *
+         * @param $key
+         * @throws \Jackiedo\DotenvEditor\Exceptions\KeyNotFoundException
+         * @return string 
+         * @static 
+         */        public static function getValue($key)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getValue($key);
+        }
+                    /**
+         * Return content in buffer
+         *
+         * @return string 
+         * @static 
+         */        public static function getBuffer()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getBuffer();
+        }
+                    /**
+         * Add empty line to buffer
+         *
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function addEmpty()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->addEmpty();
+        }
+                    /**
+         * Add comment line to buffer
+         *
+         * @param object
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function addComment($comment)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->addComment($comment);
+        }
+                    /**
+         * Set many keys to buffer
+         *
+         * @param array $data
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function setKeys($data)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->setKeys($data);
+        }
+                    /**
+         * Set one key to buffer
+         *
+         * @param string $key Key name of setter
+         * @param string|null $value Value of setter
+         * @param string|null $comment Comment of setter
+         * @param boolean $export Leading key name by "export "
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function setKey($key, $value = null, $comment = null, $export = false)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->setKey($key, $value, $comment, $export);
+        }
+                    /**
+         * Delete many keys in buffer
+         *
+         * @param array $keys
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function deleteKeys($keys = [])
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->deleteKeys($keys);
+        }
+                    /**
+         * Delete on key in buffer
+         *
+         * @param string $key
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function deleteKey($key)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->deleteKey($key);
+        }
+                    /**
+         * Save buffer to file
+         *
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function save()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->save();
+        }
+                    /**
+         * Switching of the auto backup mode
+         *
+         * @param boolean $on
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function autoBackup($on = true)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->autoBackup($on);
+        }
+                    /**
+         * Create one backup of loaded file
+         *
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function backup()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->backup();
+        }
+                    /**
+         * Return an array with all available backups
+         *
+         * @return array 
+         * @static 
+         */        public static function getBackups()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getBackups();
+        }
+                    /**
+         * Return the information of the latest backup file
+         *
+         * @return array 
+         * @static 
+         */        public static function getLatestBackup()
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->getLatestBackup();
+        }
+                    /**
+         * Restore the loaded file from latest backup file or from special file.
+         *
+         * @param string|null $filePath
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function restore($filePath = null)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->restore($filePath);
+        }
+                    /**
+         * Delete all or the given backup files
+         *
+         * @param array $filePaths
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function deleteBackups($filePaths = [])
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->deleteBackups($filePaths);
+        }
+                    /**
+         * Delete the given backup file
+         *
+         * @param string $filePath
+         * @return \DotenvEditor 
+         * @static 
+         */        public static function deleteBackup($filePath)
+        {
+                        /** @var \Jackiedo\DotenvEditor\DotenvEditor $instance */
+                        return $instance->deleteBackup($filePath);
+        }
+            }
+    }
+
 namespace Livewire {
             /**
      * 
@@ -26027,6 +26266,7 @@ namespace  {
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class EloquentSerialize extends \AnourValar\EloquentSerialize\Facades\EloquentSerializeFacade {}
+            class DotenvEditor extends \Jackiedo\DotenvEditor\Facades\DotenvEditor {}
             class Livewire extends \Livewire\Livewire {}
             class SEOManager extends \RalphJSmit\Laravel\SEO\Facades\SEOManager {}
     }
