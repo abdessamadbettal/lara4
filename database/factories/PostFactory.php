@@ -46,6 +46,7 @@ class PostFactory extends Factory
                 'fr' => $content,
                 'es' => $content,
             ],
+            'slug' => $this->faker->unique()->slug,
             'author_id' => \App\Models\User::InRandomOrder()->first()->id,
             'category_id' => \App\Models\Category::InRandomOrder()->first()->id,
             'is_published' => $this->faker->boolean,
