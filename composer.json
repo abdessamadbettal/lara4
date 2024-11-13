@@ -18,6 +18,7 @@
         "php": "^8.2",
         "bezhansalleh/filament-language-switch": "^3.1",
         "filament/filament": "^3.2",
+        "inertiajs/inertia-laravel": "^1.0",
         "jackiedo/dotenv-editor": "^1.1",
         "laravel/framework": "^11.9",
         "laravel/helpers": "^1.7",
@@ -32,7 +33,8 @@
         "spatie/laravel-settings": "^3.4",
         "spatie/laravel-sluggable": "^3.6",
         "spatie/laravel-tags": "^4.7",
-        "spatie/laravel-translatable": "^6.8"
+        "spatie/laravel-translatable": "^6.8",
+        "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.2",
@@ -43,8 +45,8 @@
         "laravel/sail": "^1.37",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
-        "pestphp/pest": "^3.5",
-        "pestphp/pest-plugin-laravel": "^3.0"
+        "pestphp/pest": "*",
+        "pestphp/pest-plugin-laravel": "*"
     },
     "autoload": {
         "psr-4": {
