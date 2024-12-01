@@ -33,6 +33,20 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'isLoggedIn' => $request->user() !== null,
+                'roles' => $request->user()?->roles->pluck('name'),
+            ],
+            'flash' => [
+                'success' => fn () => $request->session()->get('success'),
+                'error' => fn () => $request->session()->get('error'),
+            ],
+            'errors' => fn () => $request->session()->get('errors')?->getBag('default')?->getMessages(),
+            'app' => [
+                'name' => config('app.name'),
+                'url' => config('app.url'),
+            ],
+            'settings' => [
+                // spatie settings
             ],
         ];
     }

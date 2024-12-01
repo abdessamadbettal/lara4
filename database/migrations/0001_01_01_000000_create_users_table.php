@@ -17,6 +17,26 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('first_name')->nullable()->after('name');
+            $table->string('last_name')->nullable()->after('first_name');
+
+            $table->string('mobile')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->text('address')->nullable();
+            $table->text('bio')->nullable();
+            $table->json('social_profiles')->nullable();
+            $table->string('avatar')->nullable();
+
+            $table->string('last_ip')->nullable();
+            $table->integer('login_count')->default(0);
+            $table->timestamp('last_login')->nullable();
+
+            $table->tinyInteger('status')->default(1)->unsigned();
+
+            $table->integer('created_by')->unsigned()->nullable();
+            $table->integer('updated_by')->unsigned()->nullable();
+            $table->integer('deleted_by')->unsigned()->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
