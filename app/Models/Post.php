@@ -68,5 +68,5 @@ class Post extends Model implements HasMedia
             ->morphToMany(self::getTagClassName(), 'taggable', 'taggables', null, 'tag_id')
             ->orderBy('order_column');
     }
-    
+
 }

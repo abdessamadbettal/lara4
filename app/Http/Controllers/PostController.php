@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Http\Resources\PostResource;
 
 class PostController extends Controller
 {
@@ -12,7 +13,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::paginate(10);
+
+        return PostResource::collection($posts);
     }
 
     /**
@@ -20,7 +23,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the request
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        // create a new post
+        $post = Post::create($request->all());
+
+        return new PostResource($post);
     }
 
     /**
@@ -28,7 +40,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return new PostResource($post);
     }
 
     /**
@@ -36,7 +48,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        // validate the request
+        $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+        ]);
+
+        // update the post
+        $post->update($request->all());
+
+        return new PostResource($post);
     }
 
     /**
@@ -44,6 +65,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return response()->noContent();
     }
 }
