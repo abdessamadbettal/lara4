@@ -4,27 +4,27 @@
     "version": "1.0.0",
     "description": "laravel starter kit with inertiajs, vue3, tailwindcss and vite and ssr && localization support",
     "repository": {
-      "type": "git",
-      "url": "https://github.com/abdessamadbettal/laravel-starter"
+        "type": "git",
+        "url": "https://github.com/abdessamadbettal/laravel-starter"
     },
     "keywords": [
-      "vue 3",
-      "vite",
-      "typescript",
-      "server-side-rendering",
-      "boilerplate",
-      "vitetest",
-      "enterprise",
-      "components",
-      "design-system",
-      "inertia",
-      "composition-api"
+        "vue 3",
+        "vite",
+        "typescript",
+        "server-side-rendering",
+        "boilerplate",
+        "vitetest",
+        "enterprise",
+        "components",
+        "design-system",
+        "inertia",
+        "composition-api"
     ],
     "author": "Abdessamad Bettal",
     "license": "MIT",
     "homepage": "https://github.com/abdessamadbettal/laravel-starter",
     "bugs": {
-      "url": "https://github.com/abdessamadbettal/laravel-starter/issues"
+        "url": "https://github.com/abdessamadbettal/laravel-starter/issues"
     },
     "type": "module",
     "scripts": {
@@ -44,5 +44,8 @@
         "tailwindcss": "^3.2.1",
         "vite": "^5.0",
         "vue": "^3.4.0"
+    },
+    "dependencies": {
+        "lucide-vue-next": "^0.462.0"
     }
 }

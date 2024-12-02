@@ -5,6 +5,7 @@ import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import ProvidersAuth from './Partials/ProvidersAuth.vue';
 
 const form = useForm({
     name: '',
@@ -23,6 +24,8 @@ const submit = () => {
 <template>
     <GuestLayout>
         <Head title="Register" />
+
+        <ProvidersAuth />
 
         <form @submit.prevent="submit">
             <div>

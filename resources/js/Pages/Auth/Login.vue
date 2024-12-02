@@ -6,6 +6,7 @@ import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import ProvidersAuth from './Partials/ProvidersAuth.vue';
 
 defineProps({
     canResetPassword: {
@@ -36,6 +37,8 @@ const submit = () => {
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
         </div>
+
+        <ProvidersAuth />
 
         <form @submit.prevent="submit">
             <div>

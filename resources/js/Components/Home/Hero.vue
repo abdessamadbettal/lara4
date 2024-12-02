@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 <template>
     <div :id="id"
-        class="flex flex-col justify-center items-center min-h-screen text-center pt-16 pb-20 lg:pt-32 lg:pb-32">
+        class="flex flex-col justify-center items-center text-center pt-16 pb-20 lg:pt-32 lg:pb-32">
         <h1 class="mx-auto max-w-4xl font-medium tracking-tight text-gray-900 text-5xl sm:text-7xl mb-6">
             Welcome to
             <span class="relative whitespace-nowrap text-[#FF2D20]">

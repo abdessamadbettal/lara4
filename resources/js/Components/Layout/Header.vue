@@ -7,6 +7,7 @@ import IconX from "@/Components/Icons/IconX.vue"
 import Button from "@/Components/Button.vue"
 import { Transition } from "vue"
 import { Link } from '@inertiajs/vue3';
+import ThemeSwitcher from "@/Components/ThemeSwitcher.vue"
 
 const props = defineProps({
     menuItems: {
@@ -36,9 +37,9 @@ function redirect(link) {
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 text-sm">
 
             <div class="flex items-center gap-8">
-                <a href="#">
+                <Link :href="route('welcome')">
                     <Logo class="h-10" />
-                </a>
+                </Link>
                 <nav class="items-center gap-3 hidden md:flex">
                     <a v-for="menu in menuItems" :key="menu.label" v-text="menu.label" :href="menu.link"
                         class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-red-200 font-bold text-red-900 hover:bg-opacity-30" />
@@ -52,9 +53,10 @@ function redirect(link) {
                 </Link>
 
                 <template v-else>
-                    <Button variant="outline" :href="route('login')" class="hidden md:inline" v-if="canLogin">
+                    <ThemeSwitcher />
+                    <!-- <Button variant="outline" :href="route('login')" class="hidden md:inline" v-if="canLogin">
                         Login
-                    </Button>
+                    </Button> -->
 
                     <Button :href="route('register')" v-if="canRegister">
                         Register <span v-text="'now'" class="hidden lg:inline pl-1" />
