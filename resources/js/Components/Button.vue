@@ -26,7 +26,7 @@ const buttonClasses = computed(() => {
 <template>
     <button
         :disabled="isLoading"
-        :class="buttonClasses"
+        :class="[buttonClasses, { 'opacity-25': isLoading }]"
     >
         <slot v-if="!isLoading" />
         <span v-else>Loading...</span>

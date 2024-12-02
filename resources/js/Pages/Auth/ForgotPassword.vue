@@ -1,9 +1,9 @@
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/Forms/InputError.vue';
+import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
-import TextInput from '@/Components/TextInput.vue';
+import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -57,8 +57,7 @@ const submit = () => {
 
             <div class="mt-4 flex items-center justify-end">
                 <Button
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
+                    :isLoading="form.processing"
                 >
                     Email Password Reset Link
                 </Button>

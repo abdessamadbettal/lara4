@@ -1,8 +1,8 @@
 <script setup>
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/Forms/InputError.vue';
+import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
-import TextInput from '@/Components/TextInput.vue';
+import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
@@ -101,7 +101,7 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <Button :disabled="form.processing">Save</Button>
+                <Button :isLoading="form.processing">Save</Button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"

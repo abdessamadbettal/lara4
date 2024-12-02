@@ -1,10 +1,10 @@
 <script setup>
-import Checkbox from '@/Components/Checkbox.vue';
+import Checkbox from '@/Components/Forms/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
+import InputError from '@/Components/Forms/InputError.vue';
+import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
-import TextInput from '@/Components/TextInput.vue';
+import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
@@ -89,8 +89,7 @@ const submit = () => {
 
                 <Button
                     class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
+                    :isLoading="form.processing"
                 >
                     Log in
                 </Button>

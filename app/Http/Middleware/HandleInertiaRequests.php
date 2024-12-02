@@ -40,7 +40,6 @@ class HandleInertiaRequests extends Middleware
                 'success' => fn () => $request->session()->get('success'),
                 'error' => fn () => $request->session()->get('error'),
             ],
-            'errors' => fn () => $request->session()->get('errors')?->getBag('default')?->getMessages(),
             'app' => [
                 'name' => config('app.name'),
                 'url' => config('app.url'),
