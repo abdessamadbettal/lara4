@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
+import Hero from '@/Components/Home/Hero.vue';
 
 defineProps({
     canLogin: {
@@ -83,6 +84,7 @@ function handleImageError() {
                 </header>
 
                 <main class="mt-6">
+                    <Hero />
                     <div class="grid gap-6 lg:grid-cols-2 lg:gap-8">
                         <a
                             href="https://laravel.com/docs"
