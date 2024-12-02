@@ -41,7 +41,7 @@ function redirect(link) {
                 </a>
                 <nav class="items-center gap-3 hidden md:flex">
                     <a v-for="menu in menuItems" :key="menu.label" v-text="menu.label" :href="menu.link"
-                        class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-red-200 font-bold text-red-900" />
+                        class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-red-200 font-bold text-red-900 hover:bg-opacity-30" />
                 </nav>
             </div>
 
