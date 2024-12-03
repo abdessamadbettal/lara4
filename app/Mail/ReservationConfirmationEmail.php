@@ -33,7 +33,7 @@ class ReservationConfirmationEmail extends Mailable  implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('messages.reservation_confirmation_subject'),
+            subject: __('mail.reservation_confirmation_subject'),
         );
     }
 

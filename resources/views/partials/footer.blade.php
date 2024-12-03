@@ -35,16 +35,16 @@
                                     <div
                                         style="font-family:Alata;font-size:14px;font-weight:400;line-height:24px;text-align:center;color:#333333;">
                                         <a class="footer-link" href="{{ config('app.frontend_url') . '/aboutus' }}"
-                                            style="text-decoration: none; color: #000;">@lang('messages.about_us')</a> &nbsp; | &nbsp;
+                                            style="text-decoration: none; color: #000;">@lang('mail.about_us')</a> &nbsp; | &nbsp;
                                         <a class="footer-link" href="{{ config('app.frontend_url') . '/privacy' }}"
-                                            style="text-decoration: none; color: #000;">@lang('messages.privacy')</a> &nbsp; | &nbsp;
+                                            style="text-decoration: none; color: #000;">@lang('mail.privacy')</a> &nbsp; | &nbsp;
                                         <a class="footer-link" href="{{ config('app.frontend_url') . '/contact' }}"
-                                            style="text-decoration: none; color: #000;">@lang('messages.contact_us')</a> &nbsp; | &nbsp;
+                                            style="text-decoration: none; color: #000;">@lang('mail.contact_us')</a> &nbsp; | &nbsp;
                                         <a class="footer-link" href="{{ config('app.frontend_url') . '/terms' }}"
-                                            style="text-decoration: none; color: #000;">@lang('messages.terms_conditions')</a> &nbsp; |
+                                            style="text-decoration: none; color: #000;">@lang('mail.terms_conditions')</a> &nbsp; |
                                         &nbsp;
                                         <a class="footer-link" href="{{ config('app.frontend_url') . '/login' }}"
-                                            style="text-decoration: none; color: #000;">@lang('messages.log_in')</a>
+                                            style="text-decoration: none; color: #000;">@lang('mail.log_in')</a>
                                     </div>
                                 </td>
                             </tr>

@@ -22,23 +22,23 @@
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('messages.greeting_reminded', ['name' => $user->name])</h1>
+                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('mail.greeting_reminded', ['name' => $user->name])</h1>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <p>@lang('messages.reservation_details')</p>
+                      <p>@lang('mail.reservation_details')</p>
                       <ul>
-                        <li>@lang('messages.hotel', ['hotel' => $reservation->hotel])</li>
-                        <li>@lang('messages.start_date', ['start_date' => $reservation->start_date])</li>
-                        <li>@lang('messages.end_date', ['end_date' => $reservation->end_date])</li>
-                        <li>@lang('messages.adults', ['adults' => $reservation->adults])</li>
-                        <li>@lang('messages.children', ['children' => $reservation->children])</li>
-                        <li>@lang('messages.total_guests', ['guests' => $reservation->guests])</li>
-                        <li>@lang('messages.total_price', ['total_price' => $reservation->total_price])</li>
-                        <li>@lang('messages.reference', ['reference' => $reservation->reference])</li>
+                        <li>@lang('mail.hotel', ['hotel' => $reservation->hotel])</li>
+                        <li>@lang('mail.start_date', ['start_date' => $reservation->start_date])</li>
+                        <li>@lang('mail.end_date', ['end_date' => $reservation->end_date])</li>
+                        <li>@lang('mail.adults', ['adults' => $reservation->adults])</li>
+                        <li>@lang('mail.children', ['children' => $reservation->children])</li>
+                        <li>@lang('mail.total_guests', ['guests' => $reservation->guests])</li>
+                        <li>@lang('mail.total_price', ['total_price' => $reservation->total_price])</li>
+                        <li>@lang('mail.reference', ['reference' => $reservation->reference])</li>
                       </ul>
                     </div>
                   </td>
@@ -46,15 +46,15 @@
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      @lang('messages.click_link')
+                      @lang('mail.click_link')
                     </div>
                   </td>
                 </tr>
-                <x-button url="{{config('app.frontend_url') . '/reservations'}}" text="{{ __('messages.view_reservation') }}" />
+                <x-button url="{{config('app.frontend_url') . '/reservations'}}" text="{{ __('mail.view_reservation') }}" />
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#333333;">
-                      @lang('messages.help', ['email' => $email])
+                      @lang('mail.help', ['email' => $email])
                     </div>
                   </td>
                 </tr>

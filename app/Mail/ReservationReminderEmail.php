@@ -46,7 +46,7 @@ class ReservationReminderEmail extends Mailable  implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('messages.reservation_reminder_subject'),
+            subject: __('mail.reservation_reminder_subject'),
         );
     }
 

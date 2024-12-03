@@ -23,30 +23,30 @@
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('messages.welcome', ['name' => $userName])</h1>
-                      <p style="margin: 0; font-size: 18px; line-height: 24px;">@lang('messages.intro', ['app' => config('app.name')])</p>
+                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('mail.welcome', ['name' => $userName])</h1>
+                      <p style="margin: 0; font-size: 18px; line-height: 24px;">@lang('mail.intro', ['app' => config('app.name')])</p>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <p style="margin: 0;">@lang('messages.support', ['app' => config('app.name')])</p>
+                      <p style="margin: 0;">@lang('mail.support', ['app' => config('app.name')])</p>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <p style="margin: 0;">@lang('messages.get_started')</p>
+                      <p style="margin: 0;">@lang('mail.get_started')</p>
                     </div>
                   </td>
                 </tr>
-                <x-button url="{{config('app.frontend_url') . '/'}}" text="{{ __('messages.get_started_button') }}" />
+                <x-button url="{{config('app.frontend_url') . '/'}}" text="{{ __('mail.get_started_button') }}" />
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#333333;">
-                      <p style="margin: 0;">@lang('messages.help', ['email' => $email])</p>
+                      <p style="margin: 0;">@lang('mail.help', ['email' => $email])</p>
                     </div>
                   </td>
                 </tr>

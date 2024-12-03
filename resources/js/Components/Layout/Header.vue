@@ -50,7 +50,8 @@ function redirect(link) {
 
             <div class="flex items-center gap-2">
                 <ThemeSwitcher />
-                <LanguageSwitcher />
+                <LanguageSwitcher :locales="$page.props.locales"
+                :currentLocale="$page.props.currentLocale"/>
                 <div class="hidden sm:flex sm:items-center" v-if="$page.props.auth.user">
                     <!-- Settings Dropdown -->
                     <div class="relative ms-3">

@@ -25,29 +25,29 @@
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('messages.greeting', ['name' => $user->name])</h1>
+                      <h1 style="margin: 0; font-size: 32px; line-height: 40px;">@lang('mail.greeting', ['name' => $user->name])</h1>
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      @lang('messages.new_password', ['password' => $newPassword])
+                      @lang('mail.new_password', ['password' => $newPassword])
                     </div>
                   </td>
                 </tr>
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:18px;font-weight:400;line-height:24px;text-align:left;color:#000000;">
-                      @lang('messages.change_password')
+                      @lang('mail.change_password')
                     </div>
                   </td>
                 </tr>
-                <x-button url="{{ $fontend_url . '/login' }}" text="{{ __('messages.login_now') }}" />
+                <x-button url="{{ $fontend_url . '/login' }}" text="{{ __('mail.login_now') }}" />
                 <tr>
                   <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
                     <div style="font-family:Alata;font-size:14px;font-weight:400;line-height:24px;text-align:left;color:#333333;">
-                      @lang('messages.help', ['email' => $email])
+                      @lang('mail.help', ['email' => $email])
                     </div>
                   </td>
                 </tr>

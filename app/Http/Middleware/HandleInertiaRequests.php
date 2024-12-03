@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -51,6 +52,13 @@ class HandleInertiaRequests extends Middleware
             ],
             'canLogin' => Route::has('login'),
             'canRegister' => Route::has('register'),
+            'currentLocale' => LaravelLocalization::getCurrentLocale(),
+            'locales' => LaravelLocalization::getSupportedLocales(),
+            'localizedUrls' => [
+                'login' => LaravelLocalization::localizeURL(route('login')),
+                'register' => LaravelLocalization::localizeURL(route('register')),
+                // Add more routes as needed
+            ],
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ];

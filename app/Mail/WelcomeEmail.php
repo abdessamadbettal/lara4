@@ -30,7 +30,7 @@ class WelcomeEmail extends Mailable  implements ShouldQueue
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: __('messages.welcome_subject'),
+            subject: __('mail.welcome_subject'),
         );
     }
 

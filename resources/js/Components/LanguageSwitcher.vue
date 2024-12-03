@@ -32,10 +32,14 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { router as inertiaRouter } from '@inertiajs/vue3'
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+
+
+const props = defineProps(['locales', 'currentLocale'])
+
 
 const languages = [
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
@@ -44,7 +48,10 @@ const languages = [
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/w20/ma.png' },
 ]
 
-const currentLanguage = ref(languages[0])
+const currentLanguage = computed(() => {
+    return languages.find(lang => lang.code === props.currentLocale)
+})
+
 
 function getLanguageUrl(langCode) {
     const currentPath = window.location.pathname
@@ -56,8 +63,18 @@ function getLanguageUrl(langCode) {
 }
 
 function changeLanguage(lang) {
-    currentLanguage.value = lang
     const newPath = getLanguageUrl(lang.code)
-    inertiaRouter.visit(newPath)
+
+        // Reload the page with the new language
+        window.location.href = newPath;
+
+    // TODO: should change lang without reload page
+    // inertiaRouter.visit(newPath, {
+    //     preserveScroll: true, // Optionally preserve scroll position
+    //     preserveState: false, // Reload state to reflect new locale
+    //     headers: {
+    //         'X-Locale': lang.code, // Optional, in case you want to pass locale explicitly
+    //     },
+    // });
 }
 </script>
