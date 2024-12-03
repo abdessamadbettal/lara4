@@ -48,10 +48,10 @@ function redirect(link) {
                 </nav>
             </div>
 
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-2">
                 <ThemeSwitcher />
                 <LanguageSwitcher />
-                <div class="hidden sm:ms-6 sm:flex sm:items-center" v-if="$page.props.auth.user">
+                <div class="hidden sm:flex sm:items-center" v-if="$page.props.auth.user">
                     <!-- Settings Dropdown -->
                     <div class="relative ms-3">
                         <Dropdown align="right" width="48">
