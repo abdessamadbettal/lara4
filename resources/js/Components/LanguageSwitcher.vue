@@ -41,8 +41,6 @@ const languages = [
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
     { code: 'fr', name: 'French', flag: 'https://flagcdn.com/w20/fr.png' },
     { code: 'es', name: 'Spanish', flag: 'https://flagcdn.com/w20/es.png' },
-    { code: 'de', name: 'German', flag: 'https://flagcdn.com/w20/de.png' },
-    { code: 'it', name: 'Italian', flag: 'https://flagcdn.com/w20/it.png' },
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/w20/ma.png' },
 ]
 
@@ -50,7 +48,7 @@ const currentLanguage = ref(languages[0])
 
 function getLanguageUrl(langCode) {
     const currentPath = window.location.pathname
-    if (/^\/[a-z]{2}\//.test(currentPath)) {
+    if (/^\/[a-z]{2}(\/|$)/.test(currentPath)) {
         return currentPath.replace(/^\/[a-z]{2}/, `/${langCode}`)
     } else {
         return `/${langCode}${currentPath}`
