@@ -7,6 +7,7 @@ import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import ProvidersAuth from './Partials/ProvidersAuth.vue';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps({
     canResetPassword: {
@@ -16,6 +17,7 @@ defineProps({
         type: String,
     },
 });
+
 
 const form = useForm({
     email: '',
@@ -32,7 +34,7 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
+        <Head :title="trans('auth.login')" />
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
             {{ status }}
@@ -42,7 +44,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="trans('auth.email')" />
 
                 <TextInput
                     id="email"
@@ -58,7 +60,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" :value="trans('auth.password')" />
 
                 <TextInput
                     id="password"
@@ -75,9 +77,7 @@ const submit = () => {
             <div class="mt-4 block">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400"
-                        >Remember me</span
-                    >
+                    <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ trans('auth.remember_me') }}</span>
                 </label>
             </div>
 
@@ -87,14 +87,14 @@ const submit = () => {
                     :href="route('password.request')"
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
-                    Forgot your password?
+                    {{ trans('auth.forgot_password') }}
                 </Link>
 
                 <Button
                     class="ms-4"
                     :isLoading="form.processing"
                 >
-                    Log in
+                    {{ trans('auth.login') }}
                 </Button>
             </div>
         </form>

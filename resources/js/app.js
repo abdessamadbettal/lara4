@@ -27,8 +27,10 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue)
             .use(i18nVue, {
-                lang: 'en',
-                resolve: lang => require(`../../lang/${lang}.json`),
+                resolve: async lang => {
+                    const langs = import.meta.glob('../../lang/*.json');
+                    return await langs[`../../lang/${lang}.json`]();
+                }
             })
             .mount(el);
     },
