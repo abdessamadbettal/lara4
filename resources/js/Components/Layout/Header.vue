@@ -9,7 +9,8 @@ import { Transition } from "vue"
 import { Link } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-import ThemeSwitcher from "@/Components/ThemeSwitcher.vue"
+import ThemeSwitcher from "@/Components/ThemeSwitcher.vue";
+import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
 import MobileNav from "@/Components/Layout/MobileNav.vue"
 
 const props = defineProps({
@@ -49,6 +50,7 @@ function redirect(link) {
 
             <div class="flex items-center gap-4">
                 <ThemeSwitcher />
+                <LanguageSwitcher />
                 <div class="hidden sm:ms-6 sm:flex sm:items-center" v-if="$page.props.auth.user">
                     <!-- Settings Dropdown -->
                     <div class="relative ms-3">
