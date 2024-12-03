@@ -6,7 +6,7 @@ import GeneralLayout from '@/Layouts/GeneralLayout.vue';
 
 <template>
         <div
-            class="flex min-h-screen flex-col items-center  pt-6 sm:justify-center sm:pt-0 dark:bg-gray-900 rounded-xl"
+            class="flex min-h-screen flex-col items-center  pt-6 sm:justify-center sm:pt-0 rounded-xl"
         >
             <div>
                 <Link href="/">
