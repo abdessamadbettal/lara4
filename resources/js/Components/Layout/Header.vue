@@ -7,7 +7,10 @@ import IconX from "@/Components/Icons/IconX.vue"
 import Button from "@/Components/Button.vue"
 import { Transition } from "vue"
 import { Link } from '@inertiajs/vue3';
+import Dropdown from '@/Components/Forms/Dropdown.vue';
+import DropdownLink from '@/Components/DropdownLink.vue';
 import ThemeSwitcher from "@/Components/ThemeSwitcher.vue"
+import MobileNav from "@/Components/Layout/MobileNav.vue"
 
 const props = defineProps({
     menuItems: {
@@ -36,7 +39,7 @@ function redirect(link) {
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 dark:text-slate-300 text-sm">
             <div class="flex items-center gap-8">
                 <Link :href="route('welcome')">
-                    <Logo class="h-10" />
+                <Logo class="h-10" />
                 </Link>
                 <nav class="items-center gap-3 hidden md:flex">
                     <a v-for="menu in menuItems" :key="menu.label" v-text="menu.label" :href="menu.link"
@@ -46,51 +49,54 @@ function redirect(link) {
 
             <div class="flex items-center gap-4">
                 <ThemeSwitcher />
-                <Link v-if="$page.props.auth.user" :href="route('dashboard')"
-                    class="rounded-md px-3 py-2 text-black dark:text-white ring-1 ring-transparent transition hover:text-black/70 dark:hover:text-white/80 focus:outline-none focus-visible:ring-[#FF2D20] dark:focus-visible:ring-white">
-                Dashboard
-                </Link>
+                <div class="hidden sm:ms-6 sm:flex sm:items-center" v-if="$page.props.auth.user">
+                    <!-- Settings Dropdown -->
+                    <div class="relative ms-3">
+                        <Dropdown align="right" width="48">
+                            <template #trigger>
+                                <span class="inline-flex rounded-md">
+                                    <button type="button"
+                                        class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
+                                        {{ $page.props.auth.user.name }}
+
+                                        <svg class="-me-0.5 ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </template>
+
+                            <template #content>
+                                <DropdownLink :href="route('dashboard')" >
+                                Dashboard
+                                </DropdownLink>
+                                <DropdownLink :href="route('profile.edit')">
+                                    Profile
+                                </DropdownLink>
+                                <DropdownLink :href="route('logout')" method="post" as="button">
+                                    Log Out
+                                </DropdownLink>
+                            </template>
+                        </Dropdown>
+                    </div>
+                </div>
 
                 <template v-else>
-                    <Button variant="outline" :href="route('login')" class="hidden md:inline" v-if="false">
+                    <Button variant="outline" :href="route('login')" class="hidden md:inline" v-if="!route().current('login')">
                         Login
                     </Button>
 
-                    <Button :href="route('register')" v-if="canRegister">
+                    <Button :href="route('register')" v-if="canRegister && !route().current('register')">
                         Register <span v-text="'now'" class="hidden lg:inline pl-1" />
                     </Button>
                 </template>
 
                 <!-- MOBILE MENU -->
-                <div class="md:hidden">
-                    <button class="p-2 md:hidden relative z-10" @click.prevent="showMobileMenu = !showMobileMenu">
-                        <component :is="showMobileMenu ? IconX : IconBars" class="w-5"
-                            :class="{ 'text-red-500 dark:text-red-300': showMobileMenu }" />
-                    </button>
+                <MobileNav :menuItems="menuItems" :canLogin="canLogin" />
 
-                    <Transition enter-from-class="opacity-0" leave-to-class="opacity-0"
-                        class="transition-opacity duration-500">
-                        <div v-show="showMobileMenu" @click.prevent="showMobileMenu = false"
-                            class="fixed inset-0 bg-slate-200/50 dark:bg-slate-800/50 backdrop-blur-sm" />
-                    </Transition>
-
-                    <Transition enter-from-class="-translate-x-full opacity-0"
-                        leave-to-class="-translate-x-full opacity-0" class="transition-all duration-500">
-                        <div @click.stop v-show="showMobileMenu"
-                            class="p-4 absolute inset-x-4 top-14 bg-white dark:bg-slate-900 rounded-xl shadow-lg">
-                            <nav class="flex flex-col">
-                                <button v-for="menu in menuItems" :key="menu.label" v-text="menu.label"
-                                    @click.prevent="redirect(menu.link)"
-                                    class="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-left" />
-                                <hr class="my-2 border-slate-200 dark:border-slate-700" />
-                                <Link class="p-4 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg text-left" :href="route('login')"
-                                    v-if="canLogin && !$page.props.auth.user">
-                                Login
-                                </Link>
-                            </nav>
-                        </div>
-                    </Transition>
-                </div>
             </div>
         </Container>
     </header>
