@@ -5,7 +5,7 @@ import GeneralLayout from '@/Layouts/GeneralLayout.vue';
 </script>
 
 <template>
-        <div
+        <div :dir="$page.props.dir"
             class="flex min-h-screen flex-col items-center  pt-6 sm:justify-center sm:pt-0 rounded-xl"
         >
             <div>

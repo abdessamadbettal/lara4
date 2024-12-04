@@ -30,5 +30,10 @@ return [
     'password' => 'Password',
     'confirm_password' => 'Confirm Password',
     'already_registered' => 'Already registered?',
+    'dashboard' => 'Dashboard',
+    'profile' => 'Profile',
+    'logout' => 'Log Out',
+    'login' => 'Login',
+    'register' => 'Register',
 
 ];

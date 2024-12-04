@@ -30,4 +30,9 @@ return [
     'password' => 'كلمة المرور',
     'confirm_password' => 'تأكيد كلمة المرور',
     'already_registered' => 'مسجل بالفعل؟',
+    'dashboard' => 'لوحة القيادة',
+    'profile' => 'الملف الشخصي',
+    'logout' => 'تسجيل الخروج',
+    'login' => 'تسجيل الدخول',
+    'register' => 'تسجيل',
 ];

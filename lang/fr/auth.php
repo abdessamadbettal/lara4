@@ -30,5 +30,10 @@ return [
     'password' => 'Mot de passe',
     'confirm_password' => 'Confirmer le mot de passe',
     'already_registered' => 'Déjà inscrit?',
+    'dashboard' => 'Tableau de bord',
+    'profile' => 'Profil',
+    'logout' => 'Se déconnecter',
+    'login' => 'Se connecter',
+    'register' => 'S\'inscrire',
 
 ];

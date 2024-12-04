@@ -30,5 +30,10 @@ return [
     'password' => 'Contraseña',
     'confirm_password' => 'Confirmar contraseña',
     'already_registered' => '¿Ya estás registrado?',
+    'dashboard' => 'Tablero',
+    'profile' => 'Perfil',
+    'logout' => 'Cerrar sesión',
+    'login' => 'Iniciar sesión',
+    'register' => 'Registrarse',
 
 ];

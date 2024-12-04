@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
-    <div>
+    <div :dir="$page.props.dir">
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900 rounded-xl">
 
             <!-- Page Heading -->

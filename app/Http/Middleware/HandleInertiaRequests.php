@@ -54,11 +54,7 @@ class HandleInertiaRequests extends Middleware
             'canRegister' => Route::has('register'),
             'currentLocale' => LaravelLocalization::getCurrentLocale(),
             'locales' => LaravelLocalization::getSupportedLocales(),
-            'localizedUrls' => [
-                'login' => LaravelLocalization::localizeURL(route('login')),
-                'register' => LaravelLocalization::localizeURL(route('register')),
-                // Add more routes as needed
-            ],
+            'dir' => LaravelLocalization::getCurrentLocaleDirection(),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
         ];
