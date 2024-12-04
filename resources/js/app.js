@@ -6,7 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import GeneralLayout from '@/Layouts/GeneralLayout.vue';
-import { i18nVue } from 'laravel-vue-i18n'
+import { i18nVue } from 'laravel-vue-i18n';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
@@ -28,8 +28,14 @@ createInertiaApp({
             .use(ZiggyVue)
             .use(i18nVue, {
                 resolve: async lang => {
-                    const langs = import.meta.glob('../../lang/*.json');
-                    return await langs[`../../lang/${lang}.json`]();
+                    const langs = import.meta.glob('../../lang/php_*.json');
+                    const langModule = langs[`../../lang/php_${lang}.json`];
+                    if (langModule) {
+                        console.log(langModule);
+                        return await langModule();
+                    } else {
+                        throw new Error(`Language file for ${lang} not found`);
+                    }
                 }
             })
             .mount(el);

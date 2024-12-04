@@ -36,6 +36,7 @@ import { computed, ref } from 'vue'
 import { router as inertiaRouter } from '@inertiajs/vue3'
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+import { loadLanguageAsync, getActiveLanguage } from 'laravel-vue-i18n';
 
 
 const props = defineProps(['locales', 'currentLocale'])
@@ -65,16 +66,19 @@ function getLanguageUrl(langCode) {
 function changeLanguage(lang) {
     const newPath = getLanguageUrl(lang.code)
 
-        // Reload the page with the new language
-        window.location.href = newPath;
+    // Load the new language
+    loadLanguageAsync(lang.code)
 
-    // TODO: should change lang without reload page
-    // inertiaRouter.visit(newPath, {
+    // inertiaRouter.post('/change-language', { locale: lang.code }, {
     //     preserveScroll: true, // Optionally preserve scroll position
     //     preserveState: false, // Reload state to reflect new locale
-    //     headers: {
-    //         'X-Locale': lang.code, // Optional, in case you want to pass locale explicitly
-    //     },
     // });
+
+
+
+
+
+    // Reload the page with the new language
+    window.location.href = newPath;
 }
 </script>

@@ -26,7 +26,7 @@ const props = defineProps({
             {{ trans('home.hero_description') }}
         </p>
         <div class="mt-10 flex justify-center gap-x-6">
-            <Button href="/register">{{ trans('home.get_started') }}</Button>
+            <Button :href="route('register')">{{ trans('home.get_started') }}</Button>
             <Button href="https://github.com/abdessamadbettal/laravel-starter" variant="outline">
                 {{ trans('home.view_on_github') }}
             </Button>

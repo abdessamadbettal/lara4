@@ -6,6 +6,7 @@ import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import ProvidersAuth from './Partials/ProvidersAuth.vue';
+import { trans } from 'laravel-vue-i18n';
 
 const form = useForm({
     name: '',
@@ -23,13 +24,13 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
+        <Head :title="trans('auth.register')" />
 
         <ProvidersAuth />
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="name" value="Name" />
+                <InputLabel for="name" :value="trans('auth.name')" />
 
                 <TextInput
                     id="name"
@@ -45,7 +46,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="trans('auth.email')" />
 
                 <TextInput
                     id="email"
@@ -60,7 +61,7 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" :value="trans('auth.password')" />
 
                 <TextInput
                     id="password"
@@ -77,7 +78,7 @@ const submit = () => {
             <div class="mt-4">
                 <InputLabel
                     for="password_confirmation"
-                    value="Confirm Password"
+                    :value="trans('auth.password_confirmation')"
                 />
 
                 <TextInput
@@ -97,17 +98,17 @@ const submit = () => {
 
             <div class="mt-4 flex items-center justify-end">
                 <Link
-                    :href="route('login')"
+                    :href="route('login')"ait
                     class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                 >
-                    Already registered?
+                    {{ trans('auth.already_registered') }}
                 </Link>
 
                 <Button
                     class="ms-4"
                     :isLoading="form.processing"
                 >
-                    Register
+                    {{ trans('auth.register') }}
                 </Button>
             </div>
         </form>
