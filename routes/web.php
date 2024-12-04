@@ -4,7 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
-use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\LanguageController;
 
 Route::group(
     [
@@ -20,6 +20,7 @@ Route::group(
                 'phpVersion' => PHP_VERSION,
             ]);
         })->name('welcome');
+
 
         Route::get('/dashboard', function () {
             return Inertia::render('Dashboard');
