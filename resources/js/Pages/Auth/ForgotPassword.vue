@@ -5,6 +5,7 @@ import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Head, useForm } from '@inertiajs/vue3';
+import { trans } from 'laravel-vue-i18n';
 
 defineProps({
     status: {
@@ -23,12 +24,10 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Forgot Password" />
+        <Head :title="trans('auth.forgot_password')" />
 
         <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-            Forgot your password? No problem. Just let us know your email
-            address and we will email you a password reset link that will allow
-            you to choose a new one.
+            {{ trans('auth.forgot_password_message') }}
         </div>
 
         <div
@@ -40,7 +39,7 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" :value="trans('auth.email')" />
 
                 <TextInput
                     id="email"
@@ -59,7 +58,7 @@ const submit = () => {
                 <Button
                     :isLoading="form.processing"
                 >
-                    Email Password Reset Link
+                    {{ trans('auth.email_password_reset_link') }}
                 </Button>
             </div>
         </form>
