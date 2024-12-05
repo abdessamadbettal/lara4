@@ -2,7 +2,6 @@
 import Header from '@/Components/Layout/Header.vue';
 import Footer from '@/Components/Layout/Footer.vue';
 import { ref } from 'vue';
-import { trans } from 'laravel-vue-i18n';
 
 defineProps({
     canLogin: {
@@ -22,9 +21,9 @@ defineProps({
 });
 
 const menuItems = ref([
-    { label: trans('home.features'), link: "#features" },
-    { label: trans('home.blogs'), link: "#blogs" },
-    { label: trans('home.documentation'), link: "#documentation" },
+    { label: 'home.features', link: "#features" },
+    { label: 'home.blogs', link: "#blogs" },
+    { label: 'home.documentation', link: "#documentation" },
 ]);
 
 </script>
