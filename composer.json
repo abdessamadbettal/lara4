@@ -36,6 +36,7 @@
         "spatie/laravel-sluggable": "^3.6",
         "spatie/laravel-tags": "^4.7",
         "spatie/laravel-translatable": "^6.8",
+        "spatie/laravel-translation-loader": "^2.8",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
