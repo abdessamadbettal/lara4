@@ -40,7 +40,6 @@ import { computed } from 'vue';
 import { router as inertiaRouter } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import { setLocale } from '@/i18n';
-import { ZiggyVue, route } from 'ziggy-js';
 
 const props = defineProps(['currentLocale']);
 
