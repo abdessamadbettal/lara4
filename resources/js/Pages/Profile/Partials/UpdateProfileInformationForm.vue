@@ -4,7 +4,7 @@ import InputLabel from '@/Components/Forms/InputLabel.vue';
 import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
-import { trans } from 'laravel-vue-i18n';
+
 
 defineProps({
     mustVerifyEmail: {
@@ -27,11 +27,11 @@ const form = useForm({
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ trans('auth.profile_information') }}
+                {{ $t('auth.profile_information') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ trans('auth.update_profile_information') }}
+                {{ $t('auth.update_profile_information') }}
             </p>
         </header>
 
@@ -40,7 +40,7 @@ const form = useForm({
             class="mt-6 space-y-6"
         >
             <div>
-                <InputLabel for="name" :value="trans('auth.name')" />
+                <InputLabel for="name" :value="$t('auth.name')" />
 
                 <TextInput
                     id="name"
@@ -56,7 +56,7 @@ const form = useForm({
             </div>
 
             <div>
-                <InputLabel for="email" :value="trans('auth.email')" />
+                <InputLabel for="email" :value="$t('auth.email')" />
 
                 <TextInput
                     id="email"
@@ -72,14 +72,14 @@ const form = useForm({
 
             <div v-if="mustVerifyEmail && user.email_verified_at === null">
                 <p class="mt-2 text-sm text-gray-800 dark:text-gray-200">
-                    {{ trans('auth.email_unverified') }}
+                    {{ $t('auth.email_unverified') }}
                     <Link
                         :href="route('verification.send')"
                         method="post"
                         as="button"
                         class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800"
                     >
-                        {{ trans('auth.resend_verification_email') }}
+                        {{ $t('auth.resend_verification_email') }}
                     </Link>
                 </p>
 
@@ -87,12 +87,12 @@ const form = useForm({
                     v-show="status === 'verification-link-sent'"
                     class="mt-2 text-sm font-medium text-green-600 dark:text-green-400"
                 >
-                    {{ trans('auth.verification_link_sent') }}
+                    {{ $t('auth.verification_link_sent') }}
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <Button :isLoading="form.processing">{{ trans('auth.save') }}</Button>
+                <Button :isLoading="form.processing">{{ $t('auth.save') }}</Button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -104,7 +104,7 @@ const form = useForm({
                         v-if="form.recentlySuccessful"
                         class="text-sm text-gray-600 dark:text-gray-400"
                     >
-                        {{ trans('auth.saved') }}
+                        {{ $t('auth.saved') }}
                     </p>
                 </Transition>
             </div>

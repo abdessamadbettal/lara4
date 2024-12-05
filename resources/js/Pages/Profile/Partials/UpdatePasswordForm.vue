@@ -5,7 +5,7 @@ import Button from '@/Components/Button.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { ref } from 'vue';
-import { trans } from 'laravel-vue-i18n';
+
 
 const passwordInput = ref(null);
 const currentPasswordInput = ref(null);
@@ -38,17 +38,17 @@ const updatePassword = () => {
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ trans('auth.update_password') }}
+                {{ $t('auth.update_password') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ trans('auth.ensure_password') }}
+                {{ $t('auth.ensure_password') }}
             </p>
         </header>
 
         <form @submit.prevent="updatePassword" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="current_password" :value="trans('auth.current_password')" />
+                <InputLabel for="current_password" :value="$t('auth.current_password')" />
 
                 <TextInput
                     id="current_password"
@@ -66,7 +66,7 @@ const updatePassword = () => {
             </div>
 
             <div>
-                <InputLabel for="password" :value="trans('auth.new_password')" />
+                <InputLabel for="password" :value="$t('auth.new_password')" />
 
                 <TextInput
                     id="password"
@@ -83,7 +83,7 @@ const updatePassword = () => {
             <div>
                 <InputLabel
                     for="password_confirmation"
-                    :value="trans('auth.confirm_password')"
+                    :value="$t('auth.confirm_password')"
                 />
 
                 <TextInput
@@ -101,7 +101,7 @@ const updatePassword = () => {
             </div>
 
             <div class="flex items-center gap-4">
-                <Button :isLoading="form.processing">{{ trans('auth.save') }}</Button>
+                <Button :isLoading="form.processing">{{ $t('auth.save') }}</Button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"
@@ -113,7 +113,7 @@ const updatePassword = () => {
                         v-if="form.recentlySuccessful"
                         class="text-sm text-gray-600 dark:text-gray-400"
                     >
-                        {{ trans('auth.saved') }}
+                        {{ $t('auth.saved') }}
                     </p>
                 </Transition>
             </div>

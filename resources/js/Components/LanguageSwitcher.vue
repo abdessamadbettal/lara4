@@ -20,8 +20,12 @@
                 </template>
 
                 <template #content>
-                    <button v-for="lang in languages" :key="lang.code"
-                        class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" @click="changeLanguage(lang)">
+                    <button
+                        v-for="lang in languages"
+                        :key="lang.code"
+                        class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex"
+                        @click="changeLanguage(lang)"
+                    >
                         <img :src="lang.flag" alt="" class="w-4 h-4 me-2">
                         {{ lang.name }}
                     </button>
@@ -32,31 +36,41 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { router as inertiaRouter } from '@inertiajs/vue3'
+import { computed } from 'vue';
+import { router as inertiaRouter } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Forms/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
-import i18n, { setLocale } from '@/i18n';
+import { setLocale } from '@/i18n';
+import { ZiggyVue, route } from 'ziggy-js';
 
-
-const props = defineProps(['currentLocale'])
-
+const props = defineProps(['currentLocale']);
 
 const languages = [
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
     { code: 'fr', name: 'French', flag: 'https://flagcdn.com/w20/fr.png' },
     { code: 'es', name: 'Spanish', flag: 'https://flagcdn.com/w20/es.png' },
     { code: 'ar', name: 'Arabic', flag: 'https://flagcdn.com/w20/ma.png' },
-]
+];
 
 const currentLanguage = computed(() => {
-    return languages.find(lang => lang.code === props.currentLocale)
-})
-
-
+    return languages.find(lang => lang.code === props.currentLocale);
+});
 
 async function changeLanguage(lang) {
-   await setLocale(lang.code)
-}
+    const currentUrl = new URL(window.location.href);
 
+    // Replace the locale in the URL
+    const newUrl = currentUrl.pathname.replace(`/${props.currentLocale}`, `/${lang.code}`);
+
+    window.location.href = newUrl;
+
+    // await inertiaRouter.visit(newUrl, {
+    //     preserveScroll: true,
+    //     replace: true, // Force a reload of props
+    //     onFinish: () => {
+    //         Ziggy.locale = lang.code;
+    //     },
+    // });
+
+    // setLocale(lang.code);
+}
 </script>

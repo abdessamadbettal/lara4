@@ -12,7 +12,7 @@
               :href="menu.link"
               class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-slate-100 dark:hover:bg-slate-800"
             >
-            {{ trans(menu.label) }}
+            {{ $t(menu.label) }}
             </Link>
           </nav>
         </div>
@@ -41,7 +41,7 @@
   import Logo from "@/Components/Icons/Logo.vue";
   import IconGithub from "@/Components/Icons/IconGithub.vue";
   import { Link } from '@inertiajs/vue3';
-  import { trans } from 'laravel-vue-i18n';
+
 
   const props = defineProps({
     menuItems: Array,

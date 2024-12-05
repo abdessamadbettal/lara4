@@ -1,5 +1,5 @@
 <script setup>
-import { trans } from 'laravel-vue-i18n';
+
 </script>
 
 <template>
@@ -28,7 +28,7 @@ import { trans } from 'laravel-vue-i18n';
                         </svg>
                     </div>
                     <span class="ml-4 text-sm">
-                        {{ trans('auth.sign_up_with_google') }}
+                        {{ $t('auth.sign_up_with_google') }}
                     </span>
                 </button>
 
@@ -41,7 +41,7 @@ import { trans } from 'laravel-vue-i18n';
                         </svg>
                     </div>
                     <span class="ml-4 text-sm">
-                        {{ trans('auth.sign_up_with_github') }}
+                        {{ $t('auth.sign_up_with_github') }}
                     </span>
                 </button>
             </div>
@@ -49,7 +49,7 @@ import { trans } from 'laravel-vue-i18n';
             <div class="my-12 border-b text-center">
                 <div
                     class="leading-none px-2 inline-block text-sm text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
-                    {{ trans('auth.or_sign_up_with_email') }}
+                    {{ $t('auth.or_sign_up_with_email') }}
                 </div>
             </div>
         </div>

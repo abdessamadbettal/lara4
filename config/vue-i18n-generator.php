@@ -10,5 +10,5 @@ return [
     |
     */
 
-    'outputFile' => resource_path('js/i18n/vue-i18n-locales.js'),
+    'outputFile' => resource_path('js/i18n/locales.js'),
 ];

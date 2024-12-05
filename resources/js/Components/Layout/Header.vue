@@ -12,7 +12,7 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import ThemeSwitcher from "@/Components/ThemeSwitcher.vue";
 import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
 import MobileNav from "@/Components/Layout/MobileNav.vue"
-import { trans } from 'laravel-vue-i18n';
+
 
 const props = defineProps({
     menuItems: {
@@ -45,13 +45,13 @@ function redirect(link) {
     <header class="py-6 md:py-10 sticky top-0 z-10 ">
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 dark:text-slate-300 text-sm">
             <div class="flex items-center gap-8">
-                <Link :href="route('welcome', { locale: currentLocale })">
+                <Link :href="route('welcome')">
                 <Logo class="h-10" />
                 </Link>
                 <nav class="items-center gap-3 hidden md:flex">
                     <a v-for="menu in menuItems" :key="menu.label" :href="menu.link"
                         class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-red-200 dark:hover:bg-red-800 font-bold text-red-900 dark:text-red-300 hover:bg-opacity-30">
-                        {{ trans(menu.label) }}
+                        {{ $t(menu.label) }}
                     </a>
                 </nav>
             </div>
@@ -82,13 +82,13 @@ function redirect(link) {
 
                             <template #content>
                                 <DropdownLink :href="route('dashboard')" >
-                                    {{ trans('auth.dashboard') }}
+                                    {{ $t('auth.dashboard') }}
                                 </DropdownLink>
                                 <DropdownLink :href="route('profile.edit')">
-                                    {{ trans('auth.profile') }}
+                                    {{ $t('auth.profile') }}
                                 </DropdownLink>
                                 <DropdownLink :href="route('logout')" method="post" as="button">
-                                    {{ trans('auth.logout') }}
+                                    {{ $t('auth.logout') }}
                                 </DropdownLink>
                             </template>
                         </Dropdown>
@@ -97,11 +97,11 @@ function redirect(link) {
 
                 <template v-else>
                     <Button variant="outline" :href="route('login')" class="hidden md:inline" v-if="route().current('register')">
-                        {{ trans('auth.login') }}
+                        {{ $t('auth.login') }}
                     </Button>
 
                     <Button :href="route('register')" v-if="!route().current('register')">
-                        {{ trans('auth.register') }} <span v-text="'now'" class="hidden lg:inline pl-1" />
+                        {{ $t('auth.register') }} <span v-text="'now'" class="hidden lg:inline pl-1" />
                     </Button>
                 </template>
 

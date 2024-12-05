@@ -6,7 +6,7 @@ import Modal from '@/Components/Modal.vue';
 import TextInput from '@/Components/Forms/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 import { nextTick, ref } from 'vue';
-import { trans } from 'laravel-vue-i18n';
+
 
 const confirmingUserDeletion = ref(false);
 const passwordInput = ref(null);
@@ -42,32 +42,32 @@ const closeModal = () => {
     <section class="space-y-6">
         <header>
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ trans('auth.delete_account') }}
+                {{ $t('auth.delete_account') }}
             </h2>
 
             <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                {{ trans('auth.delete_account_warning') }}
+                {{ $t('auth.delete_account_warning') }}
             </p>
         </header>
 
         <Button @click="confirmUserDeletion" variant="danger">
-            {{ trans('auth.delete_account') }}
+            {{ $t('auth.delete_account') }}
         </Button>
 
         <Modal :show="confirmingUserDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                    {{ trans('auth.delete_account_confirmation') }}
+                    {{ $t('auth.delete_account_confirmation') }}
                 </h2>
 
                 <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    {{ trans('auth.delete_account_password_confirmation') }}
+                    {{ $t('auth.delete_account_password_confirmation') }}
                 </p>
 
                 <div class="mt-6">
                     <InputLabel
                         for="password"
-                        :value="trans('auth.password')"
+                        :value="$t('auth.password')"
                         class="sr-only"
                     />
 
@@ -77,7 +77,7 @@ const closeModal = () => {
                         v-model="form.password"
                         type="password"
                         class="mt-1 block w-3/4"
-                        :placeholder="trans('auth.password')"
+                        :placeholder="$t('auth.password')"
                         @keyup.enter="deleteUser"
                     />
 
@@ -86,7 +86,7 @@ const closeModal = () => {
 
                 <div class="mt-6 flex justify-end">
                     <Button @click="closeModal" variant="outline">
-                        {{ trans('auth.cancel') }}
+                        {{ $t('auth.cancel') }}
                     </Button>
 
                     <Button
@@ -95,7 +95,7 @@ const closeModal = () => {
                         :isLoading="form.processing"
                         @click="deleteUser"
                     >
-                        {{ trans('auth.delete_account') }}
+                        {{ $t('auth.delete_account') }}
                     </Button>
                 </div>
             </div>
