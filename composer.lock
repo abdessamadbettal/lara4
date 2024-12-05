@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34e7acb09bf83a2856a2457552d1c8a7",
+    "content-hash": "3cb65288b0b627cece42de2c7cc89ed7",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -9592,6 +9592,81 @@
                 }
             ],
             "time": "2024-11-05T15:34:55+00:00"
+        },
+        {
+            "name": "testmonitor/laravel-vue-i18n-generator",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/testmonitor/laravel-vue-i18n-generator.git",
+                "reference": "bd076384f691335f38f06fb1b371f4af9884fc87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/testmonitor/laravel-vue-i18n-generator/zipball/bd076384f691335f38f06fb1b371f4af9884fc87",
+                "reference": "bd076384f691335f38f06fb1b371f4af9884fc87",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^11.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.1",
+                "orchestra/testbench": "^9.0",
+                "phpunit/phpunit": "^11.1",
+                "squizlabs/php_codesniffer": "^3.5.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TestMonitor\\VueI18nGenerator\\VueI18nGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TestMonitor\\VueI18nGenerator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thijs Kok",
+                    "email": "tkok@testmonitor.com",
+                    "homepage": "https://www.testmonitor.com/",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Stephan Grootveld",
+                    "email": "sgrootveld@testmonitor.com",
+                    "homepage": "https://www.testmonitor.com/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Frank Keulen",
+                    "email": "fkeulen@testmonitor.com",
+                    "homepage": "https://www.testmonitor.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "This package compiles your Laravel translation files into a Vue i18n compatible JSON file.",
+            "homepage": "https://github.com/testmonitor/laravel-vue-i18n-generator",
+            "keywords": [
+                "laravel",
+                "laravel-vue-i18n-generator",
+                "testmonitor",
+                "vue-i18n"
+            ],
+            "support": {
+                "issues": "https://github.com/testmonitor/laravel-vue-i18n-generator/issues",
+                "source": "https://github.com/testmonitor/laravel-vue-i18n-generator/tree/v2.0.0"
+            },
+            "time": "2024-11-27T11:07:12+00:00"
         },
         {
             "name": "tightenco/ziggy",

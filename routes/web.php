@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LanguageController;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -20,6 +22,7 @@ Route::group(
                 'phpVersion' => PHP_VERSION,
             ]);
         })->name('welcome');
+
 
 
         Route::get('/dashboard', function () {

@@ -45,7 +45,7 @@ function redirect(link) {
     <header class="py-6 md:py-10 sticky top-0 z-10 ">
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 dark:text-slate-300 text-sm">
             <div class="flex items-center gap-8">
-                <Link :href="route('welcome')">
+                <Link :href="route('welcome', { locale: currentLocale })">
                 <Logo class="h-10" />
                 </Link>
                 <nav class="items-center gap-3 hidden md:flex">

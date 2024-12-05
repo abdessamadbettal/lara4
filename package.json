@@ -47,6 +47,7 @@
     },
     "dependencies": {
         "laravel-vue-i18n": "^2.7.8",
-        "lucide-vue-next": "^0.462.0"
+        "lucide-vue-next": "^0.462.0",
+        "vue-i18n": "^10.0.5"
     }
 }

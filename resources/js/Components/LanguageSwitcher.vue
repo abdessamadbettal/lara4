@@ -20,11 +20,11 @@
                 </template>
 
                 <template #content>
-                    <DropdownLink v-for="lang in languages" :key="lang.code" :href="getLanguageUrl(lang.code)"
+                    <button v-for="lang in languages" :key="lang.code"
                         class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex" @click="changeLanguage(lang)">
                         <img :src="lang.flag" alt="" class="w-4 h-4 me-2">
                         {{ lang.name }}
-                    </DropdownLink>
+                    </button>
                 </template>
             </Dropdown>
         </div>
@@ -36,10 +36,10 @@ import { computed, ref } from 'vue'
 import { router as inertiaRouter } from '@inertiajs/vue3'
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
-import { loadLanguageAsync, getActiveLanguage } from 'laravel-vue-i18n';
+import i18n, { setLocale } from '@/i18n';
 
 
-const props = defineProps(['locales', 'currentLocale'])
+const props = defineProps(['currentLocale'])
 
 
 const languages = [
@@ -54,31 +54,9 @@ const currentLanguage = computed(() => {
 })
 
 
-function getLanguageUrl(langCode) {
-    const currentPath = window.location.pathname
-    if (/^\/[a-z]{2}(\/|$)/.test(currentPath)) {
-        return currentPath.replace(/^\/[a-z]{2}/, `/${langCode}`)
-    } else {
-        return `/${langCode}${currentPath}`
-    }
+
+async function changeLanguage(lang) {
+   await setLocale(lang.code)
 }
 
-function changeLanguage(lang) {
-    const newPath = getLanguageUrl(lang.code)
-
-    // Load the new language
-    loadLanguageAsync(lang.code)
-
-    // inertiaRouter.post('/change-language', { locale: lang.code }, {
-    //     preserveScroll: true, // Optionally preserve scroll position
-    //     preserveState: false, // Reload state to reflect new locale
-    // });
-
-
-
-
-
-    // Reload the page with the new language
-    window.location.href = newPath;
-}
 </script>
