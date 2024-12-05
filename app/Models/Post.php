@@ -17,12 +17,12 @@ class Post extends Model implements HasMedia
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SoftDeletes, InteractsWithMedia, HasTags;
 
-    protected $fillable = ['title', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read'];
+    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read'];
 
-    public $translatable = ['title', 'slug', 'content'];
+    public $translatable = ['name', 'slug', 'content'];
 
     protected $casts = [
-        'title' => 'array',
+        'name' => 'array',
         'slug' => 'array',
         'content' => 'array',
         'is_published' => 'boolean',

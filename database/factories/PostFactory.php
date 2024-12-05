@@ -16,7 +16,7 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        $title = [
+        $name = [
             'en' => $this->faker->sentence,
             'fr' => $this->faker->sentence,
             'es' => $this->faker->sentence,
@@ -40,7 +40,7 @@ class PostFactory extends Factory
         EOD;
 
         return [
-            'title' => $title,
+            'name' => $name,
             'content' => [
                 'en' => $content,
                 'fr' => $content,
