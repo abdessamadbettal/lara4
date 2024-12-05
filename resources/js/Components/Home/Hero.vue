@@ -1,8 +1,6 @@
 <script setup>
-import { defineProps } from 'vue';
 import Button from '@/Components/Button.vue';
 import IconTextDecoration from '@/Components/Icons/IconTextDecoration.vue';
-//
 
 const props = defineProps({
     id: {
