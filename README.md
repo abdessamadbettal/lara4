@@ -53,9 +53,8 @@ This is a Laravel starter project that includes a comprehensive setup with Docke
 
 ### Prerequisites
 
-- Docker
+- Docker (if you want to use Laravel Sail)
 - PHP 8.2 or Higher
-- Docker Compose
 - Composer
 - Node.js and npm
 
@@ -94,7 +93,12 @@ This is a Laravel starter project that includes a comprehensive setup with Docke
 
 7. **Run database migrations**:
     ```sh
-    sail artisan migrate:fresh --seed
+    php artisan migrate:fresh --seed
+    ```
+
+8. **To compiles your Laravel translation files into a Vue i18n compatible JSON file**:
+    ```sh
+    php artisan vue:translations
     ```
 
 
