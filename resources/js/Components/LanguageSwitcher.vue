@@ -20,15 +20,16 @@
                 </template>
 
                 <template #content>
-                    <button
+                    <DropdownLink
                         v-for="lang in languages"
                         :key="lang.code"
+                        :href="getURL(lang)"
                         class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex"
-                        @click="changeLanguage(lang)"
+                        @click.prevent="changeLanguage(lang)"
                     >
                         <img :src="lang.flag" alt="" class="w-4 h-4 me-2">
                         {{ lang.name }}
-                    </button>
+                    </DropdownLink>
                 </template>
             </Dropdown>
         </div>
@@ -39,7 +40,8 @@
 import { computed } from 'vue';
 import { router as inertiaRouter } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Forms/Dropdown.vue';
-import { setLocale } from '@/i18n';
+import DropdownLink from '@/Components/DropdownLink.vue';
+import i18n, { setLocale } from '@/i18n';
 
 const props = defineProps(['currentLocale']);
 
@@ -53,6 +55,11 @@ const languages = [
 const currentLanguage = computed(() => {
     return languages.find(lang => lang.code === props.currentLocale);
 });
+
+const getURL = (lang) => {
+    const currentUrl = new URL(window.location.href);
+    return currentUrl.pathname.replace(`/${props.currentLocale}`, `/${lang.code}`);
+};
 
 async function changeLanguage(lang) {
     const currentUrl = new URL(window.location.href);
