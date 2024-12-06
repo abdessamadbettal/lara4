@@ -13,7 +13,7 @@ class PhonePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasRole(['admin', 'editor']);
     }
 
     /**
@@ -21,7 +21,7 @@ class PhonePolicy
      */
     public function view(User $user, Phone $phone): bool
     {
-        //
+        return $user->hasRole(['admin', 'editor']);
     }
 
     /**
@@ -29,7 +29,7 @@ class PhonePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasRole(['admin', 'editor']);
     }
 
     /**
@@ -37,7 +37,7 @@ class PhonePolicy
      */
     public function update(User $user, Phone $phone): bool
     {
-        //
+        return $user->hasRole(['admin', 'editor']);
     }
 
     /**
@@ -45,7 +45,7 @@ class PhonePolicy
      */
     public function delete(User $user, Phone $phone): bool
     {
-        //
+        return $user->hasRole(['admin', 'editor']);
     }
 
     /**
@@ -53,7 +53,7 @@ class PhonePolicy
      */
     public function restore(User $user, Phone $phone): bool
     {
-        //
+        return $user->hasRole('admin');
     }
 
     /**
@@ -61,6 +61,6 @@ class PhonePolicy
      */
     public function forceDelete(User $user, Phone $phone): bool
     {
-        //
+        return $user->hasRole('admin');
     }
 }
