@@ -7,6 +7,7 @@ use App\Settings\TermSettings;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Pages\SettingsPage;
+use Mvenghaus\FilamentPluginTranslatableInline\Forms\Components\TranslatableContainer;
 
 class ManageTerm extends SettingsPage
 {
@@ -19,8 +20,24 @@ class ManageTerm extends SettingsPage
     public function form(Form $form): Form
     {
         return $form
-            ->schema([
-                // ...
-            ]);
+        ->schema([
+            Forms\Components\Section::make('The About Page')->schema([
+                TranslatableContainer::make(
+                Forms\Components\TextInput::make('title')
+                    ->required(),
+                    )
+                ->columnSpanFull()
+                ->requiredLocales(['en', 'fr', 'es']),
+                TranslatableContainer::make(
+                   Forms\Components\MarkdownEditor::make('content')
+                   ->disableToolbarButtons(['table'])
+                       ->columnSpanFull()
+                       ->required(),
+                )
+                ->columnSpanFull()
+                ->requiredLocales(['en', 'fr', 'es']),
+                 ])->columns(2),
+
+        ]);
     }
 }
