@@ -11,7 +11,7 @@ test('users can authenticate using the login screen', function () {
     ]);
 
     $this->assertAuthenticated();
-    $response->assertNoContent();
+    $response->assertRedirect('/dashboard');
 });
 
 test('users can not authenticate with invalid password', function () {
@@ -31,5 +31,5 @@ test('users can logout', function () {
     $response = $this->actingAs($user)->post('/logout');
 
     $this->assertGuest();
-    $response->assertNoContent();
+    $response->assertRedirect('/');
 });
