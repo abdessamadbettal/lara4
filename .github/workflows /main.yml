@@ -3,7 +3,7 @@ on:
     branches:
       - main
 
-name: 🚀 Deploy website on push
+name: 🚀 Deploy website on Push
 
 jobs:
   web-deploy:
