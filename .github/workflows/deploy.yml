@@ -19,8 +19,8 @@ jobs:
           php-version: '8.2'
           tools: 'composer'
 
-      # - name: Composer install
-      #   run: composer install
+      - name: Composer install
+        run: composer install
 
       - name: NPM install
         run: npm install && npm run build
