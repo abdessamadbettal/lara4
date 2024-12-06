@@ -20,7 +20,7 @@ jobs:
           tools: 'composer'
 
       - name: Composer install
-        run: composer install
+        run: composer install --optimize-autoloader
 
       - name: NPM install
         run: npm install && npm run build
