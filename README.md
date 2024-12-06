@@ -101,6 +101,11 @@ This is a Laravel starter project that includes a comprehensive setup with Docke
     php artisan vue:translations
     ```
 
+9. **Test the application**:
+    ```sh
+        php artisan test 'or' sail test
+    ```
+
 
 ## Usage
 
