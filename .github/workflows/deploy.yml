@@ -18,7 +18,7 @@ jobs:
         with:
           php-version: '8.2'
           tools: 'composer'
-          
+
       - name: Composer install
         run: composer install
 
@@ -38,4 +38,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           protocol: ftp
           port: 21,
-          exclude: '.git,.github,node_modules,vendor',
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
