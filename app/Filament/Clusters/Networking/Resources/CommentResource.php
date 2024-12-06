@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Clusters\Networking\Resources;
 
-use App\Filament\Resources\CommentResource\Pages;
-use App\Filament\Resources\CommentResource\RelationManagers;
+use App\Filament\Clusters\Networking;
+use App\Filament\Clusters\Networking\Resources\CommentResource\Pages;
+use App\Filament\Clusters\Networking\Resources\CommentResource\RelationManagers;
 use App\Models\Comment;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,6 +19,8 @@ class CommentResource extends Resource
     protected static ?string $model = Comment::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-left-ellipsis';
+
+    protected static ?string $cluster = Networking::class;
 
     public static function form(Form $form): Form
     {

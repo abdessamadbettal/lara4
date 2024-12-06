@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\CommentResource\Pages;
+namespace App\Filament\Clusters\Networking\Resources\PhoneResource\Pages;
 
-use App\Filament\Resources\CommentResource;
+use App\Filament\Clusters\Networking\Resources\PhoneResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditComment extends EditRecord
+class EditPhone extends EditRecord
 {
-    protected static string $resource = CommentResource::class;
+    protected static string $resource = PhoneResource::class;
 
     protected function getHeaderActions(): array
     {

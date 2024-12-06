@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\PhoneResource\Pages;
+namespace App\Filament\Clusters\Networking\Resources\PhoneResource\Pages;
 
-use App\Filament\Resources\PhoneResource;
+use App\Filament\Clusters\Networking\Resources\PhoneResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Clusters\Networking\Resources;
 
-use App\Filament\Resources\PhoneResource\Pages;
-use App\Filament\Resources\PhoneResource\RelationManagers;
+use App\Filament\Clusters\Networking;
+use App\Filament\Clusters\Networking\Resources\PhoneResource\Pages;
+use App\Filament\Clusters\Networking\Resources\PhoneResource\RelationManagers;
 use App\Models\Phone;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -18,6 +19,8 @@ class PhoneResource extends Resource
     protected static ?string $model = Phone::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-phone';
+
+    protected static ?string $cluster = Networking::class;
 
     public static function form(Form $form): Form
     {
@@ -71,7 +74,7 @@ class PhoneResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                Tables\Filters\TrashedFilter::make(),
+                //
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
@@ -80,8 +83,6 @@ class PhoneResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                    Tables\Actions\ForceDeleteBulkAction::make(),
-                    Tables\Actions\RestoreBulkAction::make(),
                 ]),
             ]);
     }
@@ -101,13 +102,5 @@ class PhoneResource extends Resource
             'view' => Pages\ViewPhone::route('/{record}'),
             'edit' => Pages\EditPhone::route('/{record}/edit'),
         ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
     }
 }

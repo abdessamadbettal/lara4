@@ -18,6 +18,7 @@
         "php": "^8.2",
         "bezhansalleh/filament-language-switch": "^3.1",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-settings-plugin": "^3.2",
         "inertiajs/inertia-laravel": "^1.0",
         "jackiedo/dotenv-editor": "^1.1",
         "laravel/framework": "^11.9",
