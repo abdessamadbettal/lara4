@@ -81,7 +81,7 @@ class ManageHeader extends SettingsPage
                                     })
                                     ->required(),
                                 Select::make('post')
-                                    ->options(fn() => \App\Models\Post::pluck('title', 'slug')->toArray())
+                                    ->options(fn() => \App\Models\Post::pluck('name', 'slug')->toArray())
                                     ->visible(fn(Get $get): bool => $get('type') == 'post')
                                     ->live()
                                     ->afterStateUpdated(function (Set $set, $state) {
@@ -143,7 +143,7 @@ class ManageHeader extends SettingsPage
                                             })
                                             ->required(),
                                         Select::make('post')
-                                            ->options(fn() => \App\Models\Post::pluck('title', 'slug')->toArray())
+                                            ->options(fn() => \App\Models\Post::pluck('name', 'slug')->toArray())
                                             ->visible(fn(Get $get): bool => $get('type') == 'post')
                                             ->live()
                                             ->afterStateUpdated(function (Set $set, $state) {
@@ -205,7 +205,7 @@ class ManageHeader extends SettingsPage
                                                         $set('url', '/category/' . $state);
                                                     }),
                                                 Select::make('post')
-                                                    ->options(fn() => \App\Models\Post::pluck('title', 'slug')->toArray())
+                                                    ->options(fn() => \App\Models\Post::pluck('name', 'slug')->toArray())
                                                     ->visible(fn(Get $get): bool => $get('type') == 'post')
                                                     ->live()
                                                     ->afterStateUpdated(function (Set $set, $state) {
