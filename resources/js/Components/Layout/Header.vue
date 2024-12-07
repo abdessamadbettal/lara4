@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue"
+import { ref, computed, onMounted, onUnmounted } from "vue"
 import Container from "@/Components/Container.vue"
 import Logo from "@/Components/Icons/Logo.vue"
 import IconBars from "@/Components/Icons/IconBars.vue"
@@ -12,7 +12,6 @@ import DropdownLink from '@/Components/DropdownLink.vue';
 import ThemeSwitcher from "@/Components/ThemeSwitcher.vue";
 import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
 import MobileNav from "@/Components/Layout/MobileNav.vue"
-
 
 const props = defineProps({
     menuItems: {
@@ -32,17 +31,33 @@ const isRegisterRoute = computed(() => {
     return route().current('register')
 })
 
-
 const showMobileMenu = ref(false)
+const scrollY = ref(0)
 
 function redirect(link) {
     showMobileMenu.value = false
     window.location = link
 }
+
+const handleScroll = () => {
+    scrollY.value = window.scrollY
+}
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+    window.removeEventListener('scroll', handleScroll)
+})
+
+const headerClass = computed(() => {
+    return scrollY.value > 100 ? 'bg-white dark:bg-gray-800 bg-opacity-75 dark:bg-opacity-75' : ''
+})
 </script>
 
 <template>
-    <header class="py-6 md:py-10 sticky top-0 z-10 ">
+    <header :class="headerClass" class=" py-4 w-full md:py-4 sticky top-0 z-10 transition-colors duration-300">
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 dark:text-slate-300 text-sm">
             <div class="flex items-center gap-8">
                 <Link :href="route('welcome')">

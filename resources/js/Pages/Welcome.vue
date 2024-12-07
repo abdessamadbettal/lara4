@@ -1,6 +1,7 @@
 <script setup>
 import { Head, Link } from '@inertiajs/vue3';
 import Hero from '@/Components/Home/Hero.vue';
+import Trusted from '@/Components/Home/Trusted.vue';
 import { ref } from 'vue';
 
 </script>
@@ -16,5 +17,7 @@ import { ref } from 'vue';
     </Head>
 
     <Hero />
+
+    <Trusted />
 
 </template>

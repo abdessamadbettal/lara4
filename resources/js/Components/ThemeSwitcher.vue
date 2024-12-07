@@ -3,13 +3,15 @@
       <span class="relative dropdown-toggle align-middle inline-flex search-dropdown">
         <input type="checkbox" class="checkbox opacity-0 absolute" id="chk" v-model="isDarkMode" @change="changeMode">
         <label
-          class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-10 h-5"
+          class="label bg-slate-900 dark:bg-white shadow dark:shadow-gray-800 cursor-pointer rounded-full flex justify-between items-center p-1 w-12 h-6"
           for="chk">
-          <Moon class="w-[10px] h-[10px] text-yellow-500" />
-          <Sun class="w-[10px] h-[10px] text-yellow-500" />
+          <Moon class="w-[15px] h-[15px] text-yellow-500" />
+          <Sun class="w-[15px] h-[15px] text-yellow-500" />
           <span
-            class="ball bg-white dark:bg-slate-900 rounded-full absolute top-[0px] left-[0px] w-5 h-5"
-            :class="{ 'left-[20px]': isDarkMode }"></span>
+            class="ball bg-white dark:bg-slate-900 rounded-full absolute top-0.5  w-5 h-5"
+            :class="{ isDarkMode, 'left-0.5': !isDarkMode, 'right-0.5': isDarkMode
+
+            }"></span>
         </label>
       </span>
     </li>
