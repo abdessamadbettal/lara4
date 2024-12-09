@@ -6,6 +6,7 @@ use Inertia\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Resources\UserResource;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class HandleInertiaRequests extends Middleware
@@ -35,7 +36,7 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user' => $request->user() ? UserResource::make($request->user())->resolve() : null,
                 'isLoggedIn' => $request->user() !== null,
                 'roles' => $request->user()?->roles->pluck('name'),
             ],
@@ -46,17 +47,19 @@ class HandleInertiaRequests extends Middleware
             'app' => [
                 'name' => config('app.name'),
                 'url' => config('app.url'),
+                'laravelVersion' => Application::VERSION,
+                'phpVersion' => PHP_VERSION,
+                'canLogin' => Route::has('login'),
+                'canRegister' => Route::has('register'),
             ],
             'settings' => [
                 // spatie settings
             ],
-            'canLogin' => Route::has('login'),
-            'canRegister' => Route::has('register'),
-            'currentLocale' => LaravelLocalization::getCurrentLocale(),
-            'locales' => LaravelLocalization::getSupportedLocales(),
-            'dir' => LaravelLocalization::getCurrentLocaleDirection(),
-            'laravelVersion' => Application::VERSION,
-            'phpVersion' => PHP_VERSION,
+            'lang' => [
+                'currentLocale' => LaravelLocalization::getCurrentLocale(),
+                'locales' => LaravelLocalization::getSupportedLocales(),
+                'dir' => LaravelLocalization::getCurrentLocaleDirection(),
+            ],
         ];
     }
 }
