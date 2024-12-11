@@ -115,7 +115,7 @@ const headerClass = computed(() => {
                         {{ $t('auth.login') }}
                     </Button>
 
-                    <Button :href="route('register')" v-if="!route().current('register')">
+                    <Button :href="route('register')" v-if="!route().current('register')" class="hidden md:inline">
                         {{ $t('auth.register') }} <span v-text="'now'" class="hidden lg:inline pl-1" />
                     </Button>
                 </template>
