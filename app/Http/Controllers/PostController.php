@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Resources\PostResource;
+use Inertia\Inertia;
+use Inertia\Response;
 
 class PostController extends Controller
 {
@@ -15,7 +17,9 @@ class PostController extends Controller
     {
         $posts = Post::paginate(10);
 
-        return PostResource::collection($posts);
+        return request()->wantsJson()
+            ? PostResource::collection($posts)
+            : Inertia::render('Post/posts', ['posts' => PostResource::collection($posts)]);
     }
 
     /**
@@ -29,10 +33,11 @@ class PostController extends Controller
             'content' => 'required',
         ]);
 
-        // create a new post
         $post = Post::create($request->all());
 
-        return new PostResource($post);
+        return $request->wantsJson()
+            ? new PostResource($post)
+            : redirect()->route('posts.index');
     }
 
     /**
@@ -40,7 +45,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return new PostResource($post);
+        return request()->wantsJson()
+            ? new PostResource($post)
+            : Inertia::render('Post/show', ['post' => new PostResource($post)]);
     }
 
     /**
@@ -57,7 +64,9 @@ class PostController extends Controller
         // update the post
         $post->update($request->all());
 
-        return new PostResource($post);
+        return $request->wantsJson()
+            ? new PostResource($post)
+            : redirect()->route('posts.index');
     }
 
     /**
@@ -67,6 +76,8 @@ class PostController extends Controller
     {
         $post->delete();
 
-        return response()->noContent();
+        return request()->wantsJson()
+            ? response()->noContent()
+            : redirect()->route('posts.index');
     }
 }

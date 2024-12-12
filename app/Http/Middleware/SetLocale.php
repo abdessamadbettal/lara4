@@ -23,7 +23,7 @@ class SetLocale
             ?? config('app.locale'); // Default fallback
 
         // Validate the locale
-        if (in_array($locale, config('app.locales', ['en', 'fr', 'es', 'ar']))) {
+        if (in_array($locale, config('app.locales', ['en', 'fr', 'es']))) {
             App::setLocale($locale); // Set the application locale
             session(['locale' => $locale]); // Save locale to session
         }

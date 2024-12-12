@@ -52,7 +52,7 @@ class AdminPanelProvider extends PanelProvider
                 //         'fr' => 'French',
                 //     ]),
                 SpatieLaravelTranslatablePlugin::make()
-                    ->defaultLocales(['en', 'es', 'fr', 'ar']),
+                    ->defaultLocales(['en', 'es', 'fr']),
             //         FilamentTranslateFieldPlugin::make()
             //    ->defaultLocales(['en', 'es', 'fr']),
             ])

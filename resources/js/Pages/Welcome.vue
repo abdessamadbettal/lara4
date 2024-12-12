@@ -2,7 +2,14 @@
 import { Head, Link } from '@inertiajs/vue3';
 import Hero from '@/Components/Home/Hero.vue';
 import Trusted from '@/Components/Home/Trusted.vue';
-import { ref } from 'vue';
+import BlogSection from '@/Components/Blog/BlogSection.vue';
+
+const props = defineProps({
+    posts: {
+        type: Array,
+        required: true
+    }
+});
 
 </script>
 
@@ -19,5 +26,7 @@ import { ref } from 'vue';
     <Hero />
 
     <Trusted />
+
+    <BlogSection :posts="posts.data" />
 
 </template>

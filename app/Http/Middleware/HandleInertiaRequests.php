@@ -2,11 +2,14 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\UserResource;
+use App\Models\User;
 use Inertia\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+
 
 class HandleInertiaRequests extends Middleware
 {
@@ -35,7 +38,7 @@ class HandleInertiaRequests extends Middleware
         return [
             ...parent::share($request),
             'auth' => [
-                'user' => $request->user(),
+                'user' => $request->user() ? UserResource::make($request->user()) : null,
                 'isLoggedIn' => $request->user() !== null,
                 'roles' => $request->user()?->roles->pluck('name'),
             ],

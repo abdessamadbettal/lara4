@@ -15,6 +15,21 @@ export default {
         extend: {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                tajawal: ['Tajawal', 'serif'],
+            },
+            colors: {
+
+                primary: {
+                    '100': '#ffefc6',
+                    '200': '#ffdf88',
+                    '300': '#fec84b',
+                    '400': '#feb326',
+                    '500': '#f88f08',
+                    '600': '#dc6803',
+                    '700': '#b64707',
+                    '800': '#94370c',
+                    '900': '#792e0e',
+                },
             },
         },
     },

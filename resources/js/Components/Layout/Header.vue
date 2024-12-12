@@ -39,25 +39,14 @@ function redirect(link) {
     window.location = link
 }
 
-const handleScroll = () => {
-    scrollY.value = window.scrollY
-}
-
-onMounted(() => {
-    window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-})
 
 const headerClass = computed(() => {
-    return scrollY.value > 100 ? 'bg-white dark:bg-gray-800 bg-opacity-75 dark:bg-opacity-75' : ''
+    return scrollY.value > 100 ? 'bg-white dark:bg-gray-800 bg-opacity-75 dark:bg-opacity-75 sticky top-0 z-10' : ''
 })
 </script>
 
 <template>
-    <header :class="headerClass" class=" py-4 w-full md:py-4 sticky top-0 z-10 transition-colors duration-300">
+    <header :class="headerClass" class=" py-4 w-full md:py-4  transition-colors duration-300">
         <Container class="relative flex items-center justify-between gap-4 text-slate-600 dark:text-slate-300 text-sm">
             <div class="flex items-center gap-8">
                 <Link :href="route('welcome')">

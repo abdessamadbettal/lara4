@@ -2,9 +2,12 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -42,5 +45,42 @@ class UserFactory extends Factory
         return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+        /**
+     * Configure the factory.
+     */
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+
+            // Assign a random role to the user
+            $roles = Role::all()->pluck('name')->toArray();
+            $randomRole = $roles[array_rand($roles)];
+            $user->assignRole($randomRole);
+
+            // Get all images from the specified directory
+            $clientImages = File::glob(storage_path('app/images/users/*.{jpg,jpeg,png,gif}'), GLOB_BRACE);
+
+            // Ensure there are images in the directory
+            if (count($clientImages) > 0) {
+                // Randomly select one image
+                $selectedImage = $clientImages[array_rand($clientImages)];
+
+                // Create the temporary directory if it doesn't exist
+                $tempDir = storage_path('app/temp');
+                if (!File::exists($tempDir)) {
+                    File::makeDirectory($tempDir, 0755, true);
+                }
+
+                // Copy the selected image to the temporary directory
+                $tempImagePath = $tempDir . '/' . basename($selectedImage);
+                File::copy($selectedImage, $tempImagePath);
+
+                // Attach the image to the 'avatar' collection
+                $user->addMedia($tempImagePath)
+                     ->toMediaCollection('avatar');
+            }
+        });
     }
 }

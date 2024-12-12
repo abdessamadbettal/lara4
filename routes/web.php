@@ -3,6 +3,8 @@
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\LanguageController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -14,14 +16,10 @@ Route::group(
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        Route::get('/', function () {
-            return Inertia::render('Welcome', [
-                'canLogin' => Route::has('login'),
-                'canRegister' => Route::has('register'),
-                'laravelVersion' => Application::VERSION,
-                'phpVersion' => PHP_VERSION,
-            ]);
-        })->name('welcome');
+        
+        Route::get('/', [HomeController::class, 'index'])->name('welcome');
+
+        Route::Resource('posts', PostController::class);
 
 
 
