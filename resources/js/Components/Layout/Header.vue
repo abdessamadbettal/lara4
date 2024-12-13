@@ -53,10 +53,10 @@ const headerClass = computed(() => {
                 <Logo class="h-10" />
                 </Link>
                 <nav class="items-center gap-3 hidden md:flex">
-                    <a v-for="menu in menuItems" :key="menu.label" :href="menu.link"
+                    <Link v-for="menu in menuItems" :key="menu.label" :href="menu.link"
                         class="rounded-lg py-1.5 px-3 transition-colors duration-300 hover:bg-red-200 dark:hover:bg-red-800 font-bold text-red-900 dark:text-red-300 hover:bg-opacity-30">
                         {{ $t(menu.label) }}
-                    </a>
+                    </Link>
                 </nav>
             </div>
 

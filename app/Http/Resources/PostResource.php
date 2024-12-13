@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Helpers\MarkdownHelper;
 
 class PostResource extends JsonResource
 {
@@ -22,7 +23,7 @@ class PostResource extends JsonResource
             'keywords' => $this->tags->pluck('name')->implode(', '),
             'thumbnail' =>  $this->getFirstMediaUrl('thumbnail') ?? null,
             'image' =>  $this->getFirstMediaUrl('thumbnail') ?? null,
-            'content' => $this->content,
+            'content' => MarkdownHelper::convertToHtml($this->content),
             'excerpt' => Str::limit($this->content, 60, '...'),
             'author' => new UserResource($this->author),
             'category' => new CategoryResource($this->category),

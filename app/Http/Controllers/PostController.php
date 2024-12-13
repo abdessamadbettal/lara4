@@ -19,7 +19,7 @@ class PostController extends Controller
 
         return request()->wantsJson()
             ? PostResource::collection($posts)
-            : Inertia::render('Post/posts', ['posts' => PostResource::collection($posts)]);
+            : Inertia::render('Post/Posts', ['posts' => PostResource::collection($posts)]);
     }
 
     /**
@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         return request()->wantsJson()
             ? new PostResource($post)
-            : Inertia::render('Post/show', ['post' => new PostResource($post)]);
+            : Inertia::render('Post/Post', ['post' => new PostResource($post)]);
     }
 
     /**

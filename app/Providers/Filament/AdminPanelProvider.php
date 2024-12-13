@@ -45,16 +45,16 @@ class AdminPanelProvider extends PanelProvider
                 Widgets\FilamentInfoWidget::class,
             ])
             ->plugins([
-                // FilamentTranslatableFieldsPlugin::make()
-                //     ->supportedLocales([
-                //         'en' => 'English',
-                //         'es' => 'Spanish',
-                //         'fr' => 'French',
-                //     ]),
+                FilamentTranslatableFieldsPlugin::make()
+                    ->supportedLocales([
+                        'en' => 'English',
+                        'es' => 'Spanish',
+                        'fr' => 'French',
+                    ]),
                 SpatieLaravelTranslatablePlugin::make()
                     ->defaultLocales(['en', 'es', 'fr']),
-            //         FilamentTranslateFieldPlugin::make()
-            //    ->defaultLocales(['en', 'es', 'fr']),
+                    FilamentTranslateFieldPlugin::make()
+               ->defaultLocales(['en', 'es', 'fr']),
             ])
             ->middleware([
                 EncryptCookies::class,
