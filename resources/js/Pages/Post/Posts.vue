@@ -1,6 +1,6 @@
 <template>
 
-    <Head title="Posts" />
+    <Head title="All Posts" />
     <section class="relative md:py-24 py-16">
         <div class="container relative">
             <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
@@ -33,7 +33,8 @@ export default {
     name: 'Posts',
     components: {
         BlogCard,
-        Pagination
+        Pagination,
+        Head,
     },
     props: {
         posts: {

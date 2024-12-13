@@ -11,6 +11,7 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\CommonMark\Node\Block\Heading;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Strong;
+use League\CommonMark\Extension\CommonMark\Node\Block\ListItem;
 use League\CommonMark\Extension\CommonMark\Node\Block\BlockQuote;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\DefaultAttributes\DefaultAttributesExtension;
@@ -31,7 +32,7 @@ class MarkdownHelper
                     },
                 ],
                 Table::class => [
-                    'class' => 'table',
+                    'class' => ['table', 'table-responsive'],
                 ],
                 Paragraph::class => [
                     'class' => [''],
@@ -48,6 +49,9 @@ class MarkdownHelper
                 ],
                 Code::class => [
                     'class' => 'block bg-gray-800 text-gray-300 rounded-lg p-4 shadow-lg text-sm font-mono overflow-x-auto',
+                ],
+                ListItem::class => [
+                    'class' => 'list-disc list-inside',
                 ],
             ],
         ];
