@@ -1,5 +1,6 @@
-*
-!private/
+livewire-tmp/
 !images/
 !public/
+!private/
+!temp/
 !.gitignore
