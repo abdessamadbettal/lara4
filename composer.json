@@ -37,6 +37,7 @@
         "solution-forest/filament-translate-field": "^1.3",
         "spatie/laravel-activitylog": "^4.9",
         "spatie/laravel-medialibrary": "^11.9",
+        "spatie/laravel-missing-page-redirector": "^2.10",
         "spatie/laravel-permission": "^6.10",
         "spatie/laravel-settings": "^3.4",
         "spatie/laravel-sitemap": "^7.3",
