@@ -16,6 +16,7 @@ class PostResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $excerptLength = Str::length($this->name) < 40 ? 110 : 70;
         return [
             'id' => $this->id,
             'name' => Str::limit($this->name, 60, '...'),
@@ -24,7 +25,7 @@ class PostResource extends JsonResource
             'thumbnail' =>  $this->getFirstMediaUrl('thumbnail') ?? null,
             'image' =>  $this->getFirstMediaUrl('thumbnail') ?? null,
             'content' => MarkdownHelper::convertToHtml($this->content),
-            'excerpt' => Str::limit($this->content, 60, '...'),
+            'excerpt' => Str::limit($this->content, $excerptLength, '...'),
             'author' => new UserResource($this->author),
             'category' => new CategoryResource($this->category),
             'is_published' => $this->is_published,
