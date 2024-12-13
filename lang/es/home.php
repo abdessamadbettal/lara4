@@ -8,4 +8,7 @@ return [
     'features' => 'Características',
     'blogs' => 'Blogs',
     'documentation' => 'Documentación',
+    'see_more_posts' => 'Ver más publicaciones',
+    'latest_blogs' => 'Últimos Blogs',
+    'latest_blogs_text' => 'Lea las últimas publicaciones de nuestro blog.',
 ];

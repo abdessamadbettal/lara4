@@ -46,7 +46,10 @@ export default {
             "view_on_github": "عرض على GitHub",
             "features": "الميزات",
             "blogs": "المدونات",
-            "documentation": "التوثيق"
+            "documentation": "التوثيق",
+            "see_more_posts": "عرض المزيد من المقالات",
+            "latest_blogs": "أحدث المقالات",
+            "latest_blogs_text": "اقرأ أحدث المقالات من مدونتنا."
         },
         "mail": {
             "about_us": "معلومات عنا",
@@ -301,7 +304,10 @@ export default {
             "view_on_github": "View on GitHub",
             "features": "Features",
             "blogs": "Blogs",
-            "documentation": "Documentation"
+            "documentation": "Documentation",
+            "see_more_posts": "See more posts",
+            "latest_blogs": "Latest Blogs",
+            "latest_blogs_text": "Read the latest posts from our blog."
         },
         "mail": {
             "about_us": "About us",
@@ -556,7 +562,10 @@ export default {
             "view_on_github": "Ver en GitHub",
             "features": "Características",
             "blogs": "Blogs",
-            "documentation": "Documentación"
+            "documentation": "Documentación",
+            "see_more_posts": "Ver más publicaciones",
+            "latest_blogs": "Últimos Blogs",
+            "latest_blogs_text": "Lea las últimas publicaciones de nuestro blog."
         },
         "mail": {
             "about_us": "Sobre nosotros",
@@ -809,7 +818,10 @@ export default {
             "view_on_github": "Voir sur GitHub",
             "features": "Fonctionnalités",
             "blogs": "Blogs",
-            "documentation": "Documentation"
+            "documentation": "Documentation",
+            "see_more_posts": "Voir plus de publications",
+            "latest_blogs": "Derniers Blogs",
+            "latest_blogs_text": "Lisez les dernières publications de notre blog."
         },
         "mail": {
             "about_us": "À propos de nous",

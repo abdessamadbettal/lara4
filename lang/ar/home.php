@@ -8,4 +8,7 @@ return [
     'features' => 'الميزات',
     'blogs' => 'المدونات',
     'documentation' => 'التوثيق',
+    'see_more_posts' => 'عرض المزيد من المقالات',
+    'latest_blogs' => 'أحدث المقالات',
+    'latest_blogs_text' => 'اقرأ أحدث المقالات من مدونتنا.',
 ];

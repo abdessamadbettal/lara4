@@ -1,10 +1,10 @@
 <template>
     <div class="container relative md:mt-24 mt-16">
         <div class="grid grid-cols-1 pb-6 text-center">
-            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ $t('travel_blogs')
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ $t('latest_blogs')
                 }}</h3>
 
-            <p class="text-slate-400 max-w-xl mx-auto">{{ $t('simple_text') }}</p>
+            <p class="text-slate-400 max-w-xl mx-auto">{{ $t('latest_blogs_text') }}</p>
         </div>
 
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
@@ -20,11 +20,16 @@
             </template>
             <BlogCard v-else v-for="item in posts" :key="item.id" :item="item" />
         </div>
+        <div class="mt-6 text-center">
+            <Link :href="route('posts.index')" class="text-slate-400 hover:text-primary-500 inline-block cursor-pointer">{{ $t('see_more_posts') }}
+                <i class="mdi mdi-arrow-right align-middle"></i></Link>
+        </div>
     </div>
 </template>
 
 <script>
 import BlogCard from '@/Components/Blog/BlogCard.vue';
+import { Link } from '@inertiajs/vue3';
 
 export default {
     name: 'BlogSection',
