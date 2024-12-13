@@ -34,7 +34,8 @@ import { Link } from '@inertiajs/vue3';
 export default {
     name: 'BlogSection',
     components: {
-        BlogCard
+        BlogCard,
+        Link
     },
     props: {
         posts: {

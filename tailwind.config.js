@@ -17,8 +17,11 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
                 tajawal: ['Tajawal', 'serif'],
             },
+            borderRadius: {
+                'ss-xl': '1.5rem',
+                'ee-xl': '1.5rem',
+              },
             colors: {
-
                 primary: {
                     '100': '#ffefc6',
                     '200': '#ffdf88',

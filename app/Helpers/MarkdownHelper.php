@@ -41,7 +41,7 @@ class MarkdownHelper
                     'target' => '_blank',
                 ],
                 BlockQuote::class => [
-                    'class' => 'border-l-4 text-slate-400 mt-3 p-3   italic border-x-4 border-red-500 rounded-ss-xl rounded-ee-xl',
+                    'class' => 'border-l-4 text-slate-400 mt-3 p-4   italic border-x-4 border-red-500 rounded-ss-xl rounded-ee-xl',
                 ],
                 Strong::class => [
                     'class' => 'text-primary-600',

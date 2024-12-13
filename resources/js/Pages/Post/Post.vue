@@ -27,9 +27,9 @@ const post = computed(() => props.post.data);
     <Head title="Post detail" />
 
     <section
-    class="relative table w-full items-center py-36 bg-[url('../../assets/images/bg/cta.jpg')] bg-top bg-no-repeat bg-cover">
-    <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900"></div>
-    <div class="container relative">
+        class="relative table w-full items-center py-36 bg-[url('../../assets/images/bg/cta.jpg')] bg-top bg-no-repeat bg-cover">
+        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900"></div>
+        <div class="container relative">
             <div class="grid grid-cols-1 pb-8 text-center mt-10">
                 <h3 class="text-4xl leading-normal tracking-wider font-semibold text-white">
                     <span>{{ post?.name }}</span>
@@ -39,13 +39,13 @@ const post = computed(() => props.post.data);
                     <li class="inline-block text-white/50 mx-5">
                         <span class="text-white block">{{ $t('author') }} :</span>
                         <span class="block">
-                            <span >{{ post?.author?.name }}</span>
+                            <span>{{ post?.author?.name }}</span>
                         </span>
                     </li>
                     <li class="inline-block text-white/50 mx-5">
                         <span class="text-white block">{{ $t('date') }} :</span>
                         <span class="block">
-                            <span >{{ new Date(post?.created_at).toLocaleDateString() }}</span>
+                            <span>{{ new Date(post?.created_at).toLocaleDateString() }}</span>
                         </span>
                     </li>
                     <li class="inline-block text-white/50 mx-5">
@@ -68,32 +68,30 @@ const post = computed(() => props.post.data);
                     <i class="mdi mdi-chevron-right"></i>
                 </li>
                 <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white"
-                aria-current="page">
-                {{ $t('blog_detail') }}
-            </li>
-        </ul>
-    </div>
-</section>
+                    aria-current="page">
+                    {{ $t('blog_detail') }}
+                </li>
+            </ul>
+        </div>
+    </section>
 
-<section class="relative md:py-24 py-16">
-    <div class="container">
-        <div class="grid md:grid-cols-12 grid-cols-1 gap-6">
-            <div class="lg:col-span-8 md:col-span-6">
-                <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                    <img :src="post.image" alt="">
+    <section class="relative md:py-24 py-16">
+        <div class="container">
+            <div class="grid md:grid-cols-12 grid-cols-1 gap-6">
+                <div class="lg:col-span-8 md:col-span-6">
+                    <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
+                        <img :src="post.image" alt="">
 
-                    <div class="p-6">
-                        <div class="">
-                            <div v-html="post.content" class="" id="content"></div>
+                        <div class="p-6">
+                            <div v-html="post.content" id="content"></div>
                             <div class="flex flex-wrap gap-2 mt-2">
                                 <Tag v-for="tag in post?.tags" :key="tag.id" :name="tag.name" :type="tag.type" />
-                            </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <ContactForm />
+                    <!-- <ContactForm /> -->
                 </div>
 
                 <div class="lg:col-span-4 md:col-span-6">
@@ -103,8 +101,7 @@ const post = computed(() => props.post.data);
                             {{ $t('author') }}
                         </h5>
                         <div class="text-center mt-8">
-                            <img :src="post?.author?.avatar" class="h-20 w-20 mx-auto rounded-full shadow mb-4"
-                                alt="">
+                            <img :src="post?.author?.avatar" class="h-20 w-20 mx-auto rounded-full shadow mb-4" alt="">
 
                             <a href=""
                                 class="text-lg font-medium hover:text-primary-500 transition-all duration-500 ease-in-out h5">
