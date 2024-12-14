@@ -24,7 +24,7 @@ class Post extends Model implements HasMedia , Feedable
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SoftDeletes, InteractsWithMedia, HasTags;
 
-    const FEED_PAGE_SIZE = 20;
+    const FEED_PAGE_SIZE = 30;
 
     protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read'];
 
@@ -55,8 +55,7 @@ class Post extends Model implements HasMedia , Feedable
             ->summary($this->excerpt())
             ->updated($this->updated_at)
             ->link($this->url())
-            ->authorName($this->author->name)
-            ->authorEmail($this->author->email);
+            ->authorName($this->author->name);
     }
 
     public static function getFeedItems(): Collection
@@ -123,7 +122,12 @@ class Post extends Model implements HasMedia , Feedable
 
     public function url()
     {
-        return route('posts.show', $this);
+        return route('posts.show', $this->slug);
+    }
+
+    public function excerpt(int $limit = 100): string
+    {
+        return Str::limit(strip_tags($this->content), $limit);
     }
 
 }

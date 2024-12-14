@@ -9,13 +9,13 @@ use App\Http\Controllers\ProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
-Route::feeds();
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
+        Route::feeds();
 
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
