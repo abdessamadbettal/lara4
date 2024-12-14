@@ -21,28 +21,24 @@ const post = computed(() => props.post.data);
 
 <template>
 
-    <Head>
+<Head>
         <title>{{ post?.name }}</title>
-        <meta name="description" content="{{ post?.excerpt }}">
-        <meta property="og:title" content="{{ post?.name }}">
-        <meta property="og:description" content="{{ post?.excerpt }}">
-        <meta property="og:image" content="{{ post?.image }}">
-        <meta property="og:url" content="{{ window.location.href }}">
+        <meta name="description" :content="post?.excerpt">
+        <meta name="keywords" :content="post?.keywords">
+        <meta property="og:title" :content="post?.name">
+        <meta property="og:description" :content="post?.excerpt">
+        <meta property="og:image" :content="post?.image">
+        <meta property="og:url" :content="`/posts/${post?.slug}`">
         <meta property="og:type" content="article">
-        <meta property="article:published_time" content="{{ post?.created_at }}">
-        <meta property="article:author" content="{{ post?.author?.name }}">
-        <meta property="article:section" content="{{ post?.category?.name }}">
-        <meta property="article:tag" content="{{ post?.tags }}">
-        <meta property="article:modified_time" content="{{ post?.updated_at }}">
-        <meta property="article:published_time" content="{{ post?.created_at }}">
-        <meta property="article:author" content="{{ post?.author?.name }}">
-        <meta property="article:section" content="{{ post?.category?.name }}">
-        <meta property="article:tag" content="{{ post?.tags }}">
-        <meta property="article:modified_time" content="{{ post?.updated_at }}">
+        <meta property="article:published_time" :content="post?.created_at">
+        <meta property="article:author" :content="post?.author?.name">
+        <meta property="article:section" :content="post?.category?.name">
+        <meta property="article:tag" :content="post?.keywords">
+        <meta property="article:modified_time" :content="post?.updated_at">
     </Head>
 
     <section
-        class="relative table w-full items-center py-36 bg-[url('../../assets/images/bg/cta.jpg')] bg-top bg-no-repeat bg-cover">
+        class="relative table w-full items-center py-12">
         <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-900"></div>
         <div class="container relative">
             <div class="grid grid-cols-1 pb-8 text-center mt-10">

@@ -26,6 +26,7 @@ class PostResource extends JsonResource
             'image' =>  $this->getFirstMediaUrl('thumbnail') ?? null,
             'content' => MarkdownHelper::convertToHtml($this->content),
             'excerpt' => Str::limit($this->content, $excerptLength, '...'),
+            'keywords' => $this->tags->pluck('name')->implode(', '),
             'author' => new UserResource($this->author),
             'category' => new CategoryResource($this->category),
             'is_published' => $this->is_published,

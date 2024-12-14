@@ -8,13 +8,13 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
+
 Route::get('/sitemap.xml', function () {
     return \Spatie\Sitemap\Sitemap::create()
         ->add(\Spatie\Sitemap\Tags\Url::create('/'))
         ->add(\Spatie\Sitemap\Tags\Url::create('/about'))
         ->writeToFile(public_path('sitemap.xml'));
 });
-
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
