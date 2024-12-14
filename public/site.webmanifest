@@ -1,6 +1,6 @@
 {
-  "name": "MyWebSite",
-  "short_name": "MySite",
+  "name": "Laravel Starter",
+  "short_name": "Laravel Starter",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",
