@@ -14643,6 +14643,16 @@ namespace Illuminate\Support\Facades {
         {
                         return \Illuminate\Routing\Router::inertia($uri, $component, $props);
         }
+                    /**
+         * 
+         *
+         * @see \Spatie\Feed\FeedServiceProvider::registerRouteMacro()
+         * @param mixed $baseUrl
+         * @static 
+         */        public static function feeds($baseUrl = '')
+        {
+                        return \Illuminate\Routing\Router::feeds($baseUrl);
+        }
             }
             /**
      * 
@@ -20000,6 +20010,16 @@ namespace Illuminate\Routing {
          */        public static function inertia($uri, $component, $props = [])
         {
                         return \Illuminate\Routing\Router::inertia($uri, $component, $props);
+        }
+                    /**
+         * 
+         *
+         * @see \Spatie\Feed\FeedServiceProvider::registerRouteMacro()
+         * @param mixed $baseUrl
+         * @static 
+         */        public static function feeds($baseUrl = '')
+        {
+                        return \Illuminate\Routing\Router::feeds($baseUrl);
         }
             }
             /**

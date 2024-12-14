@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
+Route::feeds();
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
@@ -18,7 +19,10 @@ Route::group(
 
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
-        Route::Resource('posts', PostController::class);
+        Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+        Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+        // Route::Resource('posts', PostController::class);
 
 
 

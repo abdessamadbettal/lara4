@@ -35,6 +35,7 @@
         "rawilk/filament-password-input": "^2.0",
         "solution-forest/filament-translate-field": "^1.3",
         "spatie/laravel-activitylog": "^4.9",
+        "spatie/laravel-feed": "^4.4",
         "spatie/laravel-medialibrary": "^11.9",
         "spatie/laravel-missing-page-redirector": "^2.10",
         "spatie/laravel-permission": "^6.10",
