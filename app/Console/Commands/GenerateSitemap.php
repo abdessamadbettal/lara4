@@ -28,9 +28,20 @@ class GenerateSitemap extends Command
 
     private array $noIndexPaths = [
         '',
-        '/forum/*',
         '/login/github',
+        '/login/google',
+        '/login/facebook',
+        '/login/twitter',
+        '/login',
+        '/register',
+        '/password/reset',
+        '/password/confirm',
+        '/password/email',
+        '/forgot-password',
+        '/reset-password/*',
+        '/email/verify',
         '/user/*',
+        '/profile/*',
     ];
 
     /**
