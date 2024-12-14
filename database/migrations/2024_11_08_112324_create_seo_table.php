@@ -13,12 +13,17 @@ return new class extends Migration
 
             $table->morphs('model');
 
-            $table->longText('description')->nullable();
-            $table->string('title')->nullable();
+            $table->json('description')->nullable();
+            $table->json('title')->nullable();
             $table->string('image')->nullable();
             $table->string('author')->nullable();
             $table->string('robots')->nullable();
             $table->string('canonical_url')->nullable();
+            $table->json('keywords')->nullable();
+            $table->json('webmaster_tags')->nullable();
+            $table->json('opengraph')->nullable();
+            $table->json('twitter')->nullable();
+            $table->json('json_ld')->nullable();
 
             $table->timestamps();
         });

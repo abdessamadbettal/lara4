@@ -2,18 +2,21 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Spatie\Tags\HasTags;
+use Spatie\Sitemap\Tags\Url;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
+use Spatie\Sitemap\Contracts\Sitemapable;
 use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia , Sitemapable
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SoftDeletes, InteractsWithMedia, HasTags;
 
@@ -36,6 +39,14 @@ class Post extends Model implements HasMedia
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function toSitemapTag(): Url | string | array
+    {
+        return Url::create(route('blog.post.show', $this))
+            ->setLastModificationDate(Carbon::create($this->updated_at))
+            ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
+            ->setPriority(0.1);
     }
 
 

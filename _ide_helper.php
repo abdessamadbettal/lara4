@@ -19800,50 +19800,6 @@ namespace Mcamara\LaravelLocalization\Facades {
             }
     }
 
-namespace RalphJSmit\Laravel\SEO\Facades {
-            /**
-     * 
-     *
-     */        class SEOManager {
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function SEODataTransformer($transformer)
-        {
-                        /** @var \RalphJSmit\Laravel\SEO\SEOManager $instance */
-                        return $instance->SEODataTransformer($transformer);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function tagTransformer($transformer)
-        {
-                        /** @var \RalphJSmit\Laravel\SEO\SEOManager $instance */
-                        return $instance->tagTransformer($transformer);
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function getTagTransformers()
-        {
-                        /** @var \RalphJSmit\Laravel\SEO\SEOManager $instance */
-                        return $instance->getTagTransformers();
-        }
-                    /**
-         * 
-         *
-         * @static 
-         */        public static function getSEODataTransformers()
-        {
-                        /** @var \RalphJSmit\Laravel\SEO\SEOManager $instance */
-                        return $instance->getSEODataTransformers();
-        }
-            }
-    }
-
 namespace SolutionForest\FilamentTranslateField\Facades {
             /**
      * 
@@ -20393,24 +20349,6 @@ namespace Illuminate\Validation {
          */        public static function phone()
         {
                         return \Illuminate\Validation\Rule::phone();
-        }
-            }
-    }
-
-namespace Illuminate\Http\Client {
-            /**
-     * 
-     *
-     */        class Request {
-                    /**
-         * 
-         *
-         * @see \RalphJSmit\Helpers\Laravel\Macros\RequestMacros::register()
-         * @return \Illuminate\Support\Collection 
-         * @static 
-         */        public static function collect()
-        {
-                        return \Illuminate\Http\Client\Request::collect();
         }
             }
     }
@@ -27052,7 +26990,6 @@ namespace  {
             class DotenvEditor extends \Jackiedo\DotenvEditor\Facades\DotenvEditor {}
             class Livewire extends \Livewire\Livewire {}
             class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
-            class SEOManager extends \RalphJSmit\Laravel\SEO\Facades\SEOManager {}
             class FilamentTranslateField extends \SolutionForest\FilamentTranslateField\Facades\FilamentTranslateField {}
     }
 
