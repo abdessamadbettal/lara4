@@ -25,7 +25,7 @@ const props = defineProps({
     <div class="space-y-6 text-center" :id="id">
         <p class="font-display">Trusted by these six companies so far</p>
         <div class="flex items-center justify-center gap-10 sm:gap-14 flex-wrap">
-            <img v-for="partner in partners" :src="partner.src" :alt="partner.name" class="h-10 sm:h-12"
+            <img loading="lazy" v-for="partner in partners" :src="partner.src" :alt="partner.name" class="h-10 sm:h-12"
                 :key="partner.name" />
         </div>
     </div>

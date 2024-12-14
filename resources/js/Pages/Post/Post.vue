@@ -17,14 +17,29 @@ const props = defineProps({
 
 const post = computed(() => props.post.data);
 
-// onMounted(() => {
-//     feather.replace();
-// });
 </script>
 
 <template>
 
-    <Head title="Post detail" />
+    <Head>
+        <title>{{ post?.name }}</title>
+        <meta name="description" content="{{ post?.excerpt }}">
+        <meta property="og:title" content="{{ post?.name }}">
+        <meta property="og:description" content="{{ post?.excerpt }}">
+        <meta property="og:image" content="{{ post?.image }}">
+        <meta property="og:url" content="{{ window.location.href }}">
+        <meta property="og:type" content="article">
+        <meta property="article:published_time" content="{{ post?.created_at }}">
+        <meta property="article:author" content="{{ post?.author?.name }}">
+        <meta property="article:section" content="{{ post?.category?.name }}">
+        <meta property="article:tag" content="{{ post?.tags }}">
+        <meta property="article:modified_time" content="{{ post?.updated_at }}">
+        <meta property="article:published_time" content="{{ post?.created_at }}">
+        <meta property="article:author" content="{{ post?.author?.name }}">
+        <meta property="article:section" content="{{ post?.category?.name }}">
+        <meta property="article:tag" content="{{ post?.tags }}">
+        <meta property="article:modified_time" content="{{ post?.updated_at }}">
+    </Head>
 
     <section
         class="relative table w-full items-center py-36 bg-[url('../../assets/images/bg/cta.jpg')] bg-top bg-no-repeat bg-cover">
@@ -80,7 +95,7 @@ const post = computed(() => props.post.data);
             <div class="grid md:grid-cols-12 grid-cols-1 gap-6">
                 <div class="lg:col-span-8 md:col-span-6">
                     <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-                        <img :src="post.image" alt="">
+                        <img loading="lazy" :src="post.image" alt="">
 
                         <div class="p-6">
                             <div v-html="post.content" id="content"></div>
@@ -101,7 +116,7 @@ const post = computed(() => props.post.data);
                             {{ $t('author') }}
                         </h5>
                         <div class="text-center mt-8">
-                            <img :src="post?.author?.avatar" class="h-20 w-20 mx-auto rounded-full shadow mb-4" alt="">
+                            <img loading="lazy" :src="post?.author?.avatar" class="h-20 w-20 mx-auto rounded-full shadow mb-4" alt="">
 
                             <a href=""
                                 class="text-lg font-medium hover:text-primary-500 transition-all duration-500 ease-in-out h5">
@@ -137,7 +152,7 @@ const post = computed(() => props.post.data);
                 <div v-for="item in blogs" :key="item" class="group relative overflow-hidden">
                     <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
                         <Skeleton v-if="isLoading" width="100%" height="200px" />
-                        <img v-else :src="item?.image" class="group-hover:scale-110 group-hover:rotate-3 duration-500"
+                        <img loading="lazy" v-else :src="item?.image" class="group-hover:scale-110 group-hover:rotate-3 duration-500"
                             alt="">
                     </div>
 

@@ -1,7 +1,7 @@
 <template>
     <div class="group relative overflow-hidden">
         <div class="relative overflow-hidden rounded-md shadow dark:shadow-gray-800">
-            <img :src="item.image" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
+            <img loading="lazy" :src="item.image" class="group-hover:scale-110 group-hover:rotate-3 duration-500" alt="">
             <div class="absolute top-0 start-0 p-4 opacity-0 group-hover:opacity-100 duration-500">
                 <span
                     class="bg-primary-500 text-white text-[12px] px-2.5 py-1 font-medium rounded-md h-5">

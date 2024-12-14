@@ -6,17 +6,22 @@ use Illuminate\Foundation\Application;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\LanguageController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
-Route::get('lang/{lang}', [LanguageController::class, 'switchLang'])->name('lang.switch');
+Route::get('/sitemap.xml', function () {
+    return \Spatie\Sitemap\Sitemap::create()
+        ->add(\Spatie\Sitemap\Tags\Url::create('/'))
+        ->add(\Spatie\Sitemap\Tags\Url::create('/about'))
+        ->writeToFile(public_path('sitemap.xml'));
+});
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
-        
+
         Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
         Route::Resource('posts', PostController::class);
