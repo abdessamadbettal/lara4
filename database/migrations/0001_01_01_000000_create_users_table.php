@@ -25,7 +25,6 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->text('address')->nullable();
             $table->text('bio')->nullable();
-            $table->json('social_profiles')->nullable();
             $table->string('avatar')->nullable();
 
             $table->string('last_ip')->nullable();
@@ -40,6 +39,17 @@ return new class extends Migration
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();
+        });
+
+        Schema::create('providers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Link to users table
+            $table->string('provider'); // e.g., 'google', 'github'
+            $table->string('provider_id'); // Provider's unique user ID
+            $table->string('provider_token')->nullable(); // Optional: Store access token
+            $table->timestamps();
+
+            $table->unique(['provider', 'provider_id']); // Ensure unique provider-user combination
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
