@@ -1,4 +1,5 @@
 <script setup>
+import { Link } from '@inertiajs/vue3';
 
 </script>
 
@@ -9,7 +10,7 @@
         </h1> -->
         <div class="w-full flex-1">
             <div class="flex items-center gap-3 md:gap-2 flex-col md:flex-row">
-                <button
+                <Link :href="route('login.provider', { provider: 'google' })"
                     class="w-full max-w-xs font-bold shadow-sm rounded-lg p-2 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
                     <div class="bg-white p-2 rounded-full">
                         <svg class="w-4" viewBox="0 0 533.5 544.3">
@@ -30,9 +31,9 @@
                     <span class="ml-4 text-sm">
                         {{ $t('auth.sign_up_with_google') }}
                     </span>
-                </button>
+                </Link>
 
-                <button
+                <Link :href="route('login.provider', { provider: 'github' })"
                     class="w-full max-w-xs font-bold shadow-sm rounded-lg p-2 bg-indigo-100 text-gray-800 flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none hover:shadow focus:shadow-sm focus:shadow-outline">
                     <div class="bg-white p-1 rounded-full">
                         <svg class="w-6" viewBox="0 0 32 32">
@@ -43,7 +44,7 @@
                     <span class="ml-4 text-sm">
                         {{ $t('auth.sign_up_with_github') }}
                     </span>
-                </button>
+                </Link>
             </div>
 
             <div class="my-12 border-b text-center">

@@ -14,9 +14,9 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $avatarUrl = $this->getFirstMediaUrl('avatar');
+        $avatarUrl = $this->avatar ?? $this->getFirstMediaUrl('avatar') ?? null;
         $avatar = $avatarUrl ? $avatarUrl : 'https://ui-avatars.com/api/?name=' . urlencode($this->name) . '&color=7F9CF5&background=EBF4FF';
-        
+
         return [
             'id' => $this->id,
             'name' => $this->name,
