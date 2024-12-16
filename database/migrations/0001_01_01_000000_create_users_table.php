@@ -31,6 +31,12 @@ return new class extends Migration
             $table->integer('login_count')->default(0);
             $table->timestamp('last_login')->nullable();
 
+            $table->string('timezone')->default('UTC');
+            $table->string('locale')->default('en');
+            $table->string('currency')->default('USD');
+            $table->string('country_code')->nullable();
+
+
             $table->tinyInteger('status')->default(1)->unsigned();
 
             $table->integer('created_by')->unsigned()->nullable();
@@ -76,5 +82,6 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('providers');
     }
 };
