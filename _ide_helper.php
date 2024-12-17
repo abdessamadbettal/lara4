@@ -19072,6 +19072,129 @@ namespace Jackiedo\DotenvEditor\Facades {
             }
     }
 
+namespace Laravel\Socialite\Facades {
+            /**
+     * 
+     *
+     * @method array getScopes()
+     * @method \Laravel\Socialite\Contracts\Provider scopes(array|string $scopes)
+     * @method \Laravel\Socialite\Contracts\Provider setScopes(array|string $scopes)
+     * @method \Laravel\Socialite\Contracts\Provider redirectUrl(string $url)
+     * @see \Laravel\Socialite\SocialiteManager
+     */        class Socialite {
+                    /**
+         * Get a driver instance.
+         *
+         * @param string $driver
+         * @return mixed 
+         * @static 
+         */        public static function with($driver)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->with($driver);
+        }
+                    /**
+         * Build an OAuth 2 provider instance.
+         *
+         * @param string $provider
+         * @param array $config
+         * @return \Laravel\Socialite\Two\AbstractProvider 
+         * @static 
+         */        public static function buildProvider($provider, $config)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->buildProvider($provider, $config);
+        }
+                    /**
+         * Format the server configuration.
+         *
+         * @param array $config
+         * @return array 
+         * @static 
+         */        public static function formatConfig($config)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->formatConfig($config);
+        }
+                    /**
+         * Forget all of the resolved driver instances.
+         *
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function forgetDrivers()
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->forgetDrivers();
+        }
+                    /**
+         * Set the container instance used by the manager.
+         *
+         * @param \Illuminate\Contracts\Container\Container $container
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function setContainer($container)
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->setContainer($container);
+        }
+                    /**
+         * Get the default driver name.
+         *
+         * @return string 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function getDefaultDriver()
+        {
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getDefaultDriver();
+        }
+                    /**
+         * Get a driver instance.
+         *
+         * @param string|null $driver
+         * @return mixed 
+         * @throws \InvalidArgumentException
+         * @static 
+         */        public static function driver($driver = null)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->driver($driver);
+        }
+                    /**
+         * Register a custom driver creator Closure.
+         *
+         * @param string $driver
+         * @param \Closure $callback
+         * @return \Laravel\Socialite\SocialiteManager 
+         * @static 
+         */        public static function extend($driver, $callback)
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->extend($driver, $callback);
+        }
+                    /**
+         * Get all of the created "drivers".
+         *
+         * @return array 
+         * @static 
+         */        public static function getDrivers()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getDrivers();
+        }
+                    /**
+         * Get the container instance used by the manager.
+         *
+         * @return \Illuminate\Contracts\Container\Container 
+         * @static 
+         */        public static function getContainer()
+        {            //Method inherited from \Illuminate\Support\Manager         
+                        /** @var \Laravel\Socialite\SocialiteManager $instance */
+                        return $instance->getContainer();
+        }
+            }
+    }
+
 namespace Livewire {
             /**
      * 
@@ -21803,12 +21926,12 @@ namespace Livewire\Features\SupportTesting {
          * 
          *
          * @see \Filament\Tables\Testing\TestsActions::assertTableActionDataSet()
-         * @param array $data
+         * @param \Closure|array $state
          * @return static 
          * @static 
-         */        public static function assertTableActionDataSet($data)
+         */        public static function assertTableActionDataSet($state)
         {
-                        return \Livewire\Features\SupportTesting\Testable::assertTableActionDataSet($data);
+                        return \Livewire\Features\SupportTesting\Testable::assertTableActionDataSet($state);
         }
                     /**
          * 
@@ -22163,12 +22286,12 @@ namespace Livewire\Features\SupportTesting {
          * 
          *
          * @see \Filament\Tables\Testing\TestsBulkActions::assertTableBulkActionDataSet()
-         * @param array $data
+         * @param \Closure|array $state
          * @return static 
          * @static 
-         */        public static function assertTableBulkActionDataSet($data)
+         */        public static function assertTableBulkActionDataSet($state)
         {
-                        return \Livewire\Features\SupportTesting\Testable::assertTableBulkActionDataSet($data);
+                        return \Livewire\Features\SupportTesting\Testable::assertTableBulkActionDataSet($state);
         }
                     /**
          * 
@@ -27008,6 +27131,7 @@ namespace  {
             class Vite extends \Illuminate\Support\Facades\Vite {}
             class EloquentSerialize extends \AnourValar\EloquentSerialize\Facades\EloquentSerializeFacade {}
             class DotenvEditor extends \Jackiedo\DotenvEditor\Facades\DotenvEditor {}
+            class Socialite extends \Laravel\Socialite\Facades\Socialite {}
             class Livewire extends \Livewire\Livewire {}
             class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
             class FilamentTranslateField extends \SolutionForest\FilamentTranslateField\Facades\FilamentTranslateField {}
