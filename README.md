@@ -107,6 +107,24 @@ This is a Laravel starter project that includes a comprehensive setup with Docke
     ```sh
         php artisan test 'or' sail test
     ```
+10. **Make enums**:
+    ```sh
+     php artisan make:spatie-enum StatusEnum
+    ```
+11. **Make sure to dump the autoload**:
+    ```sh
+     composer dump-autoload
+    ```
+
+10. **Make services**:
+    ```sh
+     php artisan make:service UserService
+    ```
+11. **Make request**:
+    ```sh
+     php artisan make:request User/UpdateUserRequest
+     php artisan make:request User/StoreUserRequest
+    ```
 
 
 ## Usage
