@@ -9,8 +9,8 @@ return [
 
             'url' => '/posts/feed',
 
-            'title' => 'Laravel starter Blog RSS Feed',
-            'description' => 'The Laravel starter Blog RSS feed',
+            'title' => 'Lara4 Blog RSS Feed',
+            'description' => 'The Lara4 Blog RSS feed',
             'language' => 'en-US',
 
             'image' => '',
