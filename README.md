@@ -1,4 +1,4 @@
-<p align="center"><img src=".github/screenshots/home.png" alt="Laravel Starter"></p>
+<p align="center"><img src=".github/screenshots/home.png" alt="Laravel Starter lara4"></p>
 
 # Laravel Inerta Vue Starter
 
