@@ -1,7 +1,7 @@
 {
     "name": "abdessamadbettal/laravel-starter",
     "type": "project",
-    "description": "A Laravel starter project with some pre-installed packages and configurations.",
+    "description": "A Lara4 project with some pre-installed packages and configurations.",
     "keywords": [
         "laravel",
         "starter",
@@ -55,7 +55,7 @@
         "laravel/breeze": "^2.2",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",
-        "laravel/sail": "^1.39",
+        "laravel/sail": "^1.41",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.1",
         "pestphp/pest": "*",

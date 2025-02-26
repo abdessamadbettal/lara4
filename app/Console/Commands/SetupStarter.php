@@ -76,7 +76,7 @@ class SetupStarter extends Command
         // File::copy(base_path('.env.example'), base_path('.env'));
 
 
-        $appName = $this->ask('Enter the application name', 'Laravel Starter');
+        $appName = $this->ask('Enter the application name', 'Lara4');
         // $dbName = $this->ask('Enter the database name', 'laravel_starter');
         // $dbUser = $this->ask('Enter the database username', 'root');
         // $dbPassword = $this->ask('Enter the database password', '');

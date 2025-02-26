@@ -10,7 +10,7 @@ return new class extends SettingsMigration
         $this->migrator->add('seo.meta_googlebot', 'index, follow');
         $this->migrator->add('seo.meta_bingbot', 'index, follow');
         $this->migrator->add('seo.meta_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -25,12 +25,12 @@ return new class extends SettingsMigration
             'es' => 'mundo, para, ti'
         ]);
         $this->migrator->add('seo.meta_author', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
         $this->migrator->add('seo.og_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -40,7 +40,7 @@ return new class extends SettingsMigration
             'es' => 'Esta es una descripción del sitio.'
         ]);
         $this->migrator->add('seo.tw_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -121,7 +121,7 @@ return new class extends SettingsMigration
         $this->migrator->add('seo.twitter_image', 'https://laravel-starter.test/logo.png');
 
         $this->migrator->add('seo.og_type', 'website');
-        $this->migrator->add('seo.og_site_name', 'Laravel Starter');
+        $this->migrator->add('seo.og_site_name', 'Lara4');
         $this->migrator->add('seo.og_image', 'https://laravel-starter.test/logo.png');
         $this->migrator->add('seo.og_url', 'https://laravel-starter.test');
 
