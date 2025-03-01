@@ -1,10 +1,10 @@
-<p align="center"><img src=".github/screenshots/home.png" alt="Laravel Starter lara4"></p>
+<p align="center"><img src=".github/screenshots/home.png" alt="Lara4 lara4"></p>
 
 # Laravel Inerta Vue Starter
 
 *If you are a Laravel developer and your priority is simplicity and faster development, you are in the right place. This starter project includes everything you need, including Inertia.js with Vue for the frontend, multi-language support, SSR, SEO-friendly features, and Filament as a CMS with all the tools you need to manage your website settings, activity log, translations, and more. Additionally, it includes all the recommended packages that can be useful for any project.*
 
-This is a Laravel starter project that includes a comprehensive setup with Docker, Laravel Sail, and various packages to get you started quickly on any project. It includes:
+This is a Lara4 project that includes a comprehensive setup with Docker, Laravel Sail, and various packages to get you started quickly on any project. It includes:
 
 - Laravel Sail with Docker support
 - Mailpit for email testing
@@ -64,8 +64,8 @@ This is a Laravel starter project that includes a comprehensive setup with Docke
 
 1. **Clone the repository**:
     ```sh
-    git clone https://github.com/abdessamadbettal/laravel-starter.git
-    cd laravel-starter
+    git clone https://github.com/abdessamadbettal/Lara4.git
+    cd Lara4
     ```
 
 2. **Copy the example environment file and configure it**:

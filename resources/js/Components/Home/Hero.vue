@@ -17,7 +17,7 @@ const props = defineProps({
             {{ $t('home.welcome_to') }}
             <span class="relative whitespace-nowrap text-[#FF2D20]">
                 <IconTextDecoration />
-                <span class="relative">Laravel Starter</span>
+                <span class="relative">Lara4</span>
             </span>
         </h1>
         <p class="mx-auto mt-6 max-w-5xl text-xl sm:text-2xl tracking-tight text-slate-700 dark:text-slate-300">
@@ -25,7 +25,7 @@ const props = defineProps({
         </p>
         <div class="mt-10 flex justify-center gap-x-6">
             <Button :href="route('register')">{{ $t('home.get_started') }}</Button>
-            <Button href="https://github.com/abdessamadbettal/laravel-starter" variant="outline">
+            <Button href="https://github.com/abdessamadbettal/Lara4" variant="outline">
                 {{ $t('home.view_on_github') }}
             </Button>
         </div>

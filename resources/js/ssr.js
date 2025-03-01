@@ -6,7 +6,7 @@ import { createSSRApp, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 import i18n, { setLocale } from '@/i18n';
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel Starter';
+const appName = import.meta.env.VITE_APP_NAME || 'Lara4';
 
 createServer((page) =>
     createInertiaApp({

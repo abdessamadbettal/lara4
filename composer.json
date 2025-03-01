@@ -1,7 +1,7 @@
 {
-    "name": "abdessamadbettal/laravel-starter",
+    "name": "abdessamadbettal/Lara4",
     "type": "project",
-    "description": "A Laravel starter project with some pre-installed packages and configurations.",
+    "description": "A Lara4 project with some pre-installed packages and configurations.",
     "keywords": [
         "laravel",
         "starter",
@@ -12,7 +12,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/abdessamadbettal/laravel-starter.git"
+        "url": "https://github.com/abdessamadbettal/Lara4.git"
     },
     "require": {
         "php": "^8.2",

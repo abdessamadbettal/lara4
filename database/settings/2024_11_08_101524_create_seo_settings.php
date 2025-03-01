@@ -10,7 +10,7 @@ return new class extends SettingsMigration
         $this->migrator->add('seo.meta_googlebot', 'index, follow');
         $this->migrator->add('seo.meta_bingbot', 'index, follow');
         $this->migrator->add('seo.meta_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -25,12 +25,12 @@ return new class extends SettingsMigration
             'es' => 'mundo, para, ti'
         ]);
         $this->migrator->add('seo.meta_author', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
         $this->migrator->add('seo.og_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -40,7 +40,7 @@ return new class extends SettingsMigration
             'es' => 'Esta es una descripción del sitio.'
         ]);
         $this->migrator->add('seo.tw_title', [
-            'en' => 'Laravel Starter',
+            'en' => 'Lara4',
             'fr' => 'Monde Pour Vous',
             'es' => 'Mundo Para Ti'
         ]);
@@ -54,8 +54,8 @@ return new class extends SettingsMigration
             'en' => [
                 '@context' => 'https://schema.org',
                 '@type' => 'Organization',
-                'url' => 'https://laravel-starter.test',
-                'logo' => 'https://laravel-starter.test/logo.png',
+                'url' => 'https://Lara4.test',
+                'logo' => 'https://Lara4.test/logo.png',
                 'contactPoint' => [
                     [
                         '@type' => 'ContactPoint',
@@ -113,17 +113,17 @@ return new class extends SettingsMigration
             ]
         ]);
 
-        $this->migrator->add('seo.canonical', 'https://laravel-starter.com');
+        $this->migrator->add('seo.canonical', 'https://Lara4.com');
 
         $this->migrator->add('seo.twitter_card', 'summary_large_image');
         $this->migrator->add('seo.twitter_site', '@laravel_starter');
         $this->migrator->add('seo.twitter_creator', '@laravel_starter');
-        $this->migrator->add('seo.twitter_image', 'https://laravel-starter.test/logo.png');
+        $this->migrator->add('seo.twitter_image', 'https://Lara4.test/logo.png');
 
         $this->migrator->add('seo.og_type', 'website');
-        $this->migrator->add('seo.og_site_name', 'Laravel Starter');
-        $this->migrator->add('seo.og_image', 'https://laravel-starter.test/logo.png');
-        $this->migrator->add('seo.og_url', 'https://laravel-starter.test');
+        $this->migrator->add('seo.og_site_name', 'Lara4');
+        $this->migrator->add('seo.og_image', 'https://Lara4.test/logo.png');
+        $this->migrator->add('seo.og_url', 'https://Lara4.test');
 
 
     }

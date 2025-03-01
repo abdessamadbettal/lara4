@@ -2,10 +2,10 @@
     "name": "inertiajs-vue3-tailwindcss-vite",
     "private": true,
     "version": "1.0.0",
-    "description": "laravel starter kit with inertiajs, vue3, tailwindcss and vite and ssr && localization support",
+    "description": "Lara4 kit with inertiajs, vue3, tailwindcss and vite and ssr && localization support",
     "repository": {
         "type": "git",
-        "url": "https://github.com/abdessamadbettal/laravel-starter"
+        "url": "https://github.com/abdessamadbettal/Lara4"
     },
     "keywords": [
         "vue 3",
@@ -22,9 +22,9 @@
     ],
     "author": "Abdessamad Bettal",
     "license": "MIT",
-    "homepage": "https://github.com/abdessamadbettal/laravel-starter",
+    "homepage": "https://github.com/abdessamadbettal/Lara4",
     "bugs": {
-        "url": "https://github.com/abdessamadbettal/laravel-starter/issues"
+        "url": "https://github.com/abdessamadbettal/Lara4/issues"
     },
     "type": "module",
     "scripts": {
