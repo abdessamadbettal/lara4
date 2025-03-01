@@ -57,26 +57,26 @@ const currentLanguage = computed(() => {
 });
 
 const getURL = (lang) => {
-    const currentUrl = new URL(window.location.href);
-    return currentUrl.pathname.replace(`/${props.currentLocale}`, `/${lang.code}`);
+    const currentPath = window.location.pathname;
+    const pathSegments = currentPath.split('/').filter(Boolean); // Remove empty segments
+    
+    // Check if the first segment is a language code
+    const isFirstSegmentLocale = languages.some(l => l.code === pathSegments[0]);
+    
+    if (isFirstSegmentLocale) {
+        // Replace the language code
+        pathSegments[0] = lang.code;
+    } else {
+        // Add the language code at the beginning
+        pathSegments.unshift(lang.code);
+    }
+    
+    return '/' + pathSegments.join('/');
 };
 
 async function changeLanguage(lang) {
-    const currentUrl = new URL(window.location.href);
-
-    // Replace the locale in the URL
-    const newUrl = currentUrl.pathname.replace(`/${props.currentLocale}`, `/${lang.code}`);
+    const newUrl = getURL(lang);
 
     window.location.href = newUrl;
-
-    // await inertiaRouter.visit(newUrl, {
-    //     preserveScroll: true,
-    //     replace: true, // Force a reload of props
-    //     onFinish: () => {
-    //         Ziggy.locale = lang.code;
-    //     },
-    // });
-
-    // setLocale(lang.code);
 }
 </script>
