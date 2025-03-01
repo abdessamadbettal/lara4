@@ -77,7 +77,7 @@ class SetupStarter extends Command
 
 
         $appName = $this->ask('Enter the application name', 'Lara4');
-        // $dbName = $this->ask('Enter the database name', 'laravel_starter');
+        // $dbName = $this->ask('Enter the database name', 'Lara4');
         // $dbUser = $this->ask('Enter the database username', 'root');
         // $dbPassword = $this->ask('Enter the database password', '');
 

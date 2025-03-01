@@ -116,8 +116,8 @@ return new class extends SettingsMigration
         $this->migrator->add('seo.canonical', 'https://Lara4.com');
 
         $this->migrator->add('seo.twitter_card', 'summary_large_image');
-        $this->migrator->add('seo.twitter_site', '@laravel_starter');
-        $this->migrator->add('seo.twitter_creator', '@laravel_starter');
+        $this->migrator->add('seo.twitter_site', '@Lara4');
+        $this->migrator->add('seo.twitter_creator', '@Lara4');
         $this->migrator->add('seo.twitter_image', 'https://Lara4.test/logo.png');
 
         $this->migrator->add('seo.og_type', 'website');
