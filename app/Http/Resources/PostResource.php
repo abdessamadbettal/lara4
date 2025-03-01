@@ -60,7 +60,9 @@ class PostResource extends JsonResource
             'keywords' => $this->keywords,
             'author' => [
                 'name' => $this->author->name,
-                'avatar' => $this->author->avatar,
+                'avatar' => $this->author->avatar ?? "https://ui-avatars.com/api/?name=" . urlencode($this->author->name),
+                'bio' => $this->author->bio,
+                'social_links' => $this->author->social_links,
             ],
             'category' => new CategoryResource($this->category),
             'is_published' => $this->is_published,

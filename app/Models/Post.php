@@ -60,6 +60,7 @@ class Post extends Model implements HasMedia, Feedable
     {
         return SlugOptions::create()
             ->generateSlugsFrom('name')
+            ->doNotGenerateSlugsOnUpdate()
             ->saveSlugsTo('slug');
     }
 
