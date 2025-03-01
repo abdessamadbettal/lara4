@@ -23,6 +23,7 @@
         "filament/spatie-laravel-tags-plugin": "^3.2",
         "inertiajs/inertia-laravel": "^1.0",
         "jackiedo/dotenv-editor": "^1.1",
+        "jenssegers/agent": "^2.6",
         "laravel/framework": "^11.9",
         "laravel/helpers": "^1.7",
         "laravel/sanctum": "^4.0",
