@@ -31,7 +31,7 @@
         "league/commonmark": "^2.6",
         "mcamara/laravel-localization": "^2.2",
         "mvenghaus/filament-plugin-translatable-inline": "^3.0",
-        "opcodesio/log-viewer": "*",
+        "opcodesio/log-viewer": "^3.15",
         "outerweb/filament-translatable-fields": "^2.0",
         "propaganistas/laravel-phone": "^5.3",
         "rawilk/filament-password-input": "^2.0",
