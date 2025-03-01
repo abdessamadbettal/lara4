@@ -21,8 +21,8 @@
                 </div>
             </div>
         </section>
+        <Pagination class="mt-6" :meta="posts.meta" />
     </GeneralLayout>
-    <Pagination class="mt-6" :meta="posts.meta" />
 
 
 </template>
