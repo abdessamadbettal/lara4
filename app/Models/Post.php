@@ -17,15 +17,28 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 
-class Post extends Model implements HasMedia , Feedable
+class Post extends Model implements HasMedia, Feedable
 {
     use HasFactory, HasTranslations, HasTranslatableSlug, SoftDeletes, InteractsWithMedia, HasTags;
 
     const FEED_PAGE_SIZE = 30;
 
-    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read', 'keywords', 'published_at', 'views_count', 'is_featured'];
+    protected $fillable = [
+        'name',
+        'slug',
+        'content',
+        'author_id',
+        'category_id',
+        'is_published',
+        'time_to_read',
+        'keywords',
+        'published_at',
+        'views_count',
+        'is_featured',
+        'meta_description'
+    ];
 
-    public $translatable = ['name', 'slug', 'content', 'keywords'];
+    public $translatable = ['name', 'slug', 'content', 'keywords', 'meta_description'];
 
     protected $casts = [
         'name' => 'array',
@@ -37,6 +50,7 @@ class Post extends Model implements HasMedia , Feedable
         'is_featured' => 'boolean',
         'time_to_read' => 'integer',
         'views_count' => 'integer',
+        'meta_description' => 'array'
     ];
 
     /**
@@ -124,5 +138,4 @@ class Post extends Model implements HasMedia , Feedable
     {
         return Str::limit(strip_tags($this->content), $limit);
     }
-
 }
