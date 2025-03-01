@@ -40,12 +40,13 @@
   import Container from "@/Components/Container.vue";
   import Logo from "@/Components/Icons/Logo.vue";
   import IconGithub from "@/Components/Icons/IconGithub.vue";
-  import { Link } from '@inertiajs/vue3';
+  import { Link, usePage } from '@inertiajs/vue3';
+  import { computed } from 'vue';
 
-
+  const page = usePage();
+  const phpVersion = computed(() => page.props.phpVersion);
+  const laravelVersion = computed(() => page.props.laravelVersion);
   const props = defineProps({
     menuItems: Array,
-    laravelVersion: String,
-    phpVersion: String,
   });
   </script>
