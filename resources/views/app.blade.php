@@ -1,9 +1,18 @@
 <!DOCTYPE html>
-<html lang="{{ App::getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Lara4">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Language Detection -->
+    <link rel="alternate" hreflang="x-default" href="https://lara4.com" />
+    <link rel="alternate" hreflang="en" href="https://lara4.com/en" />
+    <link rel="alternate" hreflang="fr" href="https://lara4.com/fr" />
+    <link rel="alternate" hreflang="es" href="https://lara4.com/es" />
 
     <title inertia>{{ config('app.name', 'Lara4') }}</title>
 
@@ -25,7 +34,11 @@
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
                 "name": "Lara4",
-                "description": "Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, and Filament admin",
+                "description": {
+                    "@language": "en",
+                    "@value": "Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, and Filament admin"
+                },
+                "inLanguage": ["en", "fr", "es"],
                 "applicationCategory": "DevelopmentTool",
                 "operatingSystem": "Web",
                 "offers": {

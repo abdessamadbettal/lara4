@@ -23,7 +23,6 @@ defineProps({
 const menuItems = ref([
     { label: 'home.features', link: "/#features" },
     { label: 'home.blogs', link: route('posts.index') },
-    { label: 'home.documentation', link: "/#documentation" },
 ]);
 
 </script>
