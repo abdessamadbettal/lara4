@@ -15,21 +15,37 @@ const props = defineProps({
 </script>
 
 <template>
-  <GeneralLayout>
+    <GeneralLayout>
 
-      <Head>
-          <title>Laravel Inertia Vue 3 Starter</title>
-        <meta name="description"
-        content="Simplify your Laravel development with Lara4! Build faster and smarter with tools like Inertia.js, Vue, Tailwind, multi-language support, SEO optimization, and Filament CMS - all ready to use.">
-        <meta name="keywords"
-        content="Laravel, Inertia.js, Vue, TailwindCSS, multi-language, SEO, Filament CMS, Lara4, SSR, Spatie, i18n">
-    </Head>
+        <Head>
+            <title>Lara4 - Laravel Vue Inertia Starter Kit</title>
+            <meta name="description"
+                content="Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, Filament admin, and built-in SEO optimization. Start building professional web applications faster." />
+            <meta name="keywords"
+                content="Laravel starter kit, Vue 3, Inertia.js, TailwindCSS, Filament CMS, SEO optimization, SSR, i18n, multi-language support, Laravel boilerplate" />
 
-    <Hero />
+            <!-- Open Graph / Facebook -->
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://lara4.com/" />
+            <meta property="og:title" content="Lara4 - Laravel Vue Inertia Starter Kit" />
+            <meta property="og:description"
+                content="Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, Filament admin, and built-in SEO optimization." />
+            <meta property="og:image" content="https://lara4.com/favicon.png" />
 
-    <Trusted />
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content="https://lara4.com/" />
+            <meta property="twitter:title" content="Lara4 - Laravel Vue Inertia Starter Kit" />
+            <meta property="twitter:description"
+                content="Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, Filament admin, and built-in SEO optimization." />
+            <meta property="twitter:image" content="https://lara4.com/favicon.png" />
+        </Head>
 
-    <BlogSection :posts="posts.data" />
-</GeneralLayout>
+        <Hero />
+
+        <Trusted />
+
+        <BlogSection :posts="posts.data" v-if="posts.data.length > 0" />
+    </GeneralLayout>
 
 </template>

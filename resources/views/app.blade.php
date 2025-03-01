@@ -19,18 +19,32 @@
 
     @include('feed::links')
 
+        <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "Lara4",
+                "description": "Production-ready Laravel starter kit with Vue 3, Inertia.js, Tailwind CSS, and Filament admin",
+                "applicationCategory": "DevelopmentTool",
+                "operatingSystem": "Web",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+    </script>
+
     <!-- Scripts -->
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MWK35BWK06"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YNCZT23ZR9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'G-MWK35BWK06');
+        gtag('config', 'G-YNCZT23ZR9');
     </script>
     @routes
     @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
