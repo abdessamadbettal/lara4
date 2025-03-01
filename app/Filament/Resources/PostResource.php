@@ -34,9 +34,9 @@ class PostResource extends Resource
                         ->label('The Name of the Post')
                         ->helperText(str('✨ pls provide a unique name and should be **SEO** friendly and should be **unique for each language**.')->inlineMarkdown()->toHtmlString())
                         ->translatable(true, null, [
-                            'en' => ['required', 'string', 'max:255', 'min:10'],
-                            'es' => ['required', 'string', 'max:255', 'min:10'],
-                            'fr' => ['required', 'string', 'max:255', 'min:10'],
+                            'en' => ['string', 'max:255', 'min:10'],
+                            'es' => ['string', 'max:255', 'min:10'],
+                            'fr' => ['string', 'max:255', 'min:10'],
                         ]),
 
                     TextInput::make('slug')
@@ -47,9 +47,9 @@ class PostResource extends Resource
                             true,
                             null,
                             [
-                                'en' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                                'es' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                                'fr' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                'en' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                'es' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                'fr' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
                             ]
                         ),
                     Forms\Components\Select::make('author_id')
@@ -69,6 +69,7 @@ class PostResource extends Resource
                             ->splitKeys(['Tab', ', '])
                             ->separator(',')
                             ->label('Keywords')
+                            ->columnSpanFull()
                             ->translatable(true),
                     ])->columns(2),
                     Forms\Components\TextInput::make('time_to_read')

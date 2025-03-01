@@ -21,6 +21,9 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->boolean('is_published')->default(false);
             $table->integer('time_to_read')->default(0);
+            $table->timestamp('published_at')->nullable();
+            $table->integer('views_count')->default(0);
+            $table->boolean('is_featured')->default(false);
             $table->softDeletes();
             $table->timestamps();
         });

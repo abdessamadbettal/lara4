@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Spatie\Tags\HasTags;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 use Illuminate\Support\Str;
-use Spatie\Sitemap\Tags\Url;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
-use Spatie\Sitemap\Contracts\Sitemapable;
 use Illuminate\Support\Collection;
 use Spatie\Sluggable\HasTranslatableSlug;
 use Spatie\MediaLibrary\InteractsWithMedia;
@@ -26,7 +23,7 @@ class Post extends Model implements HasMedia , Feedable
 
     const FEED_PAGE_SIZE = 30;
 
-    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read', 'keywords'];
+    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read', 'keywords', 'published_at', 'views_count', 'is_featured'];
 
     public $translatable = ['name', 'slug', 'content', 'keywords'];
 
@@ -36,6 +33,10 @@ class Post extends Model implements HasMedia , Feedable
         'content' => 'array',
         'is_published' => 'boolean',
         'keywords' => 'array',
+        'published_at' => 'datetime',
+        'is_featured' => 'boolean',
+        'time_to_read' => 'integer',
+        'views_count' => 'integer',
     ];
 
     /**
@@ -67,13 +68,6 @@ class Post extends Model implements HasMedia , Feedable
             ->getCollection();
     }
 
-    // public function toSitemapTag(): Url | string | array
-    // {
-    //     return Url::create(route('blog.post.show', $this))
-    //         ->setLastModificationDate(Carbon::create($this->updated_at))
-    //         ->setChangeFrequency(Url::CHANGE_FREQUENCY_YEARLY)
-    //         ->setPriority(0.1);
-    // }
 
 
     /**
