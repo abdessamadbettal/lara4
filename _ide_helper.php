@@ -19981,6 +19981,42 @@ namespace SolutionForest\FilamentTranslateField\Facades {
             }
     }
 
+namespace Spatie\SignalAwareCommand\Facades {
+            /**
+     * 
+     *
+     * @see \Spatie\SignalAwareCommand\Signal
+     */        class Signal {
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function handle($signal, $callable)
+        {
+                        /** @var \Spatie\SignalAwareCommand\Signal $instance */
+                        return $instance->handle($signal, $callable);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function executeSignalHandlers($signal, $command)
+        {
+                        /** @var \Spatie\SignalAwareCommand\Signal $instance */
+                        return $instance->executeSignalHandlers($signal, $command);
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */        public static function clearHandlers($signal = null)
+        {
+                        /** @var \Spatie\SignalAwareCommand\Signal $instance */
+                        return $instance->clearHandlers($signal);
+        }
+            }
+    }
+
 namespace Illuminate\Support {
             /**
      * 
@@ -27135,6 +27171,7 @@ namespace  {
             class Livewire extends \Livewire\Livewire {}
             class LaravelLocalization extends \Mcamara\LaravelLocalization\Facades\LaravelLocalization {}
             class FilamentTranslateField extends \SolutionForest\FilamentTranslateField\Facades\FilamentTranslateField {}
+            class Signal extends \Spatie\SignalAwareCommand\Facades\Signal {}
     }
 
 

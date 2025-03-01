@@ -13,6 +13,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Stevebauman\Location\Facades\Location;
+use App\Traits\TracksUserDevices;
 
 class User extends Authenticatable  implements HasMedia, FilamentUser
 {
@@ -31,6 +33,24 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
         'last_name',
         'email_verified_at',
         'avatar',
+        'last_login',
+        'last_ip',
+        'login_count',
+        'city',
+        'region',
+        'country',
+        'country_code',
+        'timezone',
+        'locale',
+        'currency',
+        'ip_address',
+        'latitude',
+        'longitude',
+        'registration_ip',
+        'browser',
+        'platform',
+        'device',
+        'mobile',
     ];
 
     /**
@@ -53,6 +73,16 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'last_login' => 'datetime',
+            'login_count' => 'integer',
+            'latitude' => 'decimal:10,8',
+            'longitude' => 'decimal:11,8',
+            'status' => 'integer',
+            'is_banned' => 'boolean',
+            'banned_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
         ];
     }
 
@@ -61,7 +91,7 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
      */
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->hasRole('admin') && str_ends_with($this->email, '@example.com') && $this->hasVerifiedEmail();
+        return $this->hasRole('admin') && $this->hasVerifiedEmail();
     }
 
 
@@ -81,8 +111,31 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
         return $this->hasMany(Post::class, 'author_id');
     }
 
-    // public function roles()
-    // {
-    //     return $this->belongsToMany(Role::class, 'model_has_roles', 'model_id', 'role_id');
-    // }
+    public function isAuthenticated(): bool
+    {
+        return $this->exists;
+    }
+
+        /**
+     * Update user's location data from IP address
+     */
+    public function updateLocationData(?string $ip = null): void
+    {
+        $ip = $ip ?: request()->ip();
+        $location = Location::get();
+
+        if ($location) {
+            $this->update([
+                'ip_address' => $ip,
+                'city' => $location->cityName ?? $this->city,
+                'region' => $location->regionName ?? $this->region,
+                'country' => $location->countryName,
+                'country_code' => $location->countryCode ?? null,
+                'currency' => $location->currencyCode ?? $this->currency ?? 'USD',
+                'latitude' => $location->latitude ?? null,
+                'longitude' => $location->longitude ?? null,
+                'timezone' => $location->timezone ?? $this->timezone ?? 'UTC',
+            ]);
+        }
+    }
 }

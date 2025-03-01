@@ -8,3 +8,5 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Schedule::command('generate-sitemap')->daily();
+
+Schedule::command('backup:run --only-db')->daily();
