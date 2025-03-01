@@ -22,21 +22,9 @@ const props = defineProps({
 const post = computed(() => props.post.data);
 
 const shareUrl = computed(() => window.location.href);
-const shareData = computed(() => ({
-    title: post.value?.name,
-    text: post.value?.excerpt,
-    url: shareUrl.value,
-}));
+const canonicalUrl = computed(() => `${window.location.origin}/posts/${post.value?.slug}`);
 
-const handleShare = async () => {
-    try {
-        if (navigator.share) {
-            await navigator.share(shareData.value);
-        }
-    } catch (error) {
-        console.error('Error sharing:', error);
-    }
-};
+
 
 // Estimated read progress
 const readingProgress = ref(0);
@@ -53,19 +41,36 @@ onMounted(() => {
     <GeneralLayout>
 
         <Head>
-            <title>{{ post?.name }}</title>
+            <!-- Basic Meta Tags -->
+            <title>{{ post?.name }} | Lara4 Blog</title>
             <meta name="description" :content="post?.excerpt">
             <meta name="keywords" :content="post?.keywords">
+            <meta name="author" :content="post?.author?.name">
+            
+            <!-- Open Graph / Facebook -->
+            <meta property="og:type" content="article">
             <meta property="og:title" :content="post?.name">
             <meta property="og:description" :content="post?.excerpt">
             <meta property="og:image" :content="post?.image">
-            <meta property="og:url" :content="`/posts/${post?.slug}`">
-            <meta property="og:type" content="article">
+            <meta property="og:url" :content="canonicalUrl">
+            <meta property="og:site_name" content="Lara4 Blog">
+            <meta property="og:locale" :content="currentLocale">
             <meta property="article:published_time" :content="post?.created_at">
+            <meta property="article:modified_time" :content="post?.updated_at">
             <meta property="article:author" :content="post?.author?.name">
             <meta property="article:section" :content="post?.category?.name">
-            <meta property="article:tag" :content="post?.keywords">
-            <meta property="article:modified_time" :content="post?.updated_at">
+            <meta property="article:tag" :content="post?.tags?.map(tag => tag.name).join(', ')">
+            
+            <!-- Twitter -->
+            <meta name="twitter:card" content="summary_large_image">
+            <meta name="twitter:title" :content="post?.name">
+            <meta name="twitter:description" :content="post?.excerpt">
+            <meta name="twitter:image" :content="post?.image">
+            <meta name="twitter:creator" :content="post?.author?.social_links?.twitter">
+            
+            <!-- Canonical URL -->
+            <link rel="canonical" :href="canonicalUrl">
+            
         </Head>
 
         <!-- Reading Progress Bar -->
@@ -140,8 +145,8 @@ onMounted(() => {
 
                     <!-- Article Content -->
                     <article class="lg:col-span-9 order-1 lg:order-2">
-                        <div class="prose prose-lg dark:prose-invert max-w-none">
-                            <div v-html="post?.content"></div>
+                        <div class="max-w-none">
+                            <div class="markdown" v-html="post?.content"></div>
                         </div>
 
                         <!-- Tags -->
@@ -164,6 +169,3 @@ onMounted(() => {
     </GeneralLayout>
 </template>
 
-<style scoped>
-
-</style>
