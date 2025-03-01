@@ -5,8 +5,8 @@ import Tag from '@/Components/Blog/Tag.vue';
 import GeneralLayout from '@/Layouts/GeneralLayout.vue';
 import TableOfContents from '@/Components/Blog/TableOfContents.vue';
 import ShareButtons from '@/Components/Blog/ShareButtons.vue';
-// import AuthorCard from '@/Components/Blog/AuthorCard.vue';
-// import RelatedPosts from '@/Components/Blog/RelatedPosts.vue';
+import AuthorCard from '@/Components/Blog/AuthorCard.vue';
+import RelatedPosts from '@/Components/Blog/RelatedPosts.vue';
 
 const props = defineProps({
     post: Object,
@@ -14,7 +14,7 @@ const props = defineProps({
         type: Boolean,
         default: false
     },
-    blogs: Array,
+    related_posts: Array,
     social: Object,
 });
 
@@ -127,7 +127,7 @@ onMounted(() => {
                             <TableOfContents :content="post?.content" />
                             
                             <!-- Author Card -->
-                            <!-- <AuthorCard :author="post?.author" /> -->
+                            <AuthorCard :author="post?.author" />
 
                             <!-- Share Buttons -->
                             <ShareButtons 
@@ -157,10 +157,10 @@ onMounted(() => {
         </section>
 
         <!-- Related Posts -->
-        <!-- <RelatedPosts 
-            :posts="blogs"
+        <RelatedPosts 
+            :posts="related_posts.data"
             :loading="isLoading"
-        /> -->
+        />
     </GeneralLayout>
 </template>
 
