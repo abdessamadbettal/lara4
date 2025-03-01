@@ -25,59 +25,53 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        // validate the request
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
-        $post = Post::create($request->all());
-
-        return $request->wantsJson()
-            ? new PostResource($post)
-            : redirect()->route('posts.index');
-    }
+    public function store(Request $request) {}
 
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($slug)
     {
+        $locale = app()->getLocale();
+        $post = Post::where("slug->$locale", $slug)->first();
+
+        if (!$post) {
+            $languages = ['en', 'fr', 'es', 'ar'];
+            foreach ($languages as $lang) {
+                if ($lang !== $locale) {
+                    $post = Post::where("slug->$lang", $slug)->first();
+                    if ($post) {
+                        return redirect()->route('posts.show', ['post' => $post->slug]);
+                    }
+                }
+            }
+        }
+
+        if (!$post) {
+            abort(404);
+        }
+
+        $post->increment('views_count');
+        // with relatedposts
+        $related_posts = Post::where('id', '!=', $post->id)
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
         return request()->wantsJson()
             ? new PostResource($post)
-            : Inertia::render('Post/Post', ['post' => new PostResource($post)]);
+            : Inertia::render('Post/Post', [
+                'post' => new PostResource($post),
+                'related_posts' => PostResource::collection($related_posts),
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
-    {
-        // validate the request
-        $request->validate([
-            'title' => 'required',
-            'content' => 'required',
-        ]);
-
-        // update the post
-        $post->update($request->all());
-
-        return $request->wantsJson()
-            ? new PostResource($post)
-            : redirect()->route('posts.index');
-    }
+    public function update(Request $request, Post $post) {}
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
-    {
-        $post->delete();
-
-        return request()->wantsJson()
-            ? response()->noContent()
-            : redirect()->route('posts.index');
-    }
+    public function destroy(Post $post) {}
 }

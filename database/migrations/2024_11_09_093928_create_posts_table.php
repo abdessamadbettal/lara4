@@ -16,6 +16,7 @@ return new class extends Migration
             $table->json('name');
             $table->json('slug');
             $table->json('content');
+            $table->json('keywords')->nullable();
             $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->boolean('is_published')->default(false);

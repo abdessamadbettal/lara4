@@ -26,15 +26,16 @@ class Post extends Model implements HasMedia , Feedable
 
     const FEED_PAGE_SIZE = 30;
 
-    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read'];
+    protected $fillable = ['name', 'slug', 'content', 'author_id', 'category_id', 'is_published', 'time_to_read', 'keywords'];
 
-    public $translatable = ['name', 'slug', 'content'];
+    public $translatable = ['name', 'slug', 'content', 'keywords'];
 
     protected $casts = [
         'name' => 'array',
         'slug' => 'array',
         'content' => 'array',
         'is_published' => 'boolean',
+        'keywords' => 'array',
     ];
 
     /**

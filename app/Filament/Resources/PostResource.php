@@ -16,6 +16,7 @@ use Filament\Forms\Components\SpatieTagsInput;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TagsInput;
 use SolutionForest\FilamentTranslateField\Forms\Component\Translate;
 
 class PostResource extends Resource
@@ -42,12 +43,15 @@ class PostResource extends Resource
                         ->label('Slug')
                         ->hiddenOn(['create'])
                         ->helperText(str('✨ pls provide a unique slug and should be **SEO** friendly and separated by `-`  and should be **unique for each language** and the characters should be **alphanumeric** and `-` and `_` only.')->inlineMarkdown()->toHtmlString())
-                        ->translatable(true
-                        , null, [
-                            'en' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                            'es' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                            'fr' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                        ]),
+                        ->translatable(
+                            true,
+                            null,
+                            [
+                                'en' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                'es' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                'fr' => ['required', 'string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                            ]
+                        ),
                     Forms\Components\Select::make('author_id')
                         ->relationship('author', 'name')
                         ->searchable()
@@ -59,12 +63,20 @@ class PostResource extends Resource
                         ->preload()
                         ->required(),
                     SpatieTagsInput::make('tags')->label('Tags')->required(),
+                    // keywrods
+                    Forms\Components\Section::make('SEO')->schema([
+                        TagsInput::make('keywords')
+                            ->splitKeys(['Tab', ', '])
+                            ->separator(',')
+                            ->label('Keywords')
+                            ->translatable(true),
+                    ])->columns(2),
                     Forms\Components\TextInput::make('time_to_read')
                         ->label('Time to read (in minutes)')
                         ->type('number')
                         ->required(),
                 ])->columns(2),
-                Translate::make()->locales(['en', 'es','fr'])
+                Translate::make()->locales(['en', 'es', 'fr'])
                     ->schema([
                         Forms\Components\MarkdownEditor::make('content')
                             ->disableToolbarButtons(['table'])
