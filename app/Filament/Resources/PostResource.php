@@ -26,78 +26,150 @@ class PostResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                Forms\Components\Section::make('Post Details')->schema([
-                    TextInput::make('name')
-                        ->label('The Name of the Post')
-                        ->helperText(str('✨ pls provide a unique name and should be **SEO** friendly and should be **unique for each language**.')->inlineMarkdown()->toHtmlString())
-                        ->translatable(true, null, [
-                            'en' => ['string', 'max:255', 'min:10'],
-                            'es' => ['string', 'max:255', 'min:10'],
-                            'fr' => ['string', 'max:255', 'min:10'],
+{
+    return $form
+        ->schema([
+            Forms\Components\Grid::make([
+                'default' => 1,
+                'lg' => 3,
+            ])->schema([
+                // Main content area (spans 2 columns)
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('Main Content')
+                        ->description('Create engaging, SEO-optimized content')
+                        ->schema([
+                            TextInput::make('name')
+                                ->label('Post Title')
+                                ->helperText(str('✨ Tips for SEO-friendly titles:
+                                - Use keywords near the beginning
+                                - Keep it under 60 characters
+                                - Include your main keyword
+                                - Make it compelling')->inlineMarkdown()->toHtmlString())
+                                ->translatable(true, null, [
+                                    'en' => ['string', 'max:60', 'min:10'],
+                                    'es' => ['string', 'max:60', 'min:10'],
+                                    'fr' => ['string', 'max:60', 'min:10'],
+                                ])
+                                ->columnSpanFull(),
+
+                            TextInput::make('slug')
+                                ->label('URL Slug')
+                                ->hiddenOn(['create'])
+                                    ->helperText(str('✨ URL-friendly version of the title (auto-generated)')->inlineMarkdown()->toHtmlString())
+                                    ->translatable(
+                                        true,
+                                        null,
+                                        [
+                                            'en' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                            'es' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                            'fr' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
+                                        ]
+                                    )
+                                ->columnSpanFull(),
+
+                            Translate::make()
+                                ->locales(['en', 'es', 'fr'])
+                                ->schema([
+                                    Forms\Components\MarkdownEditor::make('content')
+                                        ->label('Article Content')
+                                        ->helperText(str('✨ Content optimization tips:
+                                        - Use headings (H2, H3) to structure content
+                                        - Dont use H1 for headings bcs article title is H1
+                                        - Include keywords naturally
+                                        - Aim for 300+ words
+                                        - Add internal/external links
+                                        - Use bullet points for readability')->inlineMarkdown()->toHtmlString())
+                                        ->disableToolbarButtons(['table'])
+                                        ->columnSpanFull()
+                                        ->required(),
+                                ])
+                                ->columnSpanFull()
+                                ->suffixLocaleLabel(),
+                        ]),
+                ])->columnSpan(2),
+
+                // Sidebar (spans 1 column)
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make('SEO Metadata')
+                        ->description('Optimize your content for search engines')
+                        ->schema([
+                            TagsInput::make('keywords')
+                                ->label('Focus Keywords')
+                                ->helperText(str('✨ Keyword best practices:
+                                - Include 1 primary keyword
+                                - Add 2-3 related keywords
+                                - Use specific long-tail keywords
+                                - Match search intent')->inlineMarkdown()->toHtmlString())
+                                ->splitKeys(['Tab', ', '])
+                                ->separator(',')
+                                ->translatable(true),
+
+                            Forms\Components\TextInput::make('time_to_read')
+                                ->label('Reading Time (minutes)')
+                                ->helperText('Helps users decide whether to read now or save for later')
+                                ->numeric()
+                                ->minValue(1)
+                                ->maxValue(60)
+                                ->required(),
                         ]),
 
-                    TextInput::make('slug')
-                        ->label('Slug')
-                        ->hiddenOn(['create'])
-                        ->helperText(str('✨ pls provide a unique slug and should be **SEO** friendly and separated by `-`  and should be **unique for each language** and the characters should be **alphanumeric** and `-` and `_` only.')->inlineMarkdown()->toHtmlString())
-                        ->translatable(
-                            true,
-                            null,
-                            [
-                                'en' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                                'es' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                                'fr' => ['string', 'max:255', 'min:10', 'regex:/^[a-zA-Z0-9-_]+$/'],
-                            ]
-                        ),
-                    Forms\Components\Select::make('author_id')
-                        ->relationship('author', 'name')
-                        ->searchable()
-                        ->preload()
-                        ->required(),
-                    Forms\Components\Select::make('category_id')
-                        ->relationship('category', 'name')
-                        ->searchable()
-                        ->preload()
-                        ->required(),
-                    SpatieTagsInput::make('tags')->label('Tags')->required(),
-                    // keywrods
-                    Forms\Components\Section::make('SEO')->schema([
-                        TagsInput::make('keywords')
-                            ->splitKeys(['Tab', ', '])
-                            ->separator(',')
-                            ->label('Keywords')
-                            ->columnSpanFull()
-                            ->translatable(true),
-                    ])->columns(2),
-                    Forms\Components\TextInput::make('time_to_read')
-                        ->label('Time to read (in minutes)')
-                        ->type('number')
-                        ->required(),
-                ])->columns(2),
-                Translate::make()->locales(['en', 'es', 'fr'])
-                    ->schema([
-                        Forms\Components\MarkdownEditor::make('content')
-                            ->disableToolbarButtons(['table'])
-                            ->columnSpanFull()
-                            ->required(),
-                    ])
-                    ->columnSpanFull()
-                    ->suffixLocaleLabel(),
-                Forms\Components\Section::make('Image')->schema([
-                    SpatieMediaLibraryFileUpload::make('thumbnail')
-                        ->label('thumbnail cover (recommended size: height: 800px, width: 1200px)')
-                        ->image()
-                        ->required()
-                        ->columnSpanFull()
-                        ->collection('thumbnail'),
-                ])->columns(2),
-                Forms\Components\Toggle::make('is_published')
-                    ->default(true),
-            ]);
-    }
+                    Forms\Components\Section::make('Featured Image')
+                        ->description('Visual content improves engagement')
+                        ->schema([
+                            SpatieMediaLibraryFileUpload::make('thumbnail')
+                                ->label('Cover Image')
+                                ->helperText(str('✨ Image optimization tips:
+                                - Use 1200×800px size
+                                - Add descriptive alt text
+                                - Compress without quality loss
+                                - Use relevant images')->inlineMarkdown()->toHtmlString())
+                                ->image()
+                                ->imageResizeMode('cover')
+                                ->imageCropAspectRatio('3:2')
+                                ->required()
+                                ->collection('thumbnail'),
+                        ]),
+
+                    Forms\Components\Section::make('Categorization')
+                        ->description('Help users find related content')
+                        ->schema([
+                            Forms\Components\Select::make('category_id')
+                                ->relationship('category', 'name')
+                                ->helperText('Choose the most relevant category')
+                                ->searchable()
+                                ->preload()
+                                ->required(),
+
+                            SpatieTagsInput::make('tags')
+                                ->label('Topic Tags')
+                                ->helperText(str('✨ Tagging tips:
+                                - Use relevant topics
+                                - Include industry terms
+                                - Add related themes
+                                - Be specific')->inlineMarkdown()->toHtmlString())
+                                ->required(),
+                        ]),
+
+                    Forms\Components\Section::make('Publishing')
+                        ->schema([
+                            Forms\Components\Toggle::make('is_published')
+                                ->label('Published')
+                                ->helperText('Make this post visible to readers')
+                                ->default(true),
+
+                            Forms\Components\Toggle::make('is_featured')
+                                ->label('Featured Post')
+                                ->helperText('Highlight important content on homepage'),
+
+                            Forms\Components\DateTimePicker::make('published_at')
+                                ->label('Publish Date')
+                                ->helperText('Schedule or backdate your post')
+                                ->required(),
+                        ]),
+                ])->columnSpan(1),
+            ]),
+        ]);
+}
 
     public static function table(Table $table): Table
     {
