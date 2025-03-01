@@ -31,6 +31,7 @@
         "league/commonmark": "^2.6",
         "mcamara/laravel-localization": "^2.2",
         "mvenghaus/filament-plugin-translatable-inline": "^3.0",
+        "opcodesio/log-viewer": "*",
         "outerweb/filament-translatable-fields": "^2.0",
         "propaganistas/laravel-phone": "^5.3",
         "rawilk/filament-password-input": "^2.0",
@@ -47,6 +48,7 @@
         "spatie/laravel-tags": "^4.7",
         "spatie/laravel-translatable": "^6.8",
         "spatie/laravel-translation-loader": "^2.8",
+        "stevebauman/location": "^7.5",
         "testmonitor/laravel-vue-i18n-generator": "^2.0",
         "tightenco/ziggy": "^2.0"
     },
