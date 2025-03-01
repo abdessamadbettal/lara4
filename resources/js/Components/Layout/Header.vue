@@ -6,12 +6,13 @@ import IconBars from "@/Components/Icons/IconBars.vue"
 import IconX from "@/Components/Icons/IconX.vue"
 import Button from "@/Components/Button.vue"
 import { Transition } from "vue"
-import { Link } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3'
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import ThemeSwitcher from "@/Components/ThemeSwitcher.vue";
 import LanguageSwitcher from "@/Components/LanguageSwitcher.vue";
 import MobileNav from "@/Components/Layout/MobileNav.vue"
+
 
 const props = defineProps({
     menuItems: {
@@ -25,11 +26,14 @@ const props = defineProps({
     canRegister: {
         type: Boolean,
     },
+    auth: {
+        type: Object,
+        required: true,
+    }
 })
 
-const isRegisterRoute = computed(() => {
-    return route().current('register')
-})
+const user = computed(() => props.auth.user.data);
+const isAdmin = computed(() => user.value.isAdmin);
 
 const showMobileMenu = ref(false)
 const scrollY = ref(0)
@@ -86,6 +90,14 @@ const headerClass = computed(() => {
                             </template>
 
                             <template #content>
+                                <template v-if="isAdmin">
+                                    <DropdownLink href="/admin">
+                                        Filament
+                                    </DropdownLink>
+                                    <DropdownLink href="/logs" >
+                                        Logs
+                                    </DropdownLink>
+                                </template>
                                 <DropdownLink :href="route('dashboard')" >
                                     {{ $t('auth.dashboard') }}
                                 </DropdownLink>
