@@ -100,16 +100,6 @@ class ProviderController extends Controller
                 if (!$user->avatar) {
                     $user->update(['avatar' => $providerUser->getAvatar()]);
                 }
-
-                // Update first and last name if not set
-                if (!$user->first_name) {
-                    $user->update(['first_name' => $providerUser->getFirstName()]);
-                }
-
-                if (!$user->last_name) {
-                    $user->update(['last_name' => $providerUser->getLastName()]);
-                }
-
                 
             }
 
