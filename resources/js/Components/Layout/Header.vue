@@ -26,13 +26,9 @@ const props = defineProps({
     canRegister: {
         type: Boolean,
     },
-    auth: {
-        type: Object,
-        required: true,
-    }
 })
 
-const user = computed(() => props.auth.user.data);
+const user = computed(() => usePage().props.auth.user.data);
 const isAdmin = computed(() => user.value.isAdmin);
 
 const showMobileMenu = ref(false)
@@ -91,10 +87,10 @@ const headerClass = computed(() => {
 
                             <template #content>
                                 <template v-if="isAdmin">
-                                    <DropdownLink href="/admin">
-                                        Filament
+                                    <DropdownLink href="/admin" as="a">
+                                        Admin Panel
                                     </DropdownLink>
-                                    <DropdownLink href="/logs" >
+                                    <DropdownLink href="/logs" as="a">
                                         Logs
                                     </DropdownLink>
                                 </template>

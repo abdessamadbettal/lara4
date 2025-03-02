@@ -18,7 +18,7 @@ use App\Traits\TracksUserDevices;
 
 class User extends Authenticatable  implements HasMedia, FilamentUser
 {
-    use HasFactory, Notifiable, HasRoles, SoftDeletes, InteractsWithMedia;
+    use HasFactory, Notifiable, HasRoles, SoftDeletes, InteractsWithMedia, TracksUserDevices;
 
     /**
      * The attributes that are mass assignable.
@@ -75,8 +75,6 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
             'password' => 'hashed',
             'last_login' => 'datetime',
             'login_count' => 'integer',
-            'latitude' => 'decimal:10,8',
-            'longitude' => 'decimal:11,8',
             'status' => 'integer',
             'is_banned' => 'boolean',
             'banned_at' => 'datetime',
@@ -101,6 +99,14 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
     public function phones()
     {
         return $this->morphMany(Phone::class, 'phoneable');
+    }
+
+    /**
+     * Get the user's social providers.
+     */
+    public function providers()
+    {
+        return $this->hasMany(Provider::class);
     }
 
     /**

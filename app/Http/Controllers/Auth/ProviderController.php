@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Socialite\Facades\Socialite;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\DB;
 
 class ProviderController extends Controller
 {
@@ -44,45 +45,71 @@ class ProviderController extends Controller
     {
         $providerValue = $request->provider;
 
-        // Validate the provider to ensure it's supported
-        if (!in_array($providerValue, ['google',  'github'])) {
+        if (!in_array($providerValue, ['google', 'github'])) {
             return redirect()->route('welcome')->with('error', 'Unsupported provider.');
         }
 
-        $previousUrl = $request->session()->pull('previous_url', route('welcome')); // Use a named route as default
+        $previousUrl = $request->session()->pull('previous_url', route('welcome'));
         $providerUser = Socialite::driver($providerValue)->stateless()->user();
+        
+        try {
+            DB::beginTransaction();
 
-        $deviceInfo = (new User)->getDeviceInfo();
+            // Check if provider account exists
+            $provider = Provider::where('provider', $providerValue)
+                ->where('provider_id', $providerUser->getId())
+                ->first();
 
-        // Find or create the user
-        $user = User::firstOrCreate(
-            [
-                'email' => $providerUser->getEmail(),
-                'provider' => $providerValue
-            ],
-            [
-                'name' => $providerUser->getName(),
-                'first_name' => $providerUser->user['given_name'] ?? null,
-                'last_name' => $providerUser->user['family_name'] ?? null,
-                'password' => Hash::make(Str::random(24)), // Generate a random password
-                'email_verified_at' => now(),
-                'avatar' => $providerUser->getAvatar(),
-                'provider' => $providerValue,
-                'provider_id' => $providerUser->getId(),
-                'provider_token' => $providerUser->token,
-                'registration_ip' => $deviceInfo['registration_ip'],
-                'browser' => $deviceInfo['browser'],
-                'platform' => $deviceInfo['platform'],
-                'device' => $deviceInfo['device'],
-            ]
-        );
+            if ($provider) {
+                $user = $provider->user;
+            } else {
+                // Check if user exists with same email
+                $user = User::where('email', $providerUser->getEmail())->first();
 
-        // Update location data
-        $user->updateLocationData();
+                if (!$user) {
+                    $deviceInfo = (new User)->getDeviceInfo();
+                    
+                    // Create new user
+                    $user = User::create([
+                        'name' => $providerUser->getName(),
+                        'email' => $providerUser->getEmail(),
+                        'first_name' => $providerUser->user['given_name'] ?? null,
+                        'last_name' => $providerUser->user['family_name'] ?? null,
+                        'password' => Hash::make(Str::random(24)),
+                        'email_verified_at' => now(),
+                        'avatar' => $providerUser->getAvatar(),
+                        'registration_ip' => $deviceInfo['registration_ip'],
+                        'browser' => $deviceInfo['browser'],
+                        'platform' => $deviceInfo['platform'],
+                        'device' => $deviceInfo['device'],
+                    ]);
+                }
 
-        // Log the user in
-        Auth::login($user);
+                // Create provider record
+                Provider::create([
+                    'user_id' => $user->id,
+                    'provider' => $providerValue,
+                    'provider_id' => $providerUser->getId(),
+                    'provider_token' => $providerUser->token,
+                    'avatar' => $providerUser->getAvatar(),
+                    'name' => $providerUser->getName(),
+                    'nickname' => $providerUser->getNickname(),
+                ]);
+            }
 
-        return redirect($previousUrl)->with('success', 'Logged in successfully.');
+            // Update location data
+            $user->updateLocationData();
+
+            DB::commit();
+
+            // Log the user in
+            Auth::login($user);
+
+            return redirect($previousUrl)->with('success', 'Logged in successfully.');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->route('welcome')->with('error', 'Authentication failed. Please try again.');
+        }
     }
 }
