@@ -73,8 +73,8 @@ class ProviderController extends Controller
                     $user = User::create([
                         'name' => $providerUser->getName(),
                         'email' => $providerUser->getEmail(),
-                        'first_name' => $providerUser->user['given_name'] ?? null,
-                        'last_name' => $providerUser->user['family_name'] ?? null,
+                        'first_name' => $providerUser->getFirstName(),
+                        'last_name' => $providerUser->getLastName(),
                         'password' => Hash::make(Str::random(24)),
                         'email_verified_at' => now(),
                         'avatar' => $providerUser->getAvatar(),
@@ -95,6 +95,22 @@ class ProviderController extends Controller
                     'name' => $providerUser->getName(),
                     'nickname' => $providerUser->getNickname(),
                 ]);
+
+                // if user avatar is not set, update it
+                if (!$user->avatar) {
+                    $user->update(['avatar' => $providerUser->getAvatar()]);
+                }
+
+                // Update first and last name if not set
+                if (!$user->first_name) {
+                    $user->update(['first_name' => $providerUser->getFirstName()]);
+                }
+
+                if (!$user->last_name) {
+                    $user->update(['last_name' => $providerUser->getLastName()]);
+                }
+
+                
             }
 
             // Update location data

@@ -15,7 +15,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $locale = app()->getLocale();
+        
+        $posts = Post::whereNotNull("name->$locale")
+            ->whereNotNull("slug->$locale")
+            ->paginate(10);
 
         return request()->wantsJson()
             ? PostResource::collection($posts)
@@ -40,7 +44,7 @@ class PostController extends Controller
             foreach ($languages as $lang) {
                 if ($lang !== $locale) {
                     $post = Post::where("slug->$lang", $slug)->first();
-                    if ($post) {
+                    if ($post && $slug !== $post->slug) {
                         return redirect()->route('posts.show', ['post' => $post->slug]);
                     }
                 }
@@ -54,6 +58,8 @@ class PostController extends Controller
         $post->increment('views_count');
         // with relatedposts
         $related_posts = Post::where('id', '!=', $post->id)
+        ->whereNotNull("name->$locale")
+        ->whereNotNull("slug->$locale")
             ->inRandomOrder()
             ->limit(3)
             ->get();

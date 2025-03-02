@@ -11,7 +11,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->take(3)->get();
+        $locale = app()->getLocale();
+        $posts = Post::whereNotNull("name->$locale")
+        ->whereNotNull("slug->$locale")->latest()->take(3)->get();
         return Inertia::render('Welcome', [
             'posts' => PostResource::collection($posts),    
         ]);

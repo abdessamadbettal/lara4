@@ -103,8 +103,7 @@ class PostResource extends Resource
                                             - Answer common user questions
                                             - Use transition words for readability')->inlineMarkdown()->toHtmlString())
                                             ->disableToolbarButtons(['table'])
-                                            ->columnSpanFull()
-                                            ->required(),
+                                            ->columnSpanFull(),
                                     ])
                                     ->columnSpanFull()
                                     ->suffixLocaleLabel(),
@@ -156,6 +155,14 @@ class PostResource extends Resource
                                 Forms\Components\Select::make('category_id')
                                     ->relationship('category', 'name')
                                     ->helperText('Group similar content for better SEO')
+                                    ->searchable()
+                                    ->preload()
+                                    ->required(),
+
+                                    // author_id
+                                Forms\Components\Select::make('author_id')
+                                    ->relationship('author', 'name')
+                                    ->helperText('Select the author of this post')
                                     ->searchable()
                                     ->preload()
                                     ->required(),
