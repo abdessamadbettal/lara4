@@ -32,7 +32,7 @@ class ProviderController extends Controller
         // Store the previous URL to redirect back after login
         session()->put('previous_url', url()->previous());
 
-        return Inertia::location(Socialite::driver($providerValue)->redirect()->getTargetUrl());
+        return Inertia::location(Socialite::driver($providerValue)->stateless()->redirect()->getTargetUrl());
     }
 
     /**
@@ -50,7 +50,7 @@ class ProviderController extends Controller
         }
 
         $previousUrl = $request->session()->pull('previous_url', route('welcome'));
-        $providerUser = Socialite::driver($providerValue)->user();
+        $providerUser = Socialite::driver($providerValue)->stateless()->user();
         
         try {
             DB::beginTransaction();
