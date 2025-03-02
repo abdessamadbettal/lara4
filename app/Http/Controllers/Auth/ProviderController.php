@@ -73,8 +73,8 @@ class ProviderController extends Controller
                     $user = User::create([
                         'name' => $providerUser->getName(),
                         'email' => $providerUser->getEmail(),
-                        'first_name' => $providerUser->getFirstName(),
-                        'last_name' => $providerUser->getLastName(),
+                        'first_name' => $providerUser->user['given_name'] ?? null,
+                        'last_name' => $providerUser->user['family_name'] ?? null,
                         'password' => Hash::make(Str::random(24)),
                         'email_verified_at' => now(),
                         'avatar' => $providerUser->getAvatar(),
