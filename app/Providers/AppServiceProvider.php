@@ -3,10 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Vite;
-use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use Opcodes\LogViewer\Facades\LogViewer;
+use Illuminate\Auth\Notifications\ResetPassword;
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,6 +33,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
+        
         Vite::prefetch(concurrency: 3);
 
         LogViewer::auth(function ($request) {
