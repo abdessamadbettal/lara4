@@ -49,6 +49,7 @@
     "dependencies": {
         "@vueuse/core": "^12.8.2",
         "lucide-vue-next": "^0.462.0",
-        "vue-i18n": "^10.0.5"
+        "vue-i18n": "^10.0.5",
+        "vue-typewriter-effect": "^1.0.1"
     }
 }

@@ -1,6 +1,8 @@
 <script setup>
 import Button from '@/Components/Button.vue';
 import IconTextDecoration from '@/Components/Icons/IconTextDecoration.vue';
+import VueTypewriterEffect from "vue-typewriter-effect";
+import { usePage } from '@inertiajs/vue3';
 
 const props = defineProps({
     id: {
@@ -8,26 +10,137 @@ const props = defineProps({
         default: 'hero'
     }
 });
+
+// Dynamic typewriter words based on Lara4 features
+const typedStrings = [
+    'Modern',
+    'Powerful',
+    'Multilingual',
+    'SEO-Optimized'
+];
 </script>
 
 <template>
-    <div :id="id"
-        class="flex flex-col justify-center items-center text-center pt-16 pb-20 lg:pt-32 lg:pb-32">
-        <h1 class="mx-auto max-w-4xl font-medium tracking-tight text-gray-900 dark:text-white text-5xl sm:text-7xl mb-6">
-            {{ $t('home.welcome_to') }}
-            <span class="relative whitespace-nowrap text-[#FF2D20]">
-                <IconTextDecoration />
-                <span class="relative">Lara4</span>
-            </span>
-        </h1>
-        <p class="mx-auto mt-6 max-w-5xl text-xl sm:text-2xl tracking-tight text-slate-700 dark:text-slate-300">
-            {{ $t('home.hero_description') }}
-        </p>
-        <div class="mt-10 flex justify-center gap-x-6">
-            <Button :href="route('register')">{{ $t('home.get_started') }}</Button>
-            <Button href="https://github.com/abdessamadbettal/Lara4" variant="outline">
-                {{ $t('home.view_on_github') }}
-            </Button>
+    <div :id="id" class="relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10 dark:opacity-20">
+            <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,transparent)]" />
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative flex flex-col justify-center items-center text-center px-6 pt-24 pb-20 lg:pt-32 lg:pb-32 mx-auto max-w-7xl">
+            <!-- Main Headline -->
+            <h1 class="font-bold tracking-tight text-gray-900 dark:text-white">
+                <span class="block text-4xl sm:text-6xl lg:text-7xl mb-4">
+                    {{ $t('home.welcome_to') }}
+                </span>
+                <span class="block text-4xl sm:text-6xl lg:text-7xl">
+                    <span class="relative whitespace-nowrap text-[#FF2D20]">
+                        <IconTextDecoration class="absolute top-2/3 left-0 h-[0.58em] w-full fill-[#FF2D20]/20" />
+                        <span class="relative">Lara4</span>
+                    </span>
+                    <span class="text-[#FF2D20]"> - </span>
+                    <VueTypewriterEffect :strings="typedStrings" :loop="true" :autoStart="true" />
+                </span>
+            </h1>
+
+            <!-- Subtext -->
+            <p class="mx-auto mt-8 max-w-3xl text-lg sm:text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+                {{ $t('home.hero_description') }}
+            </p>
+
+            <!-- CTAs -->
+            <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <Button
+                    :href="route('register')"
+                    class="group relative px-8 py-3 text-lg"
+                    variant="primary"
+                >
+                    <span class="relative z-10">{{ $t('home.get_started') }}</span>
+                    <div class="absolute inset-0 scale-0 group-hover:scale-100 transition-transform origin-center rounded-lg bg-gradient-to-r from-[#FF2D20] to-[#FF8B66] z-0" />
+                </Button>
+                
+                <Button
+                    href="https://github.com/abdessamadbettal/Lara4"
+                    class="px-8 py-3 text-lg"
+                    variant="outline"
+                >
+                    {{ $t('home.view_on_github') }}
+                </Button>
+            </div>
+
+            <!-- Feature Indicators -->
+            <div class="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-4">
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl mb-2">⚡️</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Inertia.js + Vue 3</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl mb-2">🌐</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Multi-Language</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl mb-2">🚀</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Laravel 11</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <span class="text-3xl mb-2">✨</span>
+                    <span class="text-sm text-gray-500 dark:text-gray-400">Filament Admin</span>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+                <div class="animate-bounce w-6 h-10 border-2 border-gray-400 dark:border-gray-600 rounded-full flex justify-center">
+                    <div class="w-1 h-3 bg-gray-400 dark:bg-gray-600 rounded-full mt-2"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
+
+<style scoped>
+.bg-grid-slate-100 {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(51 65 85 / 0.1)'%3E%3Cpath d='M0 .5H31.5V32'/%3E%3C/svg%3E");
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.text-gradient {
+    background-size: 200% auto;
+    animation: gradient 4s linear infinite;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced hover effects */
+button:hover {
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
+
+/* Additional animation for decoration */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .grid-cols-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+</style>
