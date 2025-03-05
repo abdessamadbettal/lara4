@@ -51,6 +51,36 @@ const props = defineProps({
     ariaLabel: {
         type: String,
         default: null
+    },
+    as: {
+        type: String,
+        default: null,
+        validator: (value) => ['a', 'button', 'Link', null].includes(value)
+    },
+    replace: {
+        type: Boolean,
+        default: false
+    },
+    preserveScroll: {
+        type: Boolean,
+        default: false
+    },
+    preserveState: {
+        type: Boolean,
+        default: false
+    },
+    only: {
+        type: Array,
+        default: () => []
+    },
+    method: {
+        type: String,
+        default: 'get',
+        validator: (value) => ['get', 'post', 'put', 'patch', 'delete'].includes(value)
+    },
+    data: {
+        type: Object,
+        default: () => ({})
     }
 });
 
@@ -107,21 +137,50 @@ const buttonClasses = computed(() => {
 const isActuallyDisabled = computed(() => props.disabled || props.isLoading);
 
 const Tag = computed(() => {
-    if (props.href) {
-        return props.external ? 'a' : Link;
+    // First check if "as" is explicitly set
+    if (props.as) {
+        return props.as === 'Link' ? Link : props.as;
     }
+    
+    // Then handle href logic
+    if (props.href) {
+        // External links or explicitly set to use anchor
+        if (props.external) {
+            return 'a';
+        }
+        // Use Inertia Link by default for internal hrefs
+        return Link;
+    }
+    
+    // Default to button
     return 'button';
 });
 
 const linkProps = computed(() => {
-    if (props.external && props.href) {
+    // Handle regular anchor tag
+    if ((props.external || props.as === 'a') && props.href) {
         return {
             href: props.href,
-            target: "_blank",
-            rel: "noopener noreferrer"
+            target: props.external ? "_blank" : undefined,
+            rel: props.external ? "noopener noreferrer" : undefined
         };
     }
-    return props.href ? { href: props.href } : {};
+    
+    // Handle Inertia Link
+    if (props.href && Tag.value === Link) {
+        return {
+            href: props.href,
+            replace: props.replace,
+            preserveScroll: props.preserveScroll,
+            preserveState: props.preserveState,
+            only: props.only.length ? props.only : undefined,
+            method: props.method,
+            data: Object.keys(props.data).length ? props.data : undefined
+        };
+    }
+    
+    // Default empty for button
+    return {};
 });
 
 const buttonProps = computed(() => {
