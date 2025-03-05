@@ -1,5 +1,5 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import Logo from '@/Components/Icons/Logo.vue';
 import { Link } from '@inertiajs/vue3';
 import GeneralLayout from '@/Layouts/GeneralLayout.vue';
 </script>
@@ -9,8 +9,8 @@ import GeneralLayout from '@/Layouts/GeneralLayout.vue';
             class="flex min-h-screen flex-col items-center  pt-6 sm:justify-center sm:pt-0 rounded-xl"
         >
             <div>
-                <Link href="/">
-                    <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+                <Link href="/" >
+                    <Logo />
                 </Link>
             </div>
 
