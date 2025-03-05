@@ -1,10 +1,10 @@
 <template>
     <div class="container relative md:mt-24 mt-16">
         <div class="grid grid-cols-1 pb-6 text-center">
-            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold">{{ $t('home.latest_blogs')
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold dark:text-sky-100">{{ $t('home.latest_blogs')
                 }}</h3>
 
-            <p class="text-slate-400 max-w-xl mx-auto">{{ $t('home.latest_blogs_text') }}</p>
+            <p class="text-slate-400 max-w-xl mx-auto dark:text-sky-100">{{ $t('home.latest_blogs_text') }}</p>
         </div>
 
         <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-6">
