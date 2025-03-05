@@ -95,45 +95,44 @@ const buttonSizeClasses = computed(() => {
 });
 
 const buttonClasses = computed(() => {
-    const baseClasses = 'inline-flex items-center justify-center font-medium tracking-wide transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed';
+    const baseClasses = 'inline-flex items-center justify-center font-medium tracking-wide transition-all duration-300 ease-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100';
     const roundedClass = props.rounded ? 'rounded-full' : 'rounded-md';
     const widthClass = props.fullWidth ? 'w-full' : '';
     
     let variantClasses;
     switch (props.variant) {
         case 'danger':
-            variantClasses = 'border border-transparent bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 active:bg-red-800 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-red-600 text-white hover:bg-red-700 hover:shadow-md hover:shadow-red-500/20 focus:ring-red-500 active:bg-red-800 dark:focus:ring-offset-gray-800';
             break;
         case 'success':
-            variantClasses = 'border border-transparent bg-green-600 text-white hover:bg-green-700 focus:ring-green-500 active:bg-green-800 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-green-600 text-white hover:bg-green-700 hover:shadow-md hover:shadow-green-500/20 focus:ring-green-500 active:bg-green-800 dark:focus:ring-offset-gray-800';
             break;
         case 'warning':
-            variantClasses = 'border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 focus:ring-yellow-500 active:bg-yellow-700 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-yellow-500 text-white hover:bg-yellow-600 hover:shadow-md hover:shadow-yellow-500/20 focus:ring-yellow-500 active:bg-yellow-700 dark:focus:ring-offset-gray-800';
             break;
         case 'info':
-            variantClasses = 'border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500 active:bg-blue-800 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:shadow-blue-500/20 focus:ring-blue-500 active:bg-blue-800 dark:focus:ring-offset-gray-800';
             break;
         case 'outline':
-            variantClasses = 'border border-gray-300 bg-transparent text-gray-800 hover:bg-gray-50 focus:ring-gray-400 active:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-800 dark:active:bg-gray-700';
+            variantClasses = 'border border-gray-300 bg-transparent text-gray-800 hover:bg-gray-50 hover:border-gray-400 hover:shadow-sm focus:ring-gray-400 active:bg-gray-100 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-800 dark:active:bg-gray-700';
             break;
         case 'secondary':
-            variantClasses = 'border border-transparent bg-gray-600 text-white hover:bg-gray-700 focus:ring-gray-500 active:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-gray-600 text-white hover:bg-gray-700 hover:shadow-md hover:shadow-gray-500/20 focus:ring-gray-500 active:bg-gray-800 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-offset-gray-800';
             break;
         case 'ghost':
-            variantClasses = 'border border-transparent bg-transparent text-gray-700 hover:bg-gray-100 focus:ring-gray-400 active:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-transparent text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:ring-gray-400 active:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-100 dark:focus:ring-offset-gray-800';
             break;
         case 'link':
-            variantClasses = 'border-0 bg-transparent text-blue-600 hover:text-blue-800 underline focus:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300';
+            variantClasses = 'border-0 bg-transparent text-blue-600 hover:text-blue-800 hover:underline-offset-4 underline focus:ring-blue-500 dark:text-blue-400 dark:hover:text-blue-300';
             break;
         case 'primary':
         default:
-            variantClasses = 'border border-transparent bg-gray-800 text-white hover:bg-gray-700 focus:ring-gray-600 active:bg-gray-900 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-white dark:focus:ring-offset-gray-800';
+            variantClasses = 'border border-transparent bg-gray-800 text-white hover:bg-gray-700 hover:shadow-md hover:shadow-gray-800/20 focus:ring-gray-600 active:bg-gray-900 dark:bg-gray-200 dark:text-gray-800 dark:hover:bg-white dark:focus:ring-offset-gray-800';
             break;
     }
 
     return [baseClasses, variantClasses, buttonSizeClasses.value, roundedClass, widthClass];
 });
-
 const isActuallyDisabled = computed(() => props.disabled || props.isLoading);
 
 const Tag = computed(() => {
