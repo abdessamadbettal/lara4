@@ -6,7 +6,7 @@ const stacks = [
     {
         name: 'Laravel',
         description: 'Modern PHP Framework',
-        icon: '/images/tech/laravel.svg',
+        icon: 'https://cdn.simpleicons.org/laravel/FF2D20',
         color: 'text-red-500',
         bgColor: 'bg-red-50 dark:bg-red-900/20',
         link: 'https://laravel.com'
@@ -14,7 +14,7 @@ const stacks = [
     {
         name: 'Vue.js',
         description: 'Progressive JS Framework',
-        icon: '/images/tech/vue.svg',
+        icon: 'https://cdn.simpleicons.org/vuedotjs/4FC08D',
         color: 'text-green-500',
         bgColor: 'bg-green-50 dark:bg-green-900/20',
         link: 'https://vuejs.org'
@@ -22,7 +22,7 @@ const stacks = [
     {
         name: 'Inertia.js',
         description: 'Modern Monolith Builder',
-        icon: '/images/tech/inertia.svg',
+        icon: 'https://cdn.simpleicons.org/inertia/9553E9',
         color: 'text-purple-500',
         bgColor: 'bg-purple-50 dark:bg-purple-900/20',
         link: 'https://inertiajs.com'
@@ -30,7 +30,7 @@ const stacks = [
     {
         name: 'Tailwind CSS',
         description: 'Utility-First CSS',
-        icon: '/images/tech/tailwind.svg',
+        icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
         color: 'text-cyan-500',
         bgColor: 'bg-cyan-50 dark:bg-cyan-900/20',
         link: 'https://tailwindcss.com'
@@ -38,7 +38,7 @@ const stacks = [
     {
         name: 'Filament',
         description: 'Admin Panel & Forms',
-        icon: '/images/tech/filament.svg',
+        icon: 'https://cdn.simpleicons.org/filament/EF3B2D',
         color: 'text-indigo-500',
         bgColor: 'bg-indigo-50 dark:bg-indigo-900/20',
         link: 'https://filamentphp.com'
