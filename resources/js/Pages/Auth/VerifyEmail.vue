@@ -45,6 +45,7 @@ const verificationLinkSent = computed(
                 <div class="mt-4 flex items-center justify-between">
                     <Button
                         :isLoading="form.processing"
+                         type="submit"
                     >
                         Resend Verification Email
                     </Button>

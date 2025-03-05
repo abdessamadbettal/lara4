@@ -94,6 +94,7 @@ const submit = () => {
                 <div class="mt-4 flex items-center justify-end">
                     <Button
                         :isLoading="form.processing"
+                         type="submit"
                     >
                         {{ $t('auth.reset_password') }}
                     </Button>

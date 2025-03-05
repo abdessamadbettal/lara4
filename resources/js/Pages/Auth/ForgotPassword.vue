@@ -59,6 +59,8 @@ const submit = () => {
                 <div class="mt-4 flex items-center justify-end">
                     <Button
                         :isLoading="form.processing"
+                        :disabled="form.processing"
+                        type="submit"
                     >
                         {{ $t('auth.email_password_reset_link') }}
                     </Button>

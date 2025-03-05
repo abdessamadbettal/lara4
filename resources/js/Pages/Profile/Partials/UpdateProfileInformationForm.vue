@@ -93,7 +93,7 @@ const form = useForm({
             </div>
 
             <div class="flex items-center gap-4">
-                <Button :isLoading="form.processing">{{ $t('auth.save') }}</Button>
+                <Button :isLoading="form.processing"  type="submit">{{ $t('auth.save') }}</Button>
 
                 <Transition
                     enter-active-class="transition ease-in-out"

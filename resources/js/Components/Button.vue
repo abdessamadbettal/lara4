@@ -75,7 +75,7 @@ const props = defineProps({
     },
     method: {
         type: String,
-        default: 'get',
+        default: 'post',
         validator: (value) => ['get', 'post', 'put', 'patch', 'delete'].includes(value)
     },
     data: {

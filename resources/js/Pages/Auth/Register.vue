@@ -109,6 +109,7 @@ const submit = () => {
                     <Button
                         class="ms-4"
                         :isLoading="form.processing"
+                        type="submit"
                     >
                         {{ $t('auth.register') }}
                     </Button>

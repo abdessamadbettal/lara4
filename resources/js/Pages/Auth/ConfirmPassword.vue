@@ -47,6 +47,8 @@ const submit = () => {
                     <Button
                         class="ms-4"
                         :isLoading="form.processing"
+                        :disabled="form.processing"
+                        type="submit"
                     >
                         Confirm
                     </Button>
