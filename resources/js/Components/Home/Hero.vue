@@ -18,6 +18,40 @@ const typedStrings = [
     'Multilingual',
     'SEO-Optimized'
 ];
+
+// Feature indicators with proper icons
+const features = [
+    {
+        name: 'Laravel',
+        icon: 'https://cdn.simpleicons.org/laravel/FF2D20',
+        color: 'text-red-500',
+        bgColor: 'bg-red-50 dark:bg-red-900/20',
+    },
+    {
+        name: 'Vue.js',
+        icon: 'https://cdn.simpleicons.org/vuedotjs/4FC08D',
+        color: 'text-green-500',
+        bgColor: 'bg-green-50 dark:bg-green-900/20',
+    },
+    {
+        name: 'Inertia.js',
+        icon: 'https://cdn.simpleicons.org/inertia/9553E9',
+        color: 'text-purple-500',
+        bgColor: 'bg-purple-50 dark:bg-purple-900/20',
+    },
+    {
+        name: 'Tailwind CSS',
+        icon: 'https://cdn.simpleicons.org/tailwindcss/06B6D4',
+        color: 'text-cyan-500',
+        bgColor: 'bg-cyan-50 dark:bg-cyan-900/20',
+    },
+    {
+        name: 'Filament',
+        icon: 'https://cdn.simpleicons.org/filament/EF3B2D',
+        color: 'text-indigo-500',
+        bgColor: 'bg-indigo-50 dark:bg-indigo-900/20',
+    }
+];
 </script>
 
 <template>
@@ -57,35 +91,27 @@ const typedStrings = [
                     variant="primary"
                 >
                     <span class="relative z-10">{{ $t('home.get_started') }}</span>
-                    <div class="absolute inset-0 scale-0 group-hover:scale-100 transition-transform origin-center rounded-lg bg-gradient-to-r from-[#FF2D20] to-[#FF8B66] z-0" />
                 </Button>
                 
                 <Button
                     href="https://github.com/abdessamadbettal/Lara4"
                     class="px-8 py-3 text-lg"
                     variant="outline"
+                    as="a"
+                    target="_blank"
                 >
                     {{ $t('home.view_on_github') }}
                 </Button>
             </div>
 
-            <!-- Feature Indicators -->
-            <div class="mt-16 grid grid-cols-2 gap-8 sm:grid-cols-4 lg:grid-cols-4">
-                <div class="flex flex-col items-center">
-                    <span class="text-3xl mb-2">⚡️</span>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Inertia.js + Vue 3</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-3xl mb-2">🌐</span>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Multi-Language</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-3xl mb-2">🚀</span>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Laravel 11</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <span class="text-3xl mb-2">✨</span>
-                    <span class="text-sm text-gray-500 dark:text-gray-400">Filament Admin</span>
+            <!-- Feature Indicators with SVG Icons -->
+            <div class="mt-16 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
+                <div v-for="(feature, index) in features" :key="index" 
+                     class="flex flex-col items-center transform transition-all duration-300 hover:scale-110">
+                    <div :class="['w-14 h-14 flex items-center justify-center rounded-full p-3 mb-3', feature.bgColor]">
+                        <img :src="feature.icon" :alt="feature.name" class="w-8 h-8 drop-shadow-sm">
+                    </div>
+                    <span :class="['text-sm font-medium', feature.color]">{{ feature.name }}</span>
                 </div>
             </div>
 
@@ -127,15 +153,35 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-/* Additional animation for decoration */
+/* Feature icon animations */
 @keyframes float {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-5px); }
 }
 
-.animate-float {
-    animation: float 4s ease-in-out infinite;
+/* Icon entry animation */
+@keyframes icon-entry {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* Apply animations to icons with delay */
+.flex.flex-col.items-center {
+    animation: icon-entry 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.flex.flex-col.items-center:nth-child(1) { animation-delay: 0.3s; }
+.flex.flex-col.items-center:nth-child(2) { animation-delay: 0.4s; }
+.flex.flex-col.items-center:nth-child(3) { animation-delay: 0.5s; }
+.flex.flex-col.items-center:nth-child(4) { animation-delay: 0.6s; }
+.flex.flex-col.items-center:nth-child(5) { animation-delay: 0.7s; }
 
 /* Responsive adjustments */
 @media (max-width: 640px) {
