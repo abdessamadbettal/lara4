@@ -3,8 +3,9 @@
         <div class="relative">
             <Dropdown align="right" width="48">
                 <template #trigger>
+                    <!-- Desktop version -->
                     <button type="button"
-                        class="inline-flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium leading-4 text-gray-700 transition duration-200 ease-in-out hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-600">
+                        class="hidden sm:inline-flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium leading-4 text-gray-700 transition duration-200 ease-in-out hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-600">
                         <img loading="lazy" :src="currentLanguage.flag" alt="" class="w-5 h-4 me-2 rounded shadow-sm">
                         <span class="font-semibold">{{ currentLanguage.name }}</span>
                         <svg class="ms-2 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -14,10 +15,17 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </button>
+
+                    <!-- Mobile version (compact) -->
+                    <button type="button"
+                        class="sm:hidden inline-flex items-center justify-center rounded-full border border-gray-200 bg-white w-9 h-9 text-sm transition duration-200 ease-in-out hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-600">
+                        <img loading="lazy" :src="currentLanguage.flag" alt="" class="w-5 h-4 rounded shadow-sm">
+                        <span class="sr-only">{{ currentLanguage.name }}</span>
+                    </button>
                 </template>
 
                 <template #content>
-                    <div class="py-1">
+                    <div class="py-1 max-h-[300px] overflow-y-auto">
                         <DropdownLink
                             v-for="lang in languages"
                             :key="lang.code"
@@ -42,6 +50,15 @@
                     </div>
                 </template>
             </Dropdown>
+            
+            <!-- Loading indicator overlay -->
+            <div v-if="isLoading" 
+                class="absolute inset-0 flex items-center justify-center bg-white bg-opacity-70 dark:bg-gray-800 dark:bg-opacity-70 rounded-lg z-10">
+                <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
         </div>
     </div>
 </template>
@@ -53,7 +70,12 @@ import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import i18n, { setLocale } from '@/i18n';
 
-const props = defineProps(['currentLocale']);
+const props = defineProps({
+    currentLocale: {
+        type: String,
+        required: true
+    }
+});
 
 const languages = [
     { code: 'en', name: 'English', flag: 'https://flagcdn.com/w20/gb.png' },
@@ -63,7 +85,7 @@ const languages = [
 ];
 
 const currentLanguage = computed(() => {
-    return languages.find(lang => lang.code === props.currentLocale);
+    return languages.find(lang => lang.code === props.currentLocale) || languages[0];
 });
 
 const getURL = (lang) => {
@@ -81,7 +103,10 @@ const getURL = (lang) => {
         pathSegments.unshift(lang.code);
     }
     
-    return '/' + pathSegments.join('/');
+    // Preserve query parameters
+    const queryString = window.location.search;
+    
+    return '/' + pathSegments.join('/') + queryString;
 };
 
 const isLoading = ref(false);
@@ -93,10 +118,13 @@ async function changeLanguage(lang) {
     try {
         const newUrl = getURL(lang);
         await setLocale(lang.code);
-        window.location.href = newUrl;
+        
+        // Add a small delay to show loading state
+        setTimeout(() => {
+            window.location.href = newUrl;
+        }, 200);
     } catch (error) {
         console.error('Failed to change language:', error);
-    } finally {
         isLoading.value = false;
     }
 }
@@ -111,5 +139,22 @@ async function changeLanguage(lang) {
 .fade-enter-from,
 .fade-leave-to {
     opacity: 0;
+}
+
+/* Enhanced mobile touch targets */
+@media (max-width: 640px) {
+    /* Increase touch target size */
+    .dropdown-link {
+        padding: 0.75rem 1rem;
+    }
+}
+
+/* Smooth flag loading */
+img {
+    transition: opacity 0.2s ease;
+}
+
+img[loading] {
+    opacity: 0.7;
 }
 </style>

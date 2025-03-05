@@ -138,6 +138,7 @@ const headerClass = computed(() => [
                 <template v-else>
                     <Button variant="outline" 
                             :href="route('login')" 
+                            method="get"
                             class="hidden md:inline-flex hover:scale-105 transition-transform"
                             v-if="route().current('register')">
                         {{ $t('auth.login') }}
@@ -145,6 +146,7 @@ const headerClass = computed(() => [
 
                     <Button :href="route('register')" 
                             v-if="!route().current('register')" 
+                            method="get"
                             class="hidden md:inline-flex hover:scale-105 transition-transform">
                         {{ $t('auth.register') }}
                         <span class="hidden lg:inline-block ml-1 opacity-75">→</span>

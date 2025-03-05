@@ -87,6 +87,7 @@ const features = [
             <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
                 <Button
                     :href="route('register')"
+                    method="get"
                     class="group relative px-8 py-3 text-lg"
                     variant="primary"
                 >
