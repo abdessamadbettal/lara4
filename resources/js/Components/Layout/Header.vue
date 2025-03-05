@@ -56,7 +56,7 @@ const handleScroll = () => {
 }
 
 const headerClass = computed(() => [
-    'fixed w-full transition-all duration-300 py-4 md:py-4',
+    'fixed w-full transition-all duration-300',
     {
         'bg-white/90 dark:bg-gray-900/90 backdrop-blur-lg shadow-sm translate-y-0': lastScrollPosition.value > 50,
         'bg-transparent -translate-y-full': !isHeaderVisible.value,
