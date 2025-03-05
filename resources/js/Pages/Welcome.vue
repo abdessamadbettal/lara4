@@ -4,6 +4,7 @@ import Hero from '@/Components/Home/Hero.vue';
 import Trusted from '@/Components/Home/Trusted.vue';
 import BlogSection from '@/Components/Blog/BlogSection.vue';
 import GeneralLayout from '@/Layouts/GeneralLayout.vue';
+import StackSection from '@/Components/Home/StackSection.vue';
 
 const props = defineProps({
     posts: {
@@ -69,6 +70,7 @@ const descriptions = {
         </Head>
 
         <Hero />
+        <StackSection />
         <Trusted />
         <BlogSection :posts="posts.data" v-if="posts.data.length > 0" />
     </GeneralLayout>

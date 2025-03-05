@@ -1,6 +1,6 @@
 <p align="center"><img src=".github/screenshots/home.png" alt="Lara4 lara4"></p>
 
-# Laravel Inerta Vue Starter
+# Laravel Inertia Vue Starter
 
 *If you are a Laravel developer and your priority is simplicity and faster development, you are in the right place. This starter project includes everything you need, including Inertia.js with Vue for the frontend, multi-language support, SSR, SEO-friendly features, and Filament as a CMS with all the tools you need to manage your website settings, activity log, translations, and more. Additionally, it includes all the recommended packages that can be useful for any project.*
 

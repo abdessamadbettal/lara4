@@ -1,35 +1,45 @@
 <template>
     <div class="flex sm:items-center">
         <div class="relative">
-            <Dropdown align="right" width="28">
+            <Dropdown align="right" width="48">
                 <template #trigger>
-                    <span class="inline-flex rounded-md">
-                        <button type="button"
-                            class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300">
-                            <img loading="lazy" :src="currentLanguage.flag" alt="" class="w-5 h-4 me-2">
-                            <span class="uppercase">{{ currentLanguage.code }}</span>
-
-                            <svg class="-me-0.5 ms-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </span>
+                    <button type="button"
+                        class="inline-flex items-center rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm font-medium leading-4 text-gray-700 transition duration-200 ease-in-out hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:border-gray-600">
+                        <img loading="lazy" :src="currentLanguage.flag" alt="" class="w-5 h-4 me-2 rounded shadow-sm">
+                        <span class="font-semibold">{{ currentLanguage.name }}</span>
+                        <svg class="ms-2 h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
                 </template>
 
                 <template #content>
-                    <DropdownLink
-                        v-for="lang in languages"
-                        :key="lang.code"
-                        :href="getURL(lang)"
-                        class="px-4 py-2 hover:bg-gray-100 cursor-pointer flex"
-                        @click.prevent="changeLanguage(lang)"
-                    >
-                        <img loading="lazy" :src="lang.flag" alt="" class="w-6 h-4 me-2">
-                        {{ lang.name }}
-                    </DropdownLink>
+                    <div class="py-1">
+                        <DropdownLink
+                            v-for="lang in languages"
+                            :key="lang.code"
+                            :href="getURL(lang)"
+                            :class="[
+                                'px-4 py-2.5 flex items-center space-x-3 transition duration-150',
+                                'hover:bg-gray-50 dark:hover:bg-gray-700',
+                                lang.code === currentLanguage.code ? 'bg-gray-50 dark:bg-gray-700' : ''
+                            ]"
+                            @click.prevent="changeLanguage(lang)"
+                        >
+                            <img loading="lazy" :src="lang.flag" alt="" class="w-5 h-4 rounded shadow-sm">
+                            <span class="flex-1">{{ lang.name }}</span>
+                            <svg v-if="lang.code === currentLanguage.code" 
+                                class="h-5 w-5 text-blue-500" 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                viewBox="0 0 20 20" 
+                                fill="currentColor">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </DropdownLink>
+                    </div>
                 </template>
             </Dropdown>
         </div>
@@ -37,7 +47,7 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { router as inertiaRouter } from '@inertiajs/vue3';
 import Dropdown from '@/Components/Forms/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
@@ -74,9 +84,32 @@ const getURL = (lang) => {
     return '/' + pathSegments.join('/');
 };
 
-async function changeLanguage(lang) {
-    const newUrl = getURL(lang);
+const isLoading = ref(false);
 
-    window.location.href = newUrl;
+async function changeLanguage(lang) {
+    if (lang.code === props.currentLocale) return;
+    
+    isLoading.value = true;
+    try {
+        const newUrl = getURL(lang);
+        await setLocale(lang.code);
+        window.location.href = newUrl;
+    } catch (error) {
+        console.error('Failed to change language:', error);
+    } finally {
+        isLoading.value = false;
+    }
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.15s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+</style>
