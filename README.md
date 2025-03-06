@@ -1,4 +1,4 @@
-![Lara4](.github/screenshots/home.png)
+![Lara4](.github/screenshots/Animation.gif)
 
 # 🚀 Lara4 - Laravel Inertia Vue Starter
 
