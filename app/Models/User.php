@@ -122,7 +122,7 @@ class User extends Authenticatable  implements HasMedia, FilamentUser
         return $this->exists;
     }
 
-        /**
+    /**
      * Update user's location data from IP address
      */
     public function updateLocationData(?string $ip = null): void
