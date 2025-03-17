@@ -30,11 +30,7 @@ const relatedPosts = computed(() => props.posts.slice(0, 3));
             </div>
 
             <div v-else class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <BlogCard 
-                    v-for="post in relatedPosts" 
-                    :key="post.id" 
-                    :item="post"
-                />
+                <BlogCard v-for="post in relatedPosts" :key="post.id" :item="post" />
             </div>
         </div>
     </section>

@@ -1,7 +1,8 @@
 <template>
     <div class="container relative md:mt-24 mt-16">
         <div class="grid grid-cols-1 pb-6 text-center">
-            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold dark:text-sky-100">{{ $t('home.latest_blogs')
+            <h3 class="mb-6 md:text-3xl text-2xl md:leading-normal leading-normal font-semibold dark:text-sky-100">{{
+                $t('home.latest_blogs')
                 }}</h3>
 
             <p class="text-slate-400 max-w-xl mx-auto dark:text-sky-100">{{ $t('home.latest_blogs_text') }}</p>
@@ -21,8 +22,10 @@
             <BlogCard v-else v-for="item in posts" :key="item.id" :item="item" />
         </div>
         <div class="mt-6 text-center">
-            <Link :href="route('posts.index')" class="text-slate-400 hover:text-primary-500 inline-block cursor-pointer">{{ $t('home.see_more_posts') }}
-                <i class="mdi mdi-arrow-right align-middle"></i></Link>
+            <Link :href="route('posts.index')"
+                class="text-slate-400 hover:text-primary-500 inline-block cursor-pointer">{{
+                    $t('home.see_more_posts') }}
+            <i class="mdi mdi-arrow-right align-middle"></i></Link>
         </div>
     </div>
 </template>

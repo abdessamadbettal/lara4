@@ -21,11 +21,9 @@ onMounted(() => {
     <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
         <h3 class="text-lg font-semibold mb-4">{{ $t('table_of_contents') }}</h3>
         <nav class="space-y-2">
-            <a v-for="heading in headings"
-               :key="heading.id"
-               :href="`#${heading.id}`"
-               class="block text-sm text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors"
-               :class="{ 'pl-4': heading.level === 3 }">
+            <a v-for="heading in headings" :key="heading.id" :href="`#${heading.id}`"
+                class="block text-sm text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors"
+                :class="{ 'pl-4': heading.level === 3 }">
                 {{ heading.text }}
             </a>
         </nav>
