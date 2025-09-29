@@ -70,6 +70,7 @@ composer install && npm install
 # Configure environment
 cp .env.example .env
 php artisan key:generate
+php artisan storage:link
 
 # Run migrations and seed database
 php artisan migrate:fresh --seed
