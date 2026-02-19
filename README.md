@@ -171,6 +171,37 @@ npm run dev
 
 > Coming soon
 
+## 🔒 Security
+
+Security is a top priority for Lara4. We've included comprehensive security documentation to help you deploy safely:
+
+**📘 [Security Documentation Index](SECURITY_INDEX.md)** - Complete guide to all security resources
+
+### Quick Links
+- **[Security Quick Fix Guide](SECURITY_QUICK_FIX.md)** - Immediate solutions for common security issues
+- **[Security Best Practices](SECURITY_BEST_PRACTICES.md)** - Comprehensive security guidelines
+- **[Deployment Checklist](DEPLOYMENT_CHECKLIST.md)** - Pre-deployment security verification
+- **[Security Policy](SECURITY.md)** - How to report security vulnerabilities
+
+### Quick Security Tips
+
+⚠️ **Critical: Before deploying to production**
+
+1. **Never use `APP_DEBUG=true` in production** - Exposes sensitive information
+2. **Always generate a unique `APP_KEY`** - Never use the example key
+   ```bash
+   php artisan key:generate
+   ```
+3. **Secure your `.env` file** - It should never be committed or web-accessible
+   ```bash
+   chmod 600 .env
+   ```
+4. **Use strong database passwords** - Minimum 16 characters, mixed case, numbers, symbols
+5. **Enable HTTPS** - Never run production sites without SSL/TLS
+6. **Keep dependencies updated** - Run `composer audit` and `npm audit` regularly
+
+**📖 For complete security guidance, start with [SECURITY_INDEX.md](SECURITY_INDEX.md)**
+
 ## 💡 Contributing
 
 We welcome contributions to make Lara4 even better!
